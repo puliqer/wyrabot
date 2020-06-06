@@ -4,7 +4,7 @@ among your groupmates in Telegram. Simple & Easy 😺_
 
 ### **Commands List**
 
-> _/help
+> /help
 
 > /me
 
@@ -16,7 +16,7 @@ among your groupmates in Telegram. Simple & Easy 😺_
 
 > /list
 
-> /rps_
+> /rps
 
 
 **What is RPS ?**
