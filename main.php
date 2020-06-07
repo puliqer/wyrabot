@@ -65,15 +65,21 @@ function sendvideo($chat_id, $video, $caption){
 
 #########################  Public Variable Here  #########################
 
-$main = json_decode(file_get_contents('php://input'));
+$main = json_decode(file_get_contents('php://input')); // getting data from user
 var_dump($update);
 $message = $main->message; // getting the message full data
 $from_id = $message->from->id; // getting the user id 
 $chat_id = $message->chat->id; // getting the user id in chat
 $textid = $message->text->id; // getting the sent text id from user
 $text = $message->text; // getting the sent text
+$username = $message->form->first_name;
 
 #########################  Usable String Here  #########################
 
-
+if ($text == '/start') {
+    sendmessage($chat_id, "
+        Welcome dear {$username} 🐱, add me to Chat and Have Fun.
+        if you dont know how to use this bot, use /help command ! 
+    ");
+}
 ?>
