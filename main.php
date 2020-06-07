@@ -1,5 +1,7 @@
 <?php
 
+#########################  Main Config Here  #########################
+
 $token = '1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU'; // bot token here
 $bot = "imkind_bot"; // bot username here
 $id = 144686606; // bot id here 
@@ -19,6 +21,9 @@ function bot($method, $datas=[]){
         return json_decode($res);
     }
 }
+
+#########################  Method List Here  #########################
+
 // sendMessage method
 function sendmessage($chat_id, $text){
     bot('sendMessage', [
@@ -31,6 +36,14 @@ function sendphoto($chat_id, $photo, $caption){
     bot('sendPhoto', [
         'chat_id' => $chat_id,
         'photo' => $photo,
+        'caption' => $caption,
+    ]);
+}
+// sendPhoto method
+function sendaudio($chat_id, $audio, $caption){
+    bot('sendPhoto', [
+        'chat_id' => $chat_id,
+        'audio' => $audio,
         'caption' => $caption,
     ]);
 }
