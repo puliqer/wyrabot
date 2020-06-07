@@ -5,7 +5,8 @@ $bot = "imkind_bot"; // bot username here
 $id = 144686606; // bot id here 
 define('TOKEN',$token);
 
-function bot($method,$datas=[]){
+// The main function for execute methods
+function bot($method, $datas=[]){
     $url = "https://api.telegram.org/bot".TOKEN."/".$method;
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
@@ -17,5 +18,12 @@ function bot($method,$datas=[]){
     } else {
         return json_decode($res);
     }
+}
+// sendMessage method
+function sendmessage($chat_id, $text){
+    bot('sendMessage', [
+        'chat_id' => $chat_id,
+        'text' => $text,
+    ]);
 }
 ?>
