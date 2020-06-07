@@ -101,4 +101,13 @@ if ($text == '/help') {
         '• /shortlink : Make your links shorter' 
     );
 }
+if ($text == '/say') {
+    sendmessage($chat_id,
+        'Use this Command with a text !' .PHP_EOL. 
+        'for example :' .PHP_EOL. 
+        '/say hello' .PHP_EOL. 
+        'Result :' .PHP_EOL. 
+        'hello' 
+    );
+}
 ?>
