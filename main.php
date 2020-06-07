@@ -62,4 +62,18 @@ function sendvideo($chat_id, $video, $caption){
         'caption' => $caption,
     ]);
 }
+
+#########################  Public Variable Here  #########################
+
+$main = json_decode(file_get_contents('php://input'));
+var_dump($update);
+$message = $main->message; // getting the message full data
+$from_id = $message->from->id; // getting the user id 
+$chat_id = $message->chat->id; // getting the user id in chat
+$textid = $message->text->id; // getting the sent text id from user
+$text = $message->text; // getting the sent text
+
+#########################  Usable String Here  #########################
+
+
 ?>
