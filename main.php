@@ -26,4 +26,12 @@ function sendmessage($chat_id, $text){
         'text' => $text,
     ]);
 }
+// sendPhoto method
+function sendphoto($chat_id, $photo, $caption){
+    bot('sendPhoto', [
+        'chat_id' => $chat_id,
+        'photo' => $photo,
+        'caption' => $caption,
+    ]);
+}
 ?>
