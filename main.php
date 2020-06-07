@@ -39,12 +39,19 @@ function sendphoto($chat_id, $photo, $caption){
         'caption' => $caption,
     ]);
 }
-// sendPhoto method
+// sendAudio method
 function sendaudio($chat_id, $audio, $caption){
     bot('sendPhoto', [
         'chat_id' => $chat_id,
         'audio' => $audio,
         'caption' => $caption,
+    ]);
+}
+// sendSticker method
+function sendsticker($chat_id, $sticker){
+    bot('sendSticker', [
+        'chat_id' => $chat_id,
+        'sticker' => $sticker,
     ]);
 }
 ?>
