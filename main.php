@@ -54,4 +54,12 @@ function sendsticker($chat_id, $sticker){
         'sticker' => $sticker,
     ]);
 }
+// sendVideo method
+function sendvideo($chat_id, $video, $caption){
+    bot('sendVideo', [
+        'chat_id' => $chat_id,
+        'video' => $video,
+        'caption' => $caption,
+    ]);
+}
 ?>
