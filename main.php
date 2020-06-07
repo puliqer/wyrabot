@@ -82,9 +82,23 @@ $username = $message->form->username; // getting the username of user
 #########################  Usable String Here  #########################
 
 if ($text == '/start') {
-    sendmessage($chat_id, "
-        Welcome dear {$first_name} 🐱, add me to Chat and Have Fun.
-        if you dont know how to use this bot, use /help command ! 
-    ");
+    sendmessage($chat_id,
+        'Welcome dear {$first_name} 🐱,' .PHP_EOL. 
+        'add me to Chat and Have Fun.' .PHP_EOL. 
+        'if you dont know how to use this bot, use /help command !' 
+    );
+}
+
+if ($text == '/help') {
+    sendmessage($chat_id,
+        '• /help : Show the Command list with description' .PHP_EOL. 
+        '• /me : Returns your Informations' .PHP_EOL. 
+        '• /say <text> : Echo your text as Parameter' .PHP_EOL. 
+        '• /random : Returns a random funny text' .PHP_EOL. 
+        '• /gaycheck : Randomly returns your gayness by percent' .PHP_EOL. 
+        '• /rps : Rock Paper Scissors game' .PHP_EOL. 
+        '• /everyone : Tag all member of the Group' .PHP_EOL. 
+        '• /shortlink : Make your links shorter' 
+    );
 }
 ?>
