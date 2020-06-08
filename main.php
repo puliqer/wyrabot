@@ -118,4 +118,7 @@ if ($text == '/say') {
         'hello' 
     );
 }
+if ($text == '/say ') {
+    sendmessage($chat_id,say($text));
+}
 ?>
