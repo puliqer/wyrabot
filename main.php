@@ -82,8 +82,8 @@ $username = $message->from->username; // getting the username of user
 #########################  Public Functions Here  #########################
 
 function say($text){
-    $replaced_text = str_replace("/echo","",$text);
-    echo $replaced_text;
+    $replaced_text = str_replace("/say","",$text);
+    return $replaced_text;
 }
 
 
@@ -115,10 +115,11 @@ if ($text == '/say') {
         'for example :' .PHP_EOL. 
         '/say hello' .PHP_EOL. 
         'Result :' .PHP_EOL. 
-        'hello' 
+        'hello'
     );
-}
-if ($text == '/say ') {
-    sendmessage($chat_id,say($text));
+} else {
+    sendmessage($chat_id,
+        'Result :' .PHP_EOL. 
+        say($text));
 }
 ?>
