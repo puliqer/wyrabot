@@ -79,6 +79,14 @@ $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
 
 
+#########################  Public Functions Here  #########################
+
+function say($text){
+    $replaced_text = str_replace("/echo","",$text);
+    echo $replaced_text;
+}
+
+
 #########################  Usable String Here  #########################
 
 if ($text == '/start') {
