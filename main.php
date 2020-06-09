@@ -105,29 +105,31 @@ function sayMessage(){
         Result :
         hello");
 }
-
-function say($say_text){
-    $say_text = substr("/say", 5);
-    return $say_text;
-}
-
-
+// /say command with argument
+function say($text){
+    if (strpos($text, '/say') === 0) {
+    $new_text = substr($text, 5);
+    echo nl2br("Result :
+        $new_text");
+    }
+}    
 
 #########################  Usable String Here  #########################
 
-if ($text == '/start') {
+if ($text === '/start') {
     sendmessage($chat_id, startMessage($first_name));
 }
 
-if ($text == '/help') {
+if ($text === '/help') {
     sendmessage($chat_id, helpMessage());
 }
-if ($text == '/say') {
+
+if ($text === '/say') {
     sendmessage($chat_id, sayMessage());
 
 } else {
-    sendmessage($chat_id,
-        'Result :' .PHP_EOL. 
-        say($text));
+    sendmessage($chat_id, say($text));
 }
+
+
 ?>
