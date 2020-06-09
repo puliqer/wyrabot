@@ -81,42 +81,50 @@ $username = $message->from->username; // getting the username of user
 
 #########################  Public Functions Here  #########################
 
-function say($text){
-    $replaced_text = str_replace("/say","",$text);
-    return $replaced_text;
+function startMessage($first_name){
+    echo nl2br("Welcome dear {$first_name} 🐱, 
+        add me to Chat and Have Fun. 
+        if you dont know how to use this bot, use /help command !");
 }
+
+function helpMessage(){
+    echo nl2br("• /help : Show the Command list with description
+        • /me : Returns your Informations
+        • /say <text> : Echo your text as Parameter
+        • /random : Returns a random funny text
+        • /gaycheck : Randomly returns your gayness by percent
+        • /rps : Rock Paper Scissors game
+        • /everyone : Tag all member of the Group
+        • /shortlink : Make your links shorter");
+}
+
+function sayMessage(){
+    echo nl2br("Use this Command with a text !
+        for example : 
+        /say hello
+        Result :
+        hello");
+}
+
+function say($say_text){
+    $say_text = substr("/say", 5);
+    return $say_text;
+}
+
 
 
 #########################  Usable String Here  #########################
 
 if ($text == '/start') {
-    sendmessage($chat_id,
-        "Welcome dear {$first_name} 🐱," .PHP_EOL. 
-        'add me to Chat and Have Fun.' .PHP_EOL. 
-        'if you dont know how to use this bot, use /help command !' 
-    );
+    sendmessage($chat_id, startMessage($first_name));
 }
 
 if ($text == '/help') {
-    sendmessage($chat_id,
-        '• /help : Show the Command list with description' .PHP_EOL. 
-        '• /me : Returns your Informations' .PHP_EOL. 
-        '• /say <text> : Echo your text as Parameter' .PHP_EOL. 
-        '• /random : Returns a random funny text' .PHP_EOL. 
-        '• /gaycheck : Randomly returns your gayness by percent' .PHP_EOL. 
-        '• /rps : Rock Paper Scissors game' .PHP_EOL. 
-        '• /everyone : Tag all member of the Group' .PHP_EOL. 
-        '• /shortlink : Make your links shorter' 
-    );
+    sendmessage($chat_id, helpMessage());
 }
 if ($text == '/say') {
-    sendmessage($chat_id,
-        'Use this Command with a text !' .PHP_EOL. 
-        'for example :' .PHP_EOL. 
-        '/say hello' .PHP_EOL. 
-        'Result :' .PHP_EOL. 
-        'hello'
-    );
+    sendmessage($chat_id, sayMessage());
+
 } else {
     sendmessage($chat_id,
         'Result :' .PHP_EOL. 
