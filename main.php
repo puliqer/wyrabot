@@ -127,7 +127,9 @@ if ($text === '/help') {
 if ($text === '/say') {
     sendmessage($chat_id, sayMessage());
 
-} else {
+}
+// /say command with argument
+if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
 
