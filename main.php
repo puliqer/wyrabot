@@ -107,31 +107,31 @@ function sayMessage(){
 }
 // /say command with argument
 function say($text){
-    if (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
     echo nl2br("Result :
         $new_text");
-    }
 }    
 
 #########################  Usable String Here  #########################
 
-if ($text === '/start') {
+// a simple switch for simple command with simple message
+switch ($text) {
+    case "/start":
     sendmessage($chat_id, startMessage($first_name));
-}
+    break;
 
-if ($text === '/help') {
+    case "/help":
     sendmessage($chat_id, helpMessage());
+    break;
+// /say command without argument
+    case "/say":
+        sendmessage($chat_id, sayMessage());
+    break;
 }
 
-if ($text === '/say') {
-    sendmessage($chat_id, sayMessage());
-
-}
 // /say command with argument
 if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
-
 
 ?>
