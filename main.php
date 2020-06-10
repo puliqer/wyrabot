@@ -125,8 +125,19 @@ function meMesaage($first_name, $last_name = null, $username, $user_id){
 function gaycheck($first_name){
     $rand = rand(0, 100);
     echo "🏳️‍🌈 {$first_name} is {$rand}% Gay 🏳️‍🌈";
-
 }
+
+function rpsMessage(){
+    echo nl2br("Well well. Game time 🎮
+        as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
+        and whoever gets more points at the end of these three rounds will be the winner.
+        
+        Reply 'rock', 'paper' and 'scissors' and And wait for luck.
+
+        Lets Start 😈
+        ");
+}
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -150,6 +161,16 @@ switch ($text) {
     case "/gaycheck":
         sendmessage($chat_id, gayceck($first_name));
     break;
+
+    case "/rps":
+        sendmessage($chat_id, rpsMessage());
+    break;
+
+    default:
+    echo nl2br("Invalid Command !
+        if you dont know how to use this bot,
+        you can use /help command and check command list !
+        ");
 }
 
 // /say command with argument
