@@ -74,10 +74,11 @@ $chat_id = $message->chat->id; // getting the user id in chat
 $textid = $message->text->id; // getting the sent text id from user
 $text = $message->text; // getting the sent text
 $date = $message->date; // getting the date of sent message
+
 $first_name = $message->from->first_name; // getting the first name of user
 $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
-
+$user_id = $message->from->id;
 
 #########################  Public Functions Here  #########################
 
@@ -112,6 +113,14 @@ function say($text){
         $new_text");
 }    
 
+function meMesaage($first_name, $last_name = null, $username, $user_id){
+    echo nl2br("Your Information :
+        Firstname : {$first_name}
+        Lastname : {$last_name}
+        Username : @{$username}
+        User ID : {$user_id}
+        ");
+}
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -126,6 +135,10 @@ switch ($text) {
 // /say command without argument
     case "/say":
         sendmessage($chat_id, sayMessage());
+    break;
+
+    case "/me":
+        sendmessage($chat_id, meMesaage($first_name, $last_name, $username, $user_id));
     break;
 }
 
