@@ -121,6 +121,12 @@ function meMesaage($first_name, $last_name = null, $username, $user_id){
         User ID : {$user_id}
         ");
 }
+
+function gaycheck($first_name){
+    $rand = rand(0, 100);
+    echo "🏳️‍🌈 {$first_name} is {$rand}% Gay 🏳️‍🌈";
+
+}
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -139,6 +145,10 @@ switch ($text) {
 
     case "/me":
         sendmessage($chat_id, meMesaage($first_name, $last_name, $username, $user_id));
+    break;
+
+    case "/gaycheck":
+        sendmessage($chat_id, gayceck($first_name));
     break;
 }
 
