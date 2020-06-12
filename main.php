@@ -152,6 +152,12 @@ function randomRPS($random){
     echo nl2br("{$random}");
 }
 
+function scoreRPS($user_score, $bot_socre){
+    echo nl2br("Now lets check the Scores!
+    Your Score is : {$user_score}
+    and My Score is : {$bot_socre}");
+}
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -192,6 +198,9 @@ if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
 if ($rps_user === '/rock') {
-    sendmessage($chat_id, rpsMessage($rps_bot));
+    sendmessage($chat_id, randomRPS($rps_bot));
+        if (randomRPS($rps_bot) === 'Rock') {
+
+        }
 }
 ?>
