@@ -205,8 +205,17 @@ if (strpos($text, '/say') === 0) {
 }
 if ($rps_user === '/rock') {
     sendmessage($chat_id, randomRPS($rps_bot));
+
         if (randomRPS($rps_bot) === 'Rock') {
             sendmessage($chat_id, drawRPS());
+
+        } elseif (randomRPS($rps_bot) === 'Paper') {
+            $rps_bot_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+
+        } elseif (randomRPS($rps_bot) === 'Scissors') {
+            $rps_bot_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
         }
 }
 ?>
