@@ -204,6 +204,22 @@ if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
 
+if ($rps_user_score == 3) {
+    echo nl2br("DONE.
+    🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
+    Socreboard :
+    My Score : {$rps_bot_score}
+    {$username} Score : {$rps_user_score}");
+}
+
+if ($rps_bot_score == 3) {
+    echo nl2br("Hahaha...
+    😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
+    Socreboard :
+    My Score : {$rps_bot_score}
+    {$username} Score : {$rps_user_score}");
+}
+
 if ($rps_user === '/rock') {
     sendmessage($chat_id, randomRPS($rps_bot));
 
@@ -252,18 +268,5 @@ if ($rps_user === '/scissors') {
         }
 }
 
-if ($rps_user_score == 3) {
-    echo nl2br("DONE.
-    🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
-    Socreboard :
-    My Score : {$rps_bot_score}
-    {$username} Score : {$rps_user_score}");
-}
-if ($rps_bot_score == 3) {
-    echo nl2br("Hahaha...
-    😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
-    Socreboard :
-    My Score : {$rps_bot_score}
-    {$username} Score : {$rps_user_score}");
-}
+
 ?>
