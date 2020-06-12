@@ -82,11 +82,12 @@ $user_id = $message->from->id;
 
 #########################  Public Variables Here  #########################
 
+// sent text form user for rps game
 $rps_user = $text;
-
+// sent one of the three possible response
 $a = ['Rock', 'Paper', 'Scissors'];
 $rps_bot = array_rand($a);
-
+// setting the score form 0
 $rps_user_score = 0;
 $rps_bot_score = 0;
 
@@ -219,7 +220,7 @@ if ($rps_bot_score == 3) {
     My Score : {$rps_bot_score}
     {$username} Score : {$rps_user_score}");
 }
-
+// action to /rock with 3 possible response
 if ($rps_user === '/rock') {
     sendmessage($chat_id, randomRPS($rps_bot));
 
@@ -235,7 +236,7 @@ if ($rps_user === '/rock') {
             sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
         }
 }
-
+// action to /pepar with 3 possible response
 if ($rps_user === '/paper') {
     sendmessage($chat_id, randomRPS($rps_bot));
 
@@ -251,7 +252,7 @@ if ($rps_user === '/paper') {
             sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
         }
 }
-
+// action to /scissors with 3 possible response
 if ($rps_user === '/scissors') {
     sendmessage($chat_id, randomRPS($rps_bot));
 
