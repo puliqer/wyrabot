@@ -62,7 +62,7 @@ function sendvideo($chat_id, $video, $caption){
     ]);
 }
 
-#########################  Public Variable Here  #########################
+#########################  Bot api Variable Here  #########################
 
 $main = json_decode(file_get_contents('php://input')); // getting data from user
 var_dump($update);
@@ -79,6 +79,16 @@ $first_name = $message->from->first_name; // getting the first name of user
 $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
 $user_id = $message->from->id;
+
+#########################  Public Functions Here  #########################
+
+$rps_user = $text;
+
+$a = ['rock', 'paper','scissors'];
+$rps_bot = array_rand($a);
+
+$rps_user_score = 0;
+$rps_bot_score = 0;
 
 #########################  Public Functions Here  #########################
 
@@ -131,7 +141,7 @@ function rpsMessage(){
     echo nl2br("Well well. Game time 🎮
         as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
         and whoever gets more points at the end of these three rounds will be the winner.
-        
+
         Reply 'rock', 'paper' and 'scissors' and And wait for luck.
 
         Lets Start 😈
@@ -159,7 +169,7 @@ switch ($text) {
     break;
 
     case "/gaycheck":
-        sendmessage($chat_id, gayceck($first_name));
+        sendmessage($chat_id, gaycheck($first_name));
     break;
 
     case "/rps":
@@ -177,5 +187,7 @@ switch ($text) {
 if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
+if ($text === '/rock') {
 
+}
 ?>
