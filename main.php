@@ -203,6 +203,7 @@ switch ($text) {
 if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
+
 if ($rps_user === '/rock') {
     sendmessage($chat_id, randomRPS($rps_bot));
 
@@ -232,6 +233,22 @@ if ($rps_user === '/paper') {
         } elseif (randomRPS($rps_bot) === 'Scissors') {
             $rps_bot_score += 1;
             sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+        }
+}
+
+if ($rps_user === '/scissors') {
+    sendmessage($chat_id, randomRPS($rps_bot));
+
+        if (randomRPS($rps_bot) === 'Rock') {
+            $rps_bot_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+
+        } elseif (randomRPS($rps_bot) === 'Paper') {
+            $rps_user_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+
+        } elseif (randomRPS($rps_bot) === 'Scissors') {
+            sendmessage($chat_id, drawRPS());
         }
 }
 ?>
