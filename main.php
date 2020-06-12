@@ -204,6 +204,10 @@ switch ($text) {
         sendmessage($chat_id, rpsMessage());
     break;
 
+    case "/time":
+        sendmessage($chat_id, 'You suck, we dont have /time 😅');
+    break;
+
     default:
     echo nl2br("Invalid Command !
         if you dont know how to use this bot,
