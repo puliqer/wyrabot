@@ -259,4 +259,11 @@ if ($rps_user_score == 3) {
     My Score : {$rps_bot_score}
     {$username} Score : {$rps_user_score}");
 }
+if ($rps_bot_score == 3) {
+    echo nl2br("Hahaha...
+    😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
+    Socreboard :
+    My Score : {$rps_bot_score}
+    {$username} Score : {$rps_user_score}");
+}
 ?>
