@@ -251,4 +251,12 @@ if ($rps_user === '/scissors') {
             sendmessage($chat_id, drawRPS());
         }
 }
+
+if ($rps_user_score == 3) {
+    echo nl2br("DONE.
+    🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
+    Socreboard :
+    My Score : {$rps_bot_score}
+    {$username} Score : {$rps_user_score}");
+}
 ?>
