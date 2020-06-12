@@ -214,8 +214,24 @@ if ($rps_user === '/rock') {
             sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
 
         } elseif (randomRPS($rps_bot) === 'Scissors') {
-            $rps_bot_score += 1;
+            $rps_user_score += 1;
             sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
+        }
+}
+
+if ($rps_user === '/paper') {
+    sendmessage($chat_id, randomRPS($rps_bot));
+
+        if (randomRPS($rps_bot) === 'Rock') {
+            $rps_user_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
+
+        } elseif (randomRPS($rps_bot) === 'Paper') {
+            sendmessage($chat_id, drawRPS());
+
+        } elseif (randomRPS($rps_bot) === 'Scissors') {
+            $rps_bot_score += 1;
+            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
         }
 }
 ?>
