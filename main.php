@@ -62,7 +62,7 @@ function sendvideo($chat_id, $video, $caption){
     ]);
 }
 
-#########################  Bot api Variable Here  #########################
+#########################  Bot api Variables Here  #########################
 
 $main = json_decode(file_get_contents('php://input')); // getting data from user
 var_dump($update);
@@ -80,11 +80,11 @@ $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
 $user_id = $message->from->id;
 
-#########################  Public Functions Here  #########################
+#########################  Public Variables Here  #########################
 
 $rps_user = $text;
 
-$a = ['rock', 'paper','scissors'];
+$a = ['Rock', 'Paper', 'Scissors'];
 $rps_bot = array_rand($a);
 
 $rps_user_score = 0;
@@ -148,6 +148,10 @@ function rpsMessage(){
         ");
 }
 
+function randomRPS($random){
+    echo nl2br("{$random}");
+}
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -187,7 +191,7 @@ switch ($text) {
 if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
 }
-if ($text === '/rock') {
-
+if ($rps_user === '/rock') {
+    sendmessage($chat_id, rpsMessage($rps_bot));
 }
 ?>
