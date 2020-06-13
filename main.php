@@ -199,6 +199,14 @@ function random($random){
 function tag($username, $tagname){
     echo nl2br("{$username}, your tag is '{$tagname}'");
 }
+
+// /say command with argument
+function tagChanger($username, $text){
+    $new_text = substr($text, 5);
+    echo nl2br("{$username} tag changed to '{$text}'.
+    send /tag to see your tag name!");
+} 
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -324,5 +332,9 @@ if ($rps_user === '/scissors') {
         }
 }
 
+// /tag command with argument
+if (strpos($text, '/tag') === 0) {
+    sendmessage($chat_id, tagChanger($username, $text));
+}
 
 ?>
