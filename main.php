@@ -195,6 +195,10 @@ function drawRPS(){
 function random($random){
     echo nl2br("{$random}");
 }
+
+function tag($username, $tagname){
+    echo nl2br("{$username}, your tag is '{$tagname}'");
+}
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -238,6 +242,10 @@ switch ($text) {
 
     case "/ranodm":
         sendmessage($chat_id, random($randomer));
+    break;
+
+    case "/tag":
+        sendmessage($chat_id, tag($username, $tag));
     break;
 
     default:
