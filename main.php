@@ -264,6 +264,8 @@ switch ($text) {
 // /say command with argument
 if (strpos($text, '/say') === 0) {
     sendmessage($chat_id, say($text));
+} else {
+    die("Please inter valid value with /say [argument]");
 }
 
 if ($rps_user_score == 3) {
@@ -335,7 +337,7 @@ if (strpos($text, '/tag') === 0) {
     $tag = substr($text, 5);
     sendmessage($chat_id, tagChanger($username, $text, $tag));
 } else {
-    die("please inter valid value with /tag [argument]");
+    die("Please inter valid value with /tag [argument]");
 }
 
 ?>
