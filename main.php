@@ -61,6 +61,12 @@ function sendvideo($chat_id, $video, $caption){
         'caption' => $caption,
     ]);
 }
+// leaveChat method
+function leavechat($chat_id){
+    bot('sendVideo', [
+        'chat_id' => $chat_id,
+    ]);
+}
 
 #########################  Bot api Variables Here  #########################
 
