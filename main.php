@@ -107,6 +107,8 @@ $random_array = [
 ];
 $randomer = array_rand($random_array);
 
+$tag = 'deafult';
+
 
 #########################  Public Functions Here  #########################
 
@@ -190,6 +192,9 @@ function drawRPS(){
     lets see next Chance.");
 }
 
+function random($random){
+    echo nl2br("{$random}");
+}
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -229,6 +234,10 @@ switch ($text) {
 
     case "/about":
         sendmessage($chat_id, aboutMessage());
+    break;
+
+    case "/ranodm":
+        sendmessage($chat_id, random($randomer));
     break;
 
     default:
