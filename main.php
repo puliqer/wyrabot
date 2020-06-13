@@ -214,6 +214,11 @@ switch ($text) {
         sendmessage($chat_id, 'You suck, we dont have /time 😅');
     break;
 
+    case "/getout":
+        sendmessage($chat_id, 'Ok, Its time to say goodbye !');
+        leavechat($chat_id);
+    break;
+
     default:
     echo nl2br("Invalid Command !
         if you dont know how to use this bot,
