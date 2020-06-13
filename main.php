@@ -107,7 +107,6 @@ $random_array = [
 ];
 $randomer = array_rand($random_array);
 
-$tag = 'deafult';
 
 
 #########################  Public Functions Here  #########################
@@ -201,9 +200,8 @@ function tag($username, $tagname){
 }
 
 // /say command with argument
-function tagChanger($username, $text){
-    $new_text = substr($text, 5);
-    echo nl2br("{$username} tag changed to '{$text}'.
+function tagChanger($username, $text, $tag){
+    echo nl2br("{$username} tag changed to '{$tag}'.
     send /tag to see your tag name!");
 } 
 
@@ -334,7 +332,10 @@ if ($rps_user === '/scissors') {
 
 // /tag command with argument
 if (strpos($text, '/tag') === 0) {
-    sendmessage($chat_id, tagChanger($username, $text));
+    $tag = substr($text, 5);
+    sendmessage($chat_id, tagChanger($username, $text, $tag));
+} else {
+    die("please inter valid value with /tag [argument]");
 }
 
 ?>
