@@ -118,6 +118,7 @@ function startMessage($first_name){
 
 function helpMessage(){
     echo nl2br("• /help : Show the Command list with description
+        • /about : show an information about the bot and developer
         • /me : Returns your Informations
         • /say <text> : Echo your text as Parameter
         • /random : Returns a random funny text
@@ -133,6 +134,13 @@ function sayMessage(){
         /say hello
         Result :
         hello");
+}
+
+function aboutMessage(){
+    echo nl2br("Hello, this is WyRa.
+    a funny multipurpose telegram bot.
+    
+    a Damn bot by @Gogilo based on v1.0.1");
 }
 // /say command with argument
 function say($text){
@@ -217,6 +225,10 @@ switch ($text) {
     case "/getout":
         sendmessage($chat_id, 'Ok, Its time to say goodbye !');
         leavechat($chat_id);
+    break;
+
+    case "/about":
+        sendmessage($chat_id, aboutMessage());
     break;
 
     default:
