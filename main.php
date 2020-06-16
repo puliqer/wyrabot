@@ -93,165 +93,105 @@ $user_id = $message->from->id;
 $rps_user = $text;
 // sent one of the three possible response
 $a = ['Rock', 'Paper', 'Scissors'];
-$rps_bot = array_rand($a);
+$rps = array_rand($a);
+echo $a[$rps]."<br>";
+
 // setting the score form 0
 $rps_user_score = 0;
 $rps_bot_score = 0;
 
 // random section
 $random_array = [
-        '/help is not for decor 😡',
-        'Bekiram in Perian = i love you',
-        'I know you are such an asshole but you dont want that other know about it',
-        'use /time to see the world clock!',
+    '/help is not for decor 😡',
+    'Bekiram in Perian = i love you',
+    'I know you are such an asshole but you dont want that other know about it',
+    'use /time to see the world clock!',
 ];
+
 $randomer = array_rand($random_array);
+echo $random_array[$randomer]."<br>";
 
-
-
-#########################  Public Functions Here  #########################
-
-function startMessage($first_name){
-    echo nl2br("Welcome dear {$first_name} 🐱, 
-        add me to Chat and Have Fun. 
-        if you dont know how to use this bot, use /help command !");
-}
-
-function helpMessage(){
-    echo nl2br("• /help : Show the Command list with description
-        • /about : show an information about the bot and developer
-        • /me : Returns your Informations
-        • /say <text> : Echo your text as Parameter
-        • /random : Returns a random funny text
-        • /gaycheck : Randomly returns your gayness by percent
-        • /rps : Rock Paper Scissors game
-        • /everyone : Tag all member of the Group
-        • /shortlink : Make your links shorter");
-}
-
-function sayMessage(){
-    echo nl2br("Use this Command with a text !
-        for example : 
-        /say hello
-        Result :
-        hello");
-}
-
-function aboutMessage(){
-    echo nl2br("Hello, this is WyRa.
-    a funny multipurpose telegram bot.
-    
-    a Damn bot by @Gogilo based on v1.0.1");
-}
-// /say command with argument
-function say($text){
-    $new_text = substr($text, 5);
-    echo nl2br("Result :
-        $new_text");
-}    
-
-function meMesaage($first_name, $last_name = null, $username, $user_id){
-    echo nl2br("Your Information :
-        Firstname : {$first_name}
-        Lastname : {$last_name}
-        Username : @{$username}
-        User ID : {$user_id}
-        ");
-}
-
-function gaycheck($first_name){
-    $rand = rand(0, 100);
-    echo "🏳️‍🌈 {$first_name} is {$rand}% Gay 🏳️‍🌈";
-}
-
-function rpsMessage(){
-    echo nl2br("Well well. Game time 🎮
-        as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
-        and whoever gets more points at the end of these three rounds will be the winner.
-
-        Reply 'rock', 'paper' and 'scissors' and And wait for luck.
-
-        Lets Start 😈
-        ");
-}
-
-function randomRPS($random){
-    echo nl2br("{$random}");
-}
-
-function scoreRPS($user_score, $bot_socre){
-    echo nl2br("Now lets check the Scores!
-    Your Score is : {$user_score}
-    and My Score is : {$bot_socre}");
-}
-
-function drawRPS(){
-    echo nl2br("Ops!
-    This round has a draw result!
-    lets see next Chance.");
-}
-
-function random($random){
-    echo nl2br("{$random}");
-}
-
-function tag($username, $tagname){
-    echo nl2br("{$username}, your tag is '{$tagname}'");
-}
-
-// /say command with argument
-function tagChanger($username, $text, $tag){
-    echo nl2br("{$username} tag changed to '{$tag}'.
-    send /tag to see your tag name!");
-} 
+$gayrand = rand(0, 100);
 
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
 switch ($text) {
+
     case "/start":
-    sendmessage($chat_id, startMessage($first_name));
+    sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
+add me to Chat and Have Fun. 
+if you dont know how to use this bot, use /help command !");
     break;
+
 
     case "/help":
-    sendmessage($chat_id, helpMessage());
+    sendmessage($chat_id, "• /help : Show the Command list with description
+• /about : show an information about the bot and developer
+• /me : Returns your Informations
+• /say <text> : Echo your text as Parameter
+• /random : Returns a random funny text
+• /gaycheck : Randomly returns your gayness by percent
+• /rps : Rock Paper Scissors game
+• /everyone : Tag all member of the Group
+• /shortlink : Make your links shorter");
     break;
+
+
 // /say command without argument
     case "/say":
-        sendmessage($chat_id, sayMessage());
+        sendmessage($chat_id, "Use this Command with a text !
+for example : 
+/say hello
+Result :
+hello");
     break;
+
 
     case "/me":
-        sendmessage($chat_id, meMesaage($first_name, $last_name, $username, $user_id));
+        sendmessage($chat_id, "Your Information :
+Firstname : {$first_name}
+Lastname : {$last_name}
+Username : @{$username}
+User ID : {$user_id}");
     break;
 
+
     case "/gaycheck":
-        sendmessage($chat_id, gaycheck($first_name));
+        sendmessage($chat_id, "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈");
     break;
 
     case "/rps":
-        sendmessage($chat_id, rpsMessage());
+        sendmessage($chat_id, "Well well. Game time 🎮
+as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
+and whoever gets more points at the end of these three rounds will be the winner.
+
+Reply '/rock', '/paper' and '/scissors' and And wait for luck.
+Lets Start 😈");
     break;
 
     case "/time":
-        sendmessage($chat_id, 'You suck, we dont have /time 😅');
+        sendmessage($chat_id, "You suck, we dont have /time 😅");
     break;
 
     case "/getout":
-        sendmessage($chat_id, 'Ok, Its time to say goodbye !');
+        sendmessage($chat_id, "Ok, Its time to say goodbye !");
         leavechat($chat_id);
     break;
 
     case "/about":
-        sendmessage($chat_id, aboutMessage());
+        sendmessage($chat_id, "Hello, this is WyRa.
+a funny multipurpose telegram bot.
+        
+a Damn bot by @Gogilo based on v1.0.1");
     break;
 
-    case "/ranodm":
-        sendmessage($chat_id, random($randomer));
+    case "/random":
+        sendmessage($chat_id, "echo $random_array[$randomer]");
     break;
 
     case "/tag":
-        sendmessage($chat_id, tag($username, $tag));
+        sendmessage($chat_id, "{$username}, your tag is '$tag'");
     break;
 
     default:
@@ -261,23 +201,28 @@ switch ($text) {
         ");
 }
 
+#########################  Conditions  #########################
+
+
 // /say command with argument
 if (strpos($text, '/say') === 0) {
-    sendmessage($chat_id, say($text));
+    $new_text = substr($text, 5);
+    sendmessage($chat_id, "**Echo** : 
+$new_text");
 } else {
     die("Please inter valid value with /say [argument]");
 }
 
 if ($rps_user_score == 3) {
-    echo nl2br("DONE.
-    🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
-    Socreboard :
-    My Score : {$rps_bot_score}
-    {$username} Score : {$rps_user_score}");
+    sendmessage($chat_id, "DONE.
+🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
+Socreboard :
+My Score : {$rps_bot_score}
+{$username} Score : {$rps_user_score}");
 }
 
 if ($rps_bot_score == 3) {
-    echo nl2br("Hahaha...
+    sendmessage($chat_id, "Hahaha...
     😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
     Socreboard :
     My Score : {$rps_bot_score}
@@ -285,34 +230,46 @@ if ($rps_bot_score == 3) {
 }
 // action to /rock with 3 possible response
 if ($rps_user === '/rock') {
-    sendmessage($chat_id, randomRPS($rps_bot));
+    sendmessage($chat_id, "echo $a[$rps]");
 
-        if (randomRPS($rps_bot) === 'Rock') {
-            sendmessage($chat_id, drawRPS());
+        if ($a[$rps] === 'Rock') {
+            sendmessage($chat_id, "Ops!
+This round has a draw result!
+lets see next Chance.");
 
-        } elseif (randomRPS($rps_bot) === 'Paper') {
+        } elseif ($a[$rps] === 'Paper') {
             $rps_bot_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}");
 
-        } elseif (randomRPS($rps_bot) === 'Scissors') {
+        } elseif ($a[$rps] === 'Scissors') {
             $rps_user_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}");
         }
 }
 // action to /pepar with 3 possible response
-if ($rps_user === '/paper') {
-    sendmessage($chat_id, randomRPS($rps_bot));
+if ($text === "/paper") {
+    sendmessage($chat_id, "echo $a[$rps]");
 
-        if (randomRPS($rps_bot) === 'Rock') {
+        if ($a[$rps] === 'Rock') {
             $rps_user_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score)); 
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}"); 
 
-        } elseif (randomRPS($rps_bot) === 'Paper') {
-            sendmessage($chat_id, drawRPS());
+        } elseif ($a[$rps] === 'Paper') {
+            sendmessage($chat_id, "Ops!
+This round has a draw result!
+lets see next Chance.");
 
-        } elseif (randomRPS($rps_bot) === 'Scissors') {
+        } elseif ($a[$rps] === 'Scissors') {
             $rps_bot_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}");
         }
 }
 // action to /scissors with 3 possible response
@@ -321,21 +278,28 @@ if ($rps_user === '/scissors') {
 
         if (randomRPS($rps_bot) === 'Rock') {
             $rps_bot_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}");
 
         } elseif (randomRPS($rps_bot) === 'Paper') {
             $rps_user_score += 1;
-            sendmessage($chat_id, scoreRPS($rps_user_score, $rps_bot_score));
+            sendmessage($chat_id, "Now lets check the Scores!
+Your Score is : {$user_score}
+and My Score is : {$bot_socre}");
 
         } elseif (randomRPS($rps_bot) === 'Scissors') {
-            sendmessage($chat_id, drawRPS());
+            sendmessage($chat_id, "Ops!
+This round has a draw result!
+lets see next Chance.");
         }
 }
 
 // /tag command with argument
 if (strpos($text, '/tag') === 0) {
     $tag = substr($text, 5);
-    sendmessage($chat_id, tagChanger($username, $text, $tag));
+    sendmessage($chat_id, "{$username} tag changed to '{$tag}'.
+    send /tag to see your tag name!");
 } else {
     die("Please inter valid value with /tag [argument]");
 }
