@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 #########################  Main Config Here  #########################
 
 $token = '1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU'; // bot token here
@@ -90,12 +90,9 @@ $user_id = $message->from->id;
 
 // rps section
 // sent text form user for rps game
-$rps_user = $text;
 // sent one of the three possible response
 $a = ['Rock', 'Paper', 'Scissors'];
 $rps = array_rand($a);
-
-$match_saver = '';
 
 // setting the score form 0
 $rps_user_score = 0;
@@ -263,8 +260,75 @@ if ($_SESSION['bot'] == 3) {
 
 // action to !rock with 3 possible response
 
+if ($a[$rps] == 'Rock' && $text == '!rock') {
+    echo "oh yes roooooock , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
 
 
+if ($a[$rps] == 'Paper' && $text == '!rock') {
+    $_SESSION['bot'] += 1;
+    echo "oh yes Papeeeeeeer , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+if ($a[$rps] == 'Scissors' && $text == '!rock') {
+    $_SESSION['user'] += 1;
+    echo "oh yes Scscscscs , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+
+// action to !paper with 3 possible response
+
+if ($a[$rps] == 'Rock' && $text == '!paper') {
+    $_SESSION['user'] += 1;
+    echo "oh yes Rooooock, some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+
+if ($a[$rps] == 'Paper' && $text == '!paper') {
+    echo "oh yes PApapaer , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+if ($a[$rps] == 'Scissors' && $text == '!paper') {
+    $_SESSION['bot'] += 1;
+    echo "oh yes Scscscscs , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+
+// action to !scissors with 3 possible response
+
+
+if ($a[$rps] == 'Rock' && $text == '!scissors') {
+    $_SESSION['bot'] += 1;
+    echo "oh yes Roooooock , some is :
+    Me : {$_SESSION['bot']} 
+    You : {$_SESSION['user']}";
+}
+
+
+if ($a[$rps] == 'Paper' && $text == '!scissors') {
+    $_SESSION['user'] += 1;
+    echo "oh yes Ppapaer , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
+
+if ($a[$rps] == 'Scissors' && $text == '!scissors') {
+    echo "oh yes scscscscs , some is :
+    Me : {$_SESSION['bot']},
+    You : {$_SESSION['user']}";
+}
 
 
 // /tag command with argument
