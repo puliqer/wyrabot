@@ -94,7 +94,8 @@ $rps_user = $text;
 // sent one of the three possible response
 $a = ['Rock', 'Paper', 'Scissors'];
 $rps = array_rand($a);
-echo $a[$rps]."<br>";
+
+$match_saver = '';
 
 // setting the score form 0
 $rps_user_score = 0;
@@ -166,7 +167,7 @@ User ID : {$user_id}");
 as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
 and whoever gets more points at the end of these three rounds will be the winner.
 
-Reply '/rock', '/paper' and '/scissors' and And wait for luck.
+Reply 'rock.me', 'paper.me' and 'scissors.me' and And wait for luck.
 Lets Start 😈");
     break;
 
@@ -194,6 +195,24 @@ a Damn bot by @Gogilo based on v1.0.1");
         sendmessage($chat_id, "{$username}, your tag is '$tag'");
     break;
 
+    case "!rock":
+        sendmessage($chat_id, "My Side :
+        $a[$rps]");
+        $match_saver = "Rock";    
+    break;
+
+    case "!paper":
+        sendmessage($chat_id, "My Side :
+        $a[$rps]");
+        $match_saver = "Paper";
+    break;   
+
+    case "!scissors":
+        sendmessage($chat_id, "My Side :
+        $a[$rps]");
+        $match_saver = "Scissors";    
+    break;   
+
     default:
     echo nl2br("Invalid Command !
         if you dont know how to use this bot,
@@ -213,87 +232,40 @@ $new_text");
     die("Please inter valid value with /say [argument]");
 }
 
-if ($rps_user_score == 3) {
+// winner checker with monitoring the scores section
+
+
+if ($_SESSION['user'] == 3) {
     sendmessage($chat_id, "DONE.
-🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
-Socreboard :
-My Score : {$rps_bot_score}
-{$username} Score : {$rps_user_score}");
+    🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
+    Socreboard :
+    My Score : {$_SESSION['bot']}
+    {$username} Score : {$_SESSION['user']}.
+    for start a new game use /rps command !");
+
+    $_SESSION['user'] = 0;
+    $_SESSION['bot'] = 0;
 }
 
-if ($rps_bot_score == 3) {
+if ($_SESSION['bot'] == 3) {
     sendmessage($chat_id, "Hahaha...
     😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
     Socreboard :
-    My Score : {$rps_bot_score}
-    {$username} Score : {$rps_user_score}");
+    My Score : {$_SESSION['bot']}
+    {$username} Score : {$_SESSION['user']}.
+    for start a new game use /rps command !");
+
+    $_SESSION['user'] = 0;
+    $_SESSION['bot'] = 0;
 }
-// action to /rock with 3 possible response
-if ($rps_user === '/rock') {
-    sendmessage($chat_id, "echo $a[$rps]");
 
-        if ($a[$rps] === 'Rock') {
-            sendmessage($chat_id, "Ops!
-This round has a draw result!
-lets see next Chance.");
 
-        } elseif ($a[$rps] === 'Paper') {
-            $rps_bot_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}");
 
-        } elseif ($a[$rps] === 'Scissors') {
-            $rps_user_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}");
-        }
-}
-// action to /pepar with 3 possible response
-if ($text === "/paper") {
-    sendmessage($chat_id, "echo $a[$rps]");
+// action to !rock with 3 possible response
 
-        if ($a[$rps] === 'Rock') {
-            $rps_user_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}"); 
 
-        } elseif ($a[$rps] === 'Paper') {
-            sendmessage($chat_id, "Ops!
-This round has a draw result!
-lets see next Chance.");
 
-        } elseif ($a[$rps] === 'Scissors') {
-            $rps_bot_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}");
-        }
-}
-// action to /scissors with 3 possible response
-if ($rps_user === '/scissors') {
-    sendmessage($chat_id, randomRPS($rps_bot));
 
-        if (randomRPS($rps_bot) === 'Rock') {
-            $rps_bot_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}");
-
-        } elseif (randomRPS($rps_bot) === 'Paper') {
-            $rps_user_score += 1;
-            sendmessage($chat_id, "Now lets check the Scores!
-Your Score is : {$user_score}
-and My Score is : {$bot_socre}");
-
-        } elseif (randomRPS($rps_bot) === 'Scissors') {
-            sendmessage($chat_id, "Ops!
-This round has a draw result!
-lets see next Chance.");
-        }
-}
 
 // /tag command with argument
 if (strpos($text, '/tag') === 0) {
