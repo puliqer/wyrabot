@@ -21,16 +21,16 @@ function bot($method, $datas=[]){
     }
 }
 
-include_once 'methods.php';
+include_once 'public/methods.php';
 
-include_once 'api_vars.php';
+include_once 'public/api_vars.php';
 
-include_once 'variables.php';
+include_once 'public/variables.php';
 
-include_once 'commands.php';
+include_once 'public/commands.php';
 
-include_once 'conditions.php';
+include_once 'public/conditions.php';
 
-include_once 'rps_game.php';
+include_once 'public/rps_game.php';
 
 ?>
