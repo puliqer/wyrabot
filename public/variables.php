@@ -8,10 +8,6 @@
 $a = ['Rock', 'Paper', 'Scissors'];
 $rps = array_rand($a);
 
-// setting the score form 0
-$rps_user_score = 0;
-$rps_bot_score = 0;
-
 // random section
 $random_array = [
     '/help is not for decor 😡',
