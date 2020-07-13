@@ -78,7 +78,7 @@ a Damn bot by @Gogilo based on v1.0.1");
     break;
 
     case "/tag":
-        sendmessage($chat_id, "{$username}, your tag is '$tag'");
+        sendmessage($chat_id, "{$username}, your tag is {$_SESSION['tag']}");
     break;
 
     case "!rock":

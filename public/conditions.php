@@ -15,8 +15,8 @@ $new_text");
 
 // /tag command with argument
 if (strpos($text, '/tag') === 0) {
-    $tag = substr($text, 5);
-    sendmessage($chat_id, "{$username} tag changed to '{$tag}'.
+    $_SESSION['tag'] = substr($text, 5);
+    sendmessage($chat_id, "{$username} tag changed to '{$_SESSION['tag']}'.
     send /tag to see your tag name!");
 } else {
     die("Please inter valid value with /tag [argument]");
