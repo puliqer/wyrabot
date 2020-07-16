@@ -1,8 +1,9 @@
 <?php
-
+session_start();
+// adding soon ...
 // winner checker with monitoring the scores section
 
-
+/*
 if ($_SESSION['user'] == 3) {
     sendmessage($chat_id, "DONE.
     🎉 We have a Winner now, Congratulate! {$username}, you win 🎉

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -7,40 +7,37 @@ switch ($text) {
 
     case "/start":
     sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
-add me to Chat and Have Fun. 
-if you dont know how to use this bot, use /help command !");
+    add me to Chat and Have Fun. 
+    if you dont know how to use this bot, use /help command !");
     break;
-
 
     case "/help":
     sendmessage($chat_id, "• /help : Show the Command list with description
-• /about : show an information about the bot and developer
-• /me : Returns your Informations
-• /say <text> : Echo your text as Parameter
-• /random : Returns a random funny text
-• /gaycheck : Randomly returns your gayness by percent
-• /rps : Rock Paper Scissors game
-• /everyone : Tag all member of the Group
-• /shortlink : Make your links shorter");
+    • /about : show an information about the bot and developer
+    • /me : Returns your Informations
+    • /say <text> : Echo your text as Parameter
+    • /random : Returns a random funny text
+    • /gaycheck : Randomly returns your gayness by percent
+    • /rps : Rock Paper Scissors game");
     break;
 
 
 // /say command without argument
     case "/say":
-        sendmessage($chat_id, "Use this Command with a text !
-for example : 
-/say hello
-Result :
-hello");
+    sendmessage($chat_id, "Use this Command with a text !
+        for example : 
+        /say hello
+        Result :
+        hello");
     break;
 
 
     case "/me":
-        sendmessage($chat_id, "Your Information :
-Firstname : {$first_name}
-Lastname : {$last_name}
-Username : @{$username}
-User ID : {$user_id}");
+    sendmessage($chat_id, "Your Information :
+    Firstname : {$first_name}
+    Lastname : {$last_name}
+    Username : @{$username}
+    User ID : {$user_id}");
     break;
 
 
@@ -50,12 +47,15 @@ User ID : {$user_id}");
 
     case "/rps":
         sendmessage($chat_id, "Well well. Game time 🎮
-as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
-and whoever gets more points at the end of these three rounds will be the winner.
+        as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
+        and whoever gets more points at the end of these three rounds will be the winner.
 
-Reply 'rock.me', 'paper.me' and 'scissors.me' and And wait for luck.
-Lets Start 😈");
-    break;
+        Reply '!rock', '!paper' and '!scissors' and And wait for luck.
+        Lets Start 😈
+        
+        *** Not working !
+        ***Adding this game soon ...");
+        break;
 
     case "/time":
         sendmessage($chat_id, "You suck, we dont have /time 😅");
@@ -68,17 +68,18 @@ Lets Start 😈");
 
     case "/about":
         sendmessage($chat_id, "Hello, this is WyRa.
-a funny multipurpose telegram bot.
-        
-a Damn bot by @Gogilo based on v1.0.1");
+        a funny multipurpose telegram bot.
+                
+        a Damn bot by @Raxinus based on v1.0.1");
     break;
 
     case "/random":
-        sendmessage($chat_id, "echo $random_array[$randomer]");
+        sendmessage($chat_id, "$random_array[$randomer]");
     break;
 
+    /* adding soon ( Tag and Rps Game )
     case "/tag":
-        sendmessage($chat_id, "{$username}, your tag is {$_SESSION['tag']}");
+    sendmessage($chat_id, "@{$username}, your tag is {$tag}");
     break;
 
     case "!rock":
@@ -98,7 +99,7 @@ a Damn bot by @Gogilo based on v1.0.1");
         $a[$rps]");
         $match_saver = "Scissors";    
     break;   
-
+*/ 
     default:
     echo nl2br("Invalid Command !
         if you dont know how to use this bot,

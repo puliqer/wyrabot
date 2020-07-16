@@ -11,7 +11,7 @@ $rps = array_rand($a);
 // random section
 $random_array = [
     '/help is not for decor 😡',
-    'Bekiram in Perian = i love you',
+    'Not Funny',
     'I know you are such an asshole but you dont want that other know about it',
     'use /time to see the world clock!',
 ];
