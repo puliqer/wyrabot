@@ -4,19 +4,6 @@ among your groupmates in Telegram. Simple & Easy 😺_
 
 ### **Commands List**
 
-> /help
-
-> /me
-
-> /say
-
-> /gaycheck
-
-> /random
-
-> /list
-
-> /rps
 
 
 **What is RPS ?**
