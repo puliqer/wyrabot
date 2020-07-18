@@ -52,6 +52,40 @@ $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
 $user_id = $message->from->id;
 
+$inline_query = $main->inline_query->query;
+$inline_query_id = $main->inline_query->id;
+
+detect_inline_query_received_and_reply_1($inline_query, $inline_query_id);
+
+function detect_inline_query_received_and_reply_1($inline_query, $inline_query_id) {
+            
+    switch($inline_query) {
+        
+        case "hi"    : $answer = "سلام";  break;
+        case "water" : $answer = "آب" ;  break; 
+    }
+    
+    $result_array = [
+                        [
+                            'type'        => "article" ,
+                            'id'          => "1"       ,             // must be unique
+                            'title'       => "En: " . $inline_query ,
+                            'description' => "Fa: " . $answer ,      // optional
+                            'input_message_content' => [ 'message_text' => $inline_query . " -> " . $answer . "\n" . "https://mzsoftware.ir" ] ,
+                        ]
+                    ];
+                
+    $json_res_array = json_encode($result_array);
+    
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk"."/answerInlineQuery";
+    
+    $post_params = [ 
+                    'inline_query_id' => $inline_query_id , 
+                    'results'         => $json_res_array , 
+                   ];
+    send_reply($url, $post_params);
+}
+    
 
 #########################  Public Variables Here  #########################
 
