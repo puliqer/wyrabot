@@ -58,35 +58,32 @@ $inline_query_id = $main->inline_query->id;
 
 #########################  Inline Methods  #########################
 
-random_inline($inline_query, $inline_query_id, $first_name);
-function random_inline($inline_query, $inline_query_id, $first_name) {
-           
+random_inline($inline_query, $inline_query_id);
+function random_inline($inline_query, $inline_query_id) {
+
     switch($inline_query) {        
         case "gay" :
             $gayrand = rand(0, 100);
-            $first_name = $first_name;
-            $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
+            $reply = "🏳️‍🌈 Wow i am {$gayrand}% Gay 🏳️‍🌈";
         break;
     }
-    
-    $result_array = [
+    $result = [
                         [
-                            'type'        => "article",
-                            'id'          => "1", // must be unique
-                            'title'       => "🏳️‍🌈 How gay your are 🏳️‍🌈",
-                            'description' => "with this command check your gayness easy !", // optional
-                            'input_message_content' => [ 'message_text' => "$reply" ] ,
+                            'type' => "article",
+                            'id' => "1",
+                            'title' => "🏳️‍🌈 How gay your are 🏳️‍🌈",
+                            'description' => "with this command check your gayness easy !",
+                            'input_message_content' => [ 'message_text' => "$reply" ],
                         ]
                     ];
                 
-    $json_res_array = json_encode($result_array);
-    
+    $json_result = json_encode($result);
+
     bot('answerInlineQuery', [
         'inline_query_id' => $inline_query_id , 
-        'results' => $json_res_array ,
+        'results' => $json_result ,
     ]);
 }
-    
 
 #########################  Public Variables Here  #########################
 
@@ -182,10 +179,10 @@ function editmessage($chat_id, $text){
     ]);
 }
 
-function inline($inline_query_id, $json_res_array){
+function inline($inline_query_id, $json_result){
     bot('answerInlineQuery', [
         'inline_query_id' => $inline_query_id , 
-        'results' => $json_res_array ,
+        'results' => $json_result ,
     ]);
 }
 
