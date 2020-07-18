@@ -21,7 +21,7 @@ function bot($method, $datas=[]){
     }
 }
 
-//-------------------------------------
+#########################  Other Config for editing the messages  #########################
 
 function send_reply($url, $post_params) {
 
@@ -33,7 +33,6 @@ function send_reply($url, $post_params) {
     curl_close($cu);
     return $result;
 }
-
 
 #########################  Bot api Variables Here  #########################
 

@@ -47,5 +47,12 @@ function leavechat($chat_id){
     ]);
 }
 
+// editMessage method
+function editmessage($chat_id, $text){
+    bot('editMessageText', [
+        'chat_id' => $chat_id,
+        'text' => $text,
+    ]);
+}
 
 ?>
