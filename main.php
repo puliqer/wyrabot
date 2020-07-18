@@ -2,7 +2,7 @@
 session_start();
 #########################  Main Config Here  #########################
 
-$token = '1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU'; // bot token here
+$token = '1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU'; // bot token here (this is old token)
 $bot = "WyRaBot"; // bot username here
 define('TOKEN',$token);
 
