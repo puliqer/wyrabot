@@ -59,19 +59,25 @@ detect_inline_query_received_and_reply_1($inline_query, $inline_query_id);
 
 function detect_inline_query_received_and_reply_1($inline_query, $inline_query_id) {
             
-    switch($inline_query) {
-        
-        case "hi"    : $answer = "سلام";  break;
-        case "water" : $answer = "آب" ;  break; 
+    switch($inline_query) {        
+        case "random" :
+            $random_array = [
+                '/help is not for decor 😡',
+                'Not Funny',
+                'I know you are such an asshole but you dont want that other know about it',
+                'use /time to see the world clock!',
+            ]; 
+            $randomer = array_rand($random_array);
+        break;
     }
     
     $result_array = [
                         [
                             'type'        => "article" ,
                             'id'          => "1"       ,             // must be unique
-                            'title'       => "En: " . $inline_query ,
-                            'description' => "Fa: " . $answer ,      // optional
-                            'input_message_content' => [ 'message_text' => $inline_query . " -> " . $answer . "\n" . "https://mzsoftware.ir" ] ,
+                            'title'       => "" ,
+                            'description' => "" ,      // optional
+                            'input_message_content' => [ 'message_text' => "edfhfglhkfyhklfgk" ] ,
                         ]
                     ];
                 
