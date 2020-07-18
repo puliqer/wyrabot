@@ -40,11 +40,6 @@ switch ($text) {
     User ID : {$user_id}");
     break;
 
-
-    case "/gaycheck":
-        sendmessage($chat_id, "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈");
-    break;
-
     case "/rps":
         sendmessage($chat_id, "Well well. Game time 🎮
         as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
