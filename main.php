@@ -54,8 +54,8 @@ $user_id = $message->from->id;
 
 #########################  Gaycheck command (New Edition)  #########################
 
-if ($text = '/test') {
-    $reply = "this is a message";
+if ($text = '/gaycheck') {
+    $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
  
@@ -65,7 +65,7 @@ if ($text = '/test') {
  
     sleep(3);
  
-    $reply = "this is updated message";
+    $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
     $url = "https://api.telegram.org/bot1007063839:AAGXask-4Irff_Ka6DKcCmZs3Y5JJihy3kU" . "/editMessageText";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
     send_reply($url, $post_params);
