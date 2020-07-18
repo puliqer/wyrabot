@@ -34,6 +34,9 @@ function send_reply($url, $post_params) {
     return $result;
 }
 
+
+#########################  Bot api Variables Here  #########################
+
 $main = json_decode(file_get_contents('php://input')); // getting data from user
 var_dump($update);
 $update_id = $main->update_id; // getting the update id
@@ -52,8 +55,6 @@ $user_id = $message->from->id;
 
 
 include_once 'public/methods.php';
-
-include_once 'public/api_vars.php';
 
 include_once 'public/variables.php';
 
