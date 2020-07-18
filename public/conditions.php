@@ -1,5 +1,4 @@
 <?php
-session_start();
 #########################  Conditions  #########################
 
 
@@ -11,7 +10,6 @@ $new_text");
 } else {
     die("Please inter valid value with /say [argument]");
 }
-
 
 // /tag command with argument
 /* adding soon
