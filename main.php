@@ -55,41 +55,36 @@ $user_id = $message->from->id;
 $inline_query = $main->inline_query->query;
 $inline_query_id = $main->inline_query->id;
 
-detect_inline_query_received_and_reply_1($inline_query, $inline_query_id);
 
-function detect_inline_query_received_and_reply_1($inline_query, $inline_query_id) {
-            
+#########################  Inline Methods  #########################
+
+random_inline($inline_query, $inline_query_id, $first_name);
+function random_inline($inline_query, $inline_query_id, $first_name) {
+           
     switch($inline_query) {        
-        case "random" :
-            $random_array = [
-                '/help is not for decor 😡',
-                'Not Funny',
-                'I know you are such an asshole but you dont want that other know about it',
-                'use /time to see the world clock!',
-            ]; 
-            $randomer = array_rand($random_array);
+        case "gay" :
+            $gayrand = rand(0, 100);
+            $first_name = $first_name;
+            $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
         break;
     }
     
     $result_array = [
                         [
-                            'type'        => "article" ,
-                            'id'          => "1"       ,             // must be unique
-                            'title'       => "" ,
-                            'description' => "" ,      // optional
-                            'input_message_content' => [ 'message_text' => "edfhfglhkfyhklfgk" ] ,
+                            'type'        => "article",
+                            'id'          => "1", // must be unique
+                            'title'       => "🏳️‍🌈 How gay your are 🏳️‍🌈",
+                            'description' => "with this command check your gayness easy !", // optional
+                            'input_message_content' => [ 'message_text' => "$reply" ] ,
                         ]
                     ];
                 
     $json_res_array = json_encode($result_array);
     
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk"."/answerInlineQuery";
-    
-    $post_params = [ 
-                    'inline_query_id' => $inline_query_id , 
-                    'results'         => $json_res_array , 
-                   ];
-    send_reply($url, $post_params);
+    bot('answerInlineQuery', [
+        'inline_query_id' => $inline_query_id , 
+        'results' => $json_res_array ,
+    ]);
 }
     
 
@@ -110,7 +105,6 @@ $random_array = [
 ];
 
 $randomer = array_rand($random_array);
-echo $random_array[$randomer]."<br>";
 
 $gayrand = rand(0, 100);
 
@@ -185,6 +179,13 @@ function editmessage($chat_id, $text){
     bot('editMessageText', [
         'chat_id' => $chat_id,
         'text' => $text,
+    ]);
+}
+
+function inline($inline_query_id, $json_res_array){
+    bot('answerInlineQuery', [
+        'inline_query_id' => $inline_query_id , 
+        'results' => $json_res_array ,
     ]);
 }
 
