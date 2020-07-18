@@ -52,9 +52,31 @@ $last_name = $message->from->last_name; // getting the last name of user
 $username = $message->from->username; // getting the username of user
 $user_id = $message->from->id;
 
+
+#########################  Public Variables Here  #########################
+
+// rps section
+// sent text form user for rps game
+// sent one of the three possible response
+$a = ['Rock', 'Paper', 'Scissors'];
+$rps = array_rand($a);
+
+// random section
+$random_array = [
+    '/help is not for decor 😡',
+    'Not Funny',
+    'I know you are such an asshole but you dont want that other know about it',
+    'use /time to see the world clock!',
+];
+
+$randomer = array_rand($random_array);
+echo $random_array[$randomer]."<br>";
+
+$gayrand = rand(0, 100);
+
 #########################  Gaycheck command (New Edition)  #########################
 
-if ($text = '/gaycheck') {
+if (strpos($text, '/gaycheck') === 0) {
     $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
@@ -70,7 +92,6 @@ if ($text = '/gaycheck') {
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
     send_reply($url, $post_params);
 }
-
 
 #########################  Method List Here  #########################
 
@@ -126,27 +147,6 @@ function editmessage($chat_id, $text){
         'text' => $text,
     ]);
 }
-
-#########################  Public Variables Here  #########################
-
-// rps section
-// sent text form user for rps game
-// sent one of the three possible response
-$a = ['Rock', 'Paper', 'Scissors'];
-$rps = array_rand($a);
-
-// random section
-$random_array = [
-    '/help is not for decor 😡',
-    'Not Funny',
-    'I know you are such an asshole but you dont want that other know about it',
-    'use /time to see the world clock!',
-];
-
-$randomer = array_rand($random_array);
-echo $random_array[$randomer]."<br>";
-
-$gayrand = rand(0, 100);
 
 #########################  Usable String Here  #########################
 
@@ -375,5 +375,7 @@ if ($a[$rps] == 'Scissors' && $text == '!scissors') {
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
+
+*/
 
 ?>
