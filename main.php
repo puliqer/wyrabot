@@ -293,11 +293,6 @@ switch ($text) {
         sendmessage($chat_id, "You suck, we dont have /time 😅");
     break;
 
-    case "/getout":
-        sendmessage($chat_id, "Ok, Its time to say goodbye !");
-        leavechat($chat_id);
-    break;
-
     case "/about":
         sendmessage($chat_id, "Hello, this is WyRa.
         a funny multipurpose telegram bot.
