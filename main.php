@@ -229,31 +229,6 @@ switch ($text) {
     • /rps : Rock Paper Scissors game");
     break;
 
-
-// /say command without argument
-    case "/say":
-    sendmessage($chat_id, "Use this Command with a text !
-        for example : 
-        /say hello
-        Result :
-        hello");
-    break;
-
-    case "/char":
-        sendmessage($chat_id, "Use this Command with a Simple text !
-        for example : 
-        /char hello
-        Result :
-        |￣￣￣￣￣￣￣￣￣￣￣|
-|               hello                   |
-|＿＿＿＿＿＿＿＿__＿＿| 
-                \ (•_•) / 
-                  \      / 
-                    ---
-                    |   |");
-    break;
-
-
     case "/me":
     sendmessage($chat_id, "Your Information :
     Firstname : {$first_name}
@@ -301,6 +276,10 @@ switch ($text) {
         send_basket($chat_id);
     break;
 
+    case "/tag":
+        sendmessage($chat_id, "Oh {$first_name}");
+    break;
+
     /* adding soon ( Tag and Rps Game )
     case "/tag":
     sendmessage($chat_id, "@{$username}, your tag is {$tag}");
@@ -334,11 +313,35 @@ switch ($text) {
 #########################  Conditions  #########################
 
 // /say command with argument
-if (strpos($text, '/say') === 0) {
+if ($text == '/say') {
+    sendmessage($chat_id, "Use this Command with a text !
+    for example : 
+    /say hello
+    Result :
+    hello");
+
+} elseif (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
     sendmessage($chat_id, "**Echo** : 
-$new_text");
-}  elseif (strpos($text, '/char') === 0) {
+    $new_text");
+}
+
+
+// /char command with argumant
+if ($text == '/char') {
+    sendmessage($chat_id, "Use this Command with a Simple text !
+    for example : 
+    /char hello
+    Result :
+    |￣￣￣￣￣￣￣￣￣￣￣|
+|               hello                   |
+|＿＿＿＿＿＿＿＿__＿＿| 
+            \ (•_•) / 
+              \      / 
+                ---
+                |   |");
+
+} elseif (strpos($text, '/char') === 0) {
     $new_text = substr($text, 6);
     sendmessage($chat_id, "
     
@@ -352,21 +355,14 @@ $new_text");
     
     ");
 }
-else {
-    die("Please inter valid value with /say [argument]");
-}
 
 // /tag command with argument
-/* adding soon
 if (strpos($text, '/tag') === 0) {
 
 	    $new_text = substr($text, 5);
-    sendmessage($chat_id, "**Echo** : 
-$new_text");
-} else {
-    die("Please inter valid value with /say [argument]");
+    sendmessage($chat_id, "");
 }
-*/
+
 
 
 // adding soon ...
