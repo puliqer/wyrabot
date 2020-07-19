@@ -239,6 +239,20 @@ switch ($text) {
         hello");
     break;
 
+    case "/char":
+        sendmessage($chat_id, "Use this Command with a Simple text !
+        for example : 
+        /char hello
+        Result :
+        |￣￣￣￣￣￣￣￣￣￣￣|
+|               hello                   |
+|＿＿＿＿＿＿＿＿__＿＿| 
+                \ (•_•) / 
+                  \      / 
+                    ---
+                    |   |");
+    break;
+
 
     case "/me":
     sendmessage($chat_id, "Your Information :
@@ -324,7 +338,21 @@ if (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
     sendmessage($chat_id, "**Echo** : 
 $new_text");
-} else {
+}  elseif (strpos($text, '/char') === 0) {
+    $new_text = substr($text, 6);
+    sendmessage($chat_id, "
+    
+    |￣￣￣￣￣￣￣￣￣￣￣|
+|     $new_text                   |
+|＿＿＿＿＿＿＿＿__＿＿| 
+                \ (•_•) / 
+                  \      / 
+                    ---
+                    |   |
+    
+    ");
+}
+else {
     die("Please inter valid value with /say [argument]");
 }
 
