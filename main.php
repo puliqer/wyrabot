@@ -220,13 +220,18 @@ switch ($text) {
     break;
 
     case "/help":
-    sendmessage($chat_id, "• /help : Show the Command list with description
-    • /about : show an information about the bot and developer
-    • /me : Returns your Informations
-    • /say <text> : Echo your text as Parameter
-    • /random : Returns a random funny text
-    • /gaycheck : Randomly returns your gayness by percent
-    • /rps : Rock Paper Scissors game");
+    sendmessage($chat_id, "• /start : Start the bot
+• /help : Show the list of Command
+• /about : Show some info about bot
+• /me : Returns your Info
+• /random : Show a random text
+• /rps : Rock Paper Scissors game
+• /gaycheck : Randomly returns your gayness by percent
+• /say : Show your written text entered after command 
+• /dice : Return a dice emoji
+• /dart : Return a dart emoji
+• /basket : Return a Basketball emoji
+• /char : Show a Custom text with your written text after command");
     break;
 
     case "/me":
@@ -238,15 +243,18 @@ switch ($text) {
     break;
 
     case "/rps":
-        sendmessage($chat_id, "Well well. Game time 🎮
-        as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
-        and whoever gets more points at the end of these three rounds will be the winner.
-
-        Reply '!rock', '!paper' and '!scissors' and And wait for luck.
-        Lets Start 😈
+        sendmessage($chat_id, "*** Not working !
+*** Adding this game soon ...
         
-        *** Not working !
-        ***Adding this game soon ...");
+Well well. Game time 🎮
+as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
+and whoever gets more points at the end of these three rounds will be the winner.
+
+Reply '!rock', '!paper' and '!scissors' and And wait for luck.
+Lets Start 😈
+        
+*** Not working !
+*** Adding this game soon ...");
         break;
 
     case "/time":
@@ -255,9 +263,9 @@ switch ($text) {
 
     case "/about":
         sendmessage($chat_id, "Hello, this is WyRa.
-        a funny multipurpose telegram bot.
+a funny multipurpose telegram bot.
                 
-        a Damn bot by @Raxinus based on v1.0.1");
+Follow us for updates & contacts on @imWyRa, based on v1.0.1");
     break;
 
     case "/random":
@@ -274,10 +282,6 @@ switch ($text) {
 
     case "/basket":
         send_basket($chat_id);
-    break;
-
-    case "/tag":
-        sendmessage($chat_id, "Oh {$first_name}");
     break;
 
     /* adding soon ( Tag and Rps Game )
@@ -303,11 +307,7 @@ switch ($text) {
         $match_saver = "Scissors";    
     break;   
 */ 
-    default:
-    echo nl2br("Invalid Command !
-        if you dont know how to use this bot,
-        you can use /help command and check command list !
-        ");
+
 }
 
 #########################  Conditions  #########################
@@ -355,15 +355,6 @@ if ($text == '/char') {
     
     ");
 }
-
-// /tag command with argument
-if (strpos($text, '/tag') === 0) {
-
-	    $new_text = substr($text, 5);
-    sendmessage($chat_id, "");
-}
-
-
 
 // adding soon ...
 // winner checker with monitoring the scores section
