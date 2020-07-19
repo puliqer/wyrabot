@@ -59,6 +59,8 @@ $inline_query_id = $main->inline_query->id;
 #########################  Inline Methods  #########################
 
 random_inline($inline_query, $inline_query_id);
+dice_inline($inline_query, $inline_query_id, $chat_id);
+
 function random_inline($inline_query, $inline_query_id) {
 
     switch($inline_query) {        
@@ -84,7 +86,30 @@ function random_inline($inline_query, $inline_query_id) {
         'results' => $json_result ,
     ]);
 }
+function dice_inline($inline_query, $inline_query_id, $chat_id) {
 
+    switch($inline_query) {        
+        case "dice" :
+            $reply = send_dice($chat_id);
+        break;
+    }
+    $result = [
+                        [
+                            'type' => "article",
+                            'id' => "1",
+                            'title' => "🎲 Lets see your Luck 🎲",
+                            'description' => "Lets dice and check you are lucky or not ?",
+                            'input_message_content' => [ 'message_text' => "$reply" ],
+                        ]
+                    ];
+                
+    $json_result = json_encode($result);
+
+    bot('answerInlineQuery', [
+        'inline_query_id' => $inline_query_id , 
+        'results' => $json_result ,
+    ]);
+}
 #########################  Public Variables Here  #########################
 
 // rps section
@@ -188,7 +213,7 @@ function inline($inline_query_id, $json_result){
 
 // sendDice method
 function send_dice($chat_id){
-    bot('sendMessage', [
+    bot('sendDice', [
         'chat_id' => $chat_id,
         'emoji' =>  '🎲',
     ]);
