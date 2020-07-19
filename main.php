@@ -58,50 +58,26 @@ $inline_query_id = $main->inline_query->id;
 
 #########################  Inline Methods  #########################
 
-random_inline($inline_query, $inline_query_id);
-dice_inline($inline_query, $inline_query_id, $chat_id);
+null_inline($inline_query, $inline_query_id, $chat_id);
 
-function random_inline($inline_query, $inline_query_id) {
+function null_inline($inline_query, $inline_query_id, $chat_id) {
 
     switch($inline_query) {        
-        case "gay" :
+        case null :
             $gayrand = rand(0, 100);
             $reply = "🏳️‍🌈 Wow i am {$gayrand}% Gay 🏳️‍🌈";
         break;
     }
-    $result = [
-                        [
-                            'type' => "article",
-                            'id' => "1",
-                            'title' => "🏳️‍🌈 How gay your are 🏳️‍🌈",
-                            'description' => "with this command check your gayness easy !",
-                            'input_message_content' => [ 'message_text' => "$reply" ],
-                        ]
-                    ];
-                
-    $json_result = json_encode($result);
 
-    bot('answerInlineQuery', [
-        'inline_query_id' => $inline_query_id , 
-        'results' => $json_result ,
-    ]);
-}
-function dice_inline($inline_query, $inline_query_id, $chat_id) {
-
-    switch($inline_query) {        
-        case "dice" :
-            $reply = send_dice($chat_id);
-        break;
-    }
     $result = [
-                        [
-                            'type' => "article",
-                            'id' => "1",
-                            'title' => "🎲 Lets see your Luck 🎲",
-                            'description' => "Lets dice and check you are lucky or not ?",
-                            'input_message_content' => [ 'message_text' => "$reply" ],
-                        ]
-                    ];
+                [
+                    'type' => "article",
+                    'id' => "1",
+                    'title' => "🏳️‍🌈 How gay your are 🏳️‍🌈",
+                    'description' => "with this command check your gayness easy !",
+                    'input_message_content' => [ 'message_text' => "$reply" ],
+                ]
+            ];              
                 
     $json_result = json_encode($result);
 
