@@ -86,6 +86,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
         'results' => $json_result ,
     ]);
 }
+
 #########################  Public Variables Here  #########################
 
 // rps section
@@ -163,12 +164,6 @@ function sendvideo($chat_id, $video, $caption){
         'chat_id' => $chat_id,
         'video' => $video,
         'caption' => $caption,
-    ]);
-}
-// leaveChat method
-function leavechat($chat_id){
-    bot('sendVideo', [
-        'chat_id' => $chat_id,
     ]);
 }
 
