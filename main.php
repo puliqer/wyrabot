@@ -219,6 +219,24 @@ function send_dice($chat_id){
     ]);
 }
 
+// sendDice method
+function send_dart($chat_id){
+    bot('sendDice', [
+        'chat_id' => $chat_id,
+        'emoji' =>  '🎯',
+    ]);
+}
+
+// sendDice method
+function send_basket($chat_id){
+    bot('sendDice', [
+        'chat_id' => $chat_id,
+        'emoji' =>  '🏀',
+    ]);
+}
+
+
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -293,6 +311,14 @@ switch ($text) {
 
     case "/dice":
         send_dice($chat_id);
+    break;
+
+    case "/dart":
+        send_dart($chat_id);
+    break;
+
+    case "/basket":
+        send_basket($chat_id);
     break;
 
     /* adding soon ( Tag and Rps Game )
