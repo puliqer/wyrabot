@@ -247,6 +247,7 @@ switch ($text) {
 • /dart : Return a dart emoji
 • /basket : Return a Basketball emoji
 • /char : Show a Custom text with your written text after command
+• /dog : Show a random dog image 
 
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
 
@@ -581,6 +582,22 @@ if ($text == '/char') {
                     |   |
     
     ");
+} 
+
+if ($text == '/dog') {
+    $url = "https://dog.ceo/api/breeds/image/random";
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+
+    if (curl_error($ch)) {
+        var_dump(curl_error($ch));
+    } else {
+        $main = json_decode($res);
+        $image = $main->message;
+        sendphoto($chat_id, $image, "Use /dog for another random dog image");
+    }
 }
 
 // adding soon ...
