@@ -64,8 +64,22 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 
     switch($inline_query) {        
         case null :
-            $gayrand = rand(0, 100);
-            $reply = "🏳️‍🌈 Wow i am {$gayrand}% Gay 🏳️‍🌈";
+            $reply = "• /start : Start the bot
+• /help : Show the list of Command
+• /about : Show some info about bot
+• /me : Returns your Info
+• /random : Show a random text
+• /rps : Rock Paper Scissors game
+• /gaycheck : Randomly returns your gayness by percent
+• /say : Show your written text entered after command 
+• /dice : Return a dice emoji
+• /dart : Return a dart emoji
+• /basket : Return a Basketball emoji
+• /char : Show a Custom text with your written text after command
+            
+• Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
+            
+• Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)";
         break;
     }
 
@@ -73,8 +87,9 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
                 [
                     'type' => "article",
                     'id' => "1",
-                    'title' => "🏳️‍🌈 How gay your are 🏳️‍🌈",
-                    'description' => "with this command check your gayness easy !",
+                    'title' => "🤖 Everything you need to Know about WyRa 🤖",
+                    'description' => "Here is List of Command and everything i can do, so lets check it out 👾",
+                    'thumb_url'   => "http://s13.picofile.com/file/8403461176/photo_2020_07_20_17_14_07.jpg" ,
                     'input_message_content' => [ 'message_text' => "$reply" ],
                 ]
             ];              
