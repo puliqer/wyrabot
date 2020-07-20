@@ -231,7 +231,8 @@ switch ($text) {
 • /dice : Return a dice emoji
 • /dart : Return a dart emoji
 • /basket : Return a Basketball emoji
-• /char : Show a Custom text with your written text after command");
+• /char : Show a Custom text with your written text after command
+• Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)");
     break;
 
     case "/me":
@@ -282,6 +283,41 @@ Follow us for updates & contacts on @imWyRa, based on v1.0.1");
 
     case "/basket":
         send_basket($chat_id);
+    break;
+
+    case "❤️":
+        sendmessage($chat_id, "❤️ : The red heart emoji is used in warm emotional contexts.
+It can be used to express gratitude, love, happiness, hope, or even flirtatiousness. ❤️");
+    break;
+
+    case "🧡":
+        sendmessage($chat_id, "🧡 : The Orange Heart Emoji to express great care, comfort, and serenity.
+The color orange is associated with meanings of joy, warmth, heat, sunshine, enthusiasm, creativity, success, encouragement. 
+Also the orange heart emoji means you just wanna stick as friends and have nothing mutual. 🧡");
+    break;
+
+    case "💛":
+        sendmessage($chat_id, "💛 : The yellow heart emoji, can convey love, just like any other heart symbol or emoji, but its yellow color often gets used to show liking and friendship (as opposed to romantic love). Its color also works with expressions of happines and with all things yellow, from sports team colors to dresses. 💛");
+    break;
+
+    case "💚":
+        sendmessage($chat_id, "💚 : The Green Heart Emoji is known as Jealous Heart. A green heart can also be associated with envy, jealousy or possessive love. The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. 💚");
+    break;
+
+    case "💙":
+        sendmessage($chat_id, "💙 : Humans have long associated the feeling of love with their heart. The symbol for Valentine's Day is a heart. A blue heart can symbolize a deep and stable love. Trust, harmony, peace and loyalty. 💙");
+    break;
+
+    case "💜":
+        sendmessage($chat_id, "💜 - The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. The Blue Heart Emoji – A blue heart can also symbolize trust, harmony, peace and loyalty. They can symbolize deep attraction. 💜");
+    break;
+
+    case "🖤":
+        sendmessage($chat_id, "🖤 : The black heart emoji is the perfect emoji for a rainy day when you are sitting inside, listening to My Chemical Romance or Dashboard Confessional, and feeling angst-y and misunderstood. It means you are feeling emo, have a dark twisted soul, morbid sense of humor, or just love sad stuff. 🖤");
+    break;
+
+    case "💔":
+        sendmessage($chat_id, "💔 : One thing's for sure: they use the broken heart emoji. In texts and on social media, the emoji is used to express grief after a breakup, loss, or other setbacks. While often sincere, its tone can also be more playful, over-exaggerating a frustration or fawning over a crush. Related words: beating heart emoji. 💔");
     break;
 
     /* adding soon ( Tag and Rps Game )
