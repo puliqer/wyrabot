@@ -235,19 +235,19 @@ switch ($text) {
     break;
 
     case "/help":
-    sendmessage($chat_id, "• /start : Start the bot
-• /help : Show the list of Command
+    sendmessage($chat_id, "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
 • /random : Show a random text
 • /rps : Rock Paper Scissors game
 • /gaycheck : Randomly returns your gayness by percent
-• /say : Show your written text entered after command 
+• /say : Echo your text
 • /dice : Return a dice emoji
 • /dart : Return a dart emoji
 • /basket : Return a Basketball emoji
-• /char : Show a Custom text with your written text after command
-• /dog : Show a random dog image 
+• /char : Show a Custom text with your written text
+• /dog : Show a random dog image
+• /emoji - Make a custom emoji
 
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
 
@@ -602,9 +602,9 @@ if ($text == '/dog') {
 
 if ($text == '/emoji') {
     sendmessage($chat_id, "Use this Command with a emoji !
-    for example : 
-    /emoji 😂
-    Result :
+for example : 
+/emoji 😂
+Result :
     
 😂   . - .
 ‎(\_,'       ' .
