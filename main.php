@@ -600,6 +600,27 @@ if ($text == '/dog') {
     }
 }
 
+if ($text == '/emoji') {
+    sendmessage($chat_id, "Use this Command with a emoji !
+    for example : 
+    /emoji 😂
+    Result :
+    
+😂   . - .
+‎(\_,'       ' .
+  ‎/\
+    
+    
+    ");
+
+} elseif (strpos($text, '/emoji') === 0) {
+    $e = substr($text, 7);
+    sendmessage($chat_id, "    
+$e   . - .
+(\_,'       ' .
+  ‎/\
+");
+}
 // adding soon ...
 // winner checker with monitoring the scores section
 
