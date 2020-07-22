@@ -64,23 +64,28 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 
     switch($inline_query) {        
         case null :
-            $reply = "• /start : Start the bot
-• /help : Show the list of Command
+            $reply = "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
 • /random : Show a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Randomly returns your gayness by percent
-• /say : Show your written text entered after command 
+• /gaycheck : Randomly returns your gayness
+• /say : Echo your text
 • /dice : Return a dice emoji
 • /dart : Return a dart emoji
 • /basket : Return a Basketball emoji
-• /char : Show a Custom text with your written text after command
+• /char : Show a Custom text with your written text
+• /dog : Show a random dog image
+• /emoji : Make a custom emoji
+• /count : Count your entered number
             
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
             
 • Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)";
         break;
+
+        case 'emoji':
+        break;    
     }
 
     $result = [
@@ -122,10 +127,11 @@ $randomer = array_rand($random_array);
 
 $gayrand = rand(0, 100);
 
+
 #########################  Gaycheck command (New Edition)  #########################
 
 if (strpos($text, '/gaycheck') === 0) {
-    $reply = "Calculating ...";
+    $reply = "Calculating ";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
  
@@ -240,7 +246,7 @@ switch ($text) {
 • /me : Returns your Info
 • /random : Show a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Randomly returns your gayness by percent
+• /gaycheck : Randomly returns your gayness
 • /say : Echo your text
 • /dice : Return a dice emoji
 • /dart : Return a dart emoji
@@ -621,6 +627,42 @@ $e   . - .
   ‎/\
 ");
 }
+
+
+if ($text == '/count') {
+    sendmessage($chat_id, "Use this Command with a a Number !
+for example : 
+/count 6");
+}
+
+elseif (strpos($text, '/count') === 0) {
+    $new_bar = substr($text, 7);
+
+        $reply = 'Counting will starting soon ...';
+        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
+        $result = send_reply($url, $post_params);
+        $result_array = json_decode($result, true);
+        $msg_id  = $result_array["result"]["message_id"];
+
+        sleep(3);
+
+        $reply = "Counting in progress 📟";
+        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+        send_reply($url, $post_params);
+
+        for ($i = 0; $i <= $new_bar; $i++) {
+            sendmessage($chat_id, $i);
+            if ($i == $new_bar) {
+                sendmessage($chat_id, 'Counting completed successfully ✅');
+                $reply = "Counting completed successfully ✅";
+                $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
+                $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+                send_reply($url, $post_params);
+            }
+        }
+    }
 // adding soon ...
 // winner checker with monitoring the scores section
 
