@@ -78,6 +78,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 • /dog : Show a random dog image
 • /emoji : Make a custom emoji
 • /count : Count your entered number
+• /emoji - Make a custom emoji
             
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
             
@@ -638,6 +639,7 @@ for example :
 elseif (strpos($text, '/count') === 0) {
     $new_bar = substr($text, 7);
 
+    if ($new_bar <= 50) {
         $reply = 'Counting will starting soon ...';
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
         $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
@@ -662,7 +664,10 @@ elseif (strpos($text, '/count') === 0) {
                 send_reply($url, $post_params);
             }
         }
+    } else {
+        sendmessage($chat_id, 'Up to 50 is allowed ⚠️');
     }
+}
 // adding soon ...
 // winner checker with monitoring the scores section
 
