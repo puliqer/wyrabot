@@ -519,7 +519,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 #########################  Conditions  #########################
 
 // /say command with argument
-if ($text == '/say') {
+if ($text == '/say' || $text == '/say@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a text !
     for example : 
     /say hello
@@ -533,7 +533,7 @@ if ($text == '/say') {
 }
 
 
-if (strpos($text, '/gaycheck') === 0) {
+if (strpos($text, '/gaycheck' === 0)) {
     $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
@@ -552,7 +552,7 @@ if (strpos($text, '/gaycheck') === 0) {
 
 
 // /char command with argumant
-if ($text == '/char') {
+if ($text == '/char' || $text == '/char@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a Simple text !
     for example : 
     /char hello
@@ -580,7 +580,7 @@ if ($text == '/char') {
     ", $message_id);
 } 
 
-if ($text == '/dog') {
+if ($text == '/dog' || $text == '/dog@WyRaBot') {
     $url = "https://dog.ceo/api/breeds/image/random";
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
@@ -596,7 +596,7 @@ if ($text == '/dog') {
     }
 }
 
-if ($text == '/emoji') {
+if ($text == '/emoji' || $text == '/emoji@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a emoji !
 for example : 
 /emoji 😂
