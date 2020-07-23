@@ -125,28 +125,7 @@ $random_array = [
 ];
 
 $randomer = array_rand($random_array);
-
 $gayrand = rand(0, 100);
-
-
-#########################  Gaycheck command (New Edition)  #########################
-
-if (strpos($text, '/gaycheck') === 0) {
-    $reply = "Calculating ";
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
- 
-    $result = send_reply($url, $post_params);
-    $result_array = json_decode($result, true);
-    $msg_id  = $result_array["result"]["message_id"];
- 
-    sleep(3);
- 
-    $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
-    send_reply($url, $post_params);
-}
 
 #########################  Method List Here  #########################
 
@@ -227,8 +206,6 @@ function send_basket($chat_id){
         'emoji' =>  '🏀',
     ]);
 }
-
-
 
 #########################  Usable String Here  #########################
 
@@ -518,31 +495,6 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥕 They also have a number of health benefits.
 🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health");
     break;
-
-    /* adding soon ( Tag and Rps Game )
-    case "/tag":
-    sendmessage($chat_id, "@{$username}, your tag is {$tag}");
-    break;
-
-    case "!rock":
-        sendmessage($chat_id, "My Side :
-        $a[$rps]");
-        $match_saver = "Rock";    
-    break;
-
-    case "!paper":
-        sendmessage($chat_id, "My Side :
-        $a[$rps]");
-        $match_saver = "Paper";
-    break;   
-
-    case "!scissors":
-        sendmessage($chat_id, "My Side :
-        $a[$rps]");
-        $match_saver = "Scissors";    
-    break;   
-*/ 
-
 }
 
 #########################  Conditions  #########################
@@ -559,6 +511,24 @@ if ($text == '/say') {
     $new_text = substr($text, 5);
     sendmessage($chat_id, "**Echo** : 
     $new_text");
+}
+
+
+if (strpos($text, '/gaycheck') === 0) {
+    $reply = "Calculating ";
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
+ 
+    $result = send_reply($url, $post_params);
+    $result_array = json_decode($result, true);
+    $msg_id  = $result_array["result"]["message_id"];
+ 
+    sleep(3);
+ 
+    $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
+    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+    send_reply($url, $post_params);
 }
 
 
@@ -630,14 +600,14 @@ $e   . - .
 }
 
 
-if ($text == '/count') {
+if ($text == '/count' || $text == '/count@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a a Number !
 for example : 
 /count 6");
 }
 
-elseif (strpos($text, '/count') === 0) {
-    $new_bar = substr($text, 7);
+elseif (strpos($text, '/count ') === 0) {
+    $new_bar = substr($text, 8);
 
     if ($new_bar <= 50) {
         $reply = 'Counting will starting soon ...';
