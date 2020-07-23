@@ -233,7 +233,7 @@ switch ($text) {
     sendmessge_noreply($chat_id, "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
-• /random : Show a random text
+• /fukra : Show a random text
 • /rps : Rock Paper Scissors game
 • /gaycheck : Randomly returns your gayness
 • /say : Echo your text
@@ -534,9 +534,9 @@ if ($text == '/say') {
 
 
 if (strpos($text, '/gaycheck') === 0) {
-    $reply = "Calculating ";
+    $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
+    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
  
     $result = send_reply($url, $post_params);
     $result_array = json_decode($result, true);
@@ -658,9 +658,6 @@ elseif (strpos($text, '/count') === 0) {
     }
 }
 
-if ($text == 'reply') {
-    sendmessage($chat_id, 'reply wowowow', $message_id);
-}
 // adding soon ...
 // winner checker with monitoring the scores section
 
