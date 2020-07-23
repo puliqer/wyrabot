@@ -630,13 +630,13 @@ elseif (strpos($text, '/count') === 0) {
 
     if ($new_bar <= 50) {
         $reply = 'Counting will starting soon ...';
-        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage}";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id];
+        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
         $result = send_reply($url, $post_params);
         $result_array = json_decode($result, true);
         $msg_id  = $result_array["result"]["message_id"];
 
-        sleep(3);
+        sleep(5);
 
         $reply = "Counting in progress 📟";
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
@@ -644,9 +644,9 @@ elseif (strpos($text, '/count') === 0) {
         send_reply($url, $post_params);
 
         for ($i = 0; $i <= $new_bar; $i++) {
-            sendmessage($chat_id, $i, $message_id);
+            sendmessge_noreply($chat_id, $i);
             if ($i == $new_bar) {
-                sendmessage($chat_id, 'Counting completed successfully ✅');
+                sendmessge_noreply($chat_id, 'Counting completed successfully ✅');
                 $reply = "Counting completed successfully ✅";
                 $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
                 $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
