@@ -139,11 +139,12 @@ function sendmessage($chat_id, $text, $reply_id){
     ]);
 }
 // sendPhoto method
-function sendphoto($chat_id, $photo, $caption){
+function sendphoto($chat_id, $photo, $caption, $reply_id){
     bot('sendPhoto', [
         'chat_id' => $chat_id,
         'photo' => $photo,
         'caption' => $caption,
+        'reply_to_message_id' => $reply_id,
     ]);
 }
 // sendAudio method
@@ -237,7 +238,7 @@ switch ($text) {
 
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
 
-• Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)");
+• Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)", $message_id);
     break;
 
     case "/me":
@@ -245,7 +246,7 @@ switch ($text) {
     Firstname : {$first_name}
     Lastname : {$last_name}
     Username : @{$username}
-    User ID : {$user_id}");
+    User ID : {$user_id}", $message_id);
     break;
 
     case "/rps":
@@ -260,22 +261,22 @@ Reply '!rock', '!paper' and '!scissors' and And wait for luck.
 Lets Start 😈
         
 *** Not working !
-*** Adding this game soon ...");
+*** Adding this game soon ...", $message_id);
         break;
 
     case "/time":
-        sendmessage($chat_id, "You suck, we dont have /time 😅");
+        sendmessage($chat_id, "You suck, we dont have /time 😅", $message_id);
     break;
 
     case "/about":
         sendmessage($chat_id, "Hello, this is WyRa.
 a funny multipurpose telegram bot.
                 
-Follow us for updates & contacts on @imWyRa, based on v1.0.1");
+Follow us for updates & contacts on @imWyRa, based on v1.0.1", $message_id);
     break;
 
     case "/random":
-        sendmessage($chat_id, "$random_array[$randomer]");
+        sendmessage($chat_id, "$random_array[$randomer]", $message_id);
     break;
 
     case "/dice":
@@ -292,37 +293,44 @@ Follow us for updates & contacts on @imWyRa, based on v1.0.1");
 
     case "❤️":
         sendmessage($chat_id, "❤️ : The red heart emoji is used in warm emotional contexts.
-It can be used to express gratitude, love, happiness, hope, or even flirtatiousness. ❤️");
+It can be used to express gratitude, love, happiness, hope, or even flirtatiousness. ❤️", $message_id);
     break;
 
     case "🧡":
         sendmessage($chat_id, "🧡 : The Orange Heart Emoji to express great care, comfort, and serenity.
 The color orange is associated with meanings of joy, warmth, heat, sunshine, enthusiasm, creativity, success, encouragement. 
-Also the orange heart emoji means you just wanna stick as friends and have nothing mutual. 🧡");
+Also the orange heart emoji means you just wanna stick as friends and have nothing mutual. 🧡"
+, $message_id);
     break;
 
     case "💛":
-        sendmessage($chat_id, "💛 : The yellow heart emoji, can convey love, just like any other heart symbol or emoji, but its yellow color often gets used to show liking and friendship (as opposed to romantic love). Its color also works with expressions of happines and with all things yellow, from sports team colors to dresses. 💛");
+        sendmessage($chat_id, "💛 : The yellow heart emoji, can convey love, just like any other heart symbol or emoji, but its yellow color often gets used to show liking and friendship (as opposed to romantic love). Its color also works with expressions of happines and with all things yellow, from sports team colors to dresses. 💛"
+        , $message_id);
     break;
 
     case "💚":
-        sendmessage($chat_id, "💚 : The Green Heart Emoji is known as Jealous Heart. A green heart can also be associated with envy, jealousy or possessive love. The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. 💚");
+        sendmessage($chat_id, "💚 : The Green Heart Emoji is known as Jealous Heart. A green heart can also be associated with envy, jealousy or possessive love. The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. 💚
+        , $message_id");
     break;
 
     case "💙":
-        sendmessage($chat_id, "💙 : Humans have long associated the feeling of love with their heart. The symbol for Valentine's Day is a heart. A blue heart can symbolize a deep and stable love. Trust, harmony, peace and loyalty. 💙");
+        sendmessage($chat_id, "💙 : Humans have long associated the feeling of love with their heart. The symbol for Valentine's Day is a heart. A blue heart can symbolize a deep and stable love. Trust, harmony, peace and loyalty. 💙"
+        , $message_id);
     break;
 
     case "💜":
-        sendmessage($chat_id, "💜 - The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. The Blue Heart Emoji – A blue heart can also symbolize trust, harmony, peace and loyalty. They can symbolize deep attraction. 💜");
+        sendmessage($chat_id, "💜 - The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. The Blue Heart Emoji – A blue heart can also symbolize trust, harmony, peace and loyalty. They can symbolize deep attraction. 💜"
+        , $message_id);
     break;
 
     case "🖤":
-        sendmessage($chat_id, "🖤 : The black heart emoji is the perfect emoji for a rainy day when you are sitting inside, listening to My Chemical Romance or Dashboard Confessional, and feeling angst-y and misunderstood. It means you are feeling emo, have a dark twisted soul, morbid sense of humor, or just love sad stuff. 🖤");
+        sendmessage($chat_id, "🖤 : The black heart emoji is the perfect emoji for a rainy day when you are sitting inside, listening to My Chemical Romance or Dashboard Confessional, and feeling angst-y and misunderstood. It means you are feeling emo, have a dark twisted soul, morbid sense of humor, or just love sad stuff. 🖤"
+        , $message_id);
     break;
 
     case "💔":
-        sendmessage($chat_id, "💔 : One thing's for sure: they use the broken heart emoji. In texts and on social media, the emoji is used to express grief after a breakup, loss, or other setbacks. While often sincere, its tone can also be more playful, over-exaggerating a frustration or fawning over a crush. Related words: beating heart emoji. 💔");
+        sendmessage($chat_id, "💔 : One thing's for sure: they use the broken heart emoji. In texts and on social media, the emoji is used to express grief after a breakup, loss, or other setbacks. While often sincere, its tone can also be more playful, over-exaggerating a frustration or fawning over a crush. Related words: beating heart emoji. 💔"
+        , $message_id);
     break;
 
     case "🍎":
@@ -333,7 +341,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍎 They're Linked to a Lower Risk of Diabetes. ...
 🍎 They May Have Prebiotic Effects and Promote Good Gut Bacteria. ...
 🍎 Substances in Apples May Help Prevent Cancer. ...
-🍎 Apples Contain Compounds That Can Help Fight Asthma.");
+🍎 Apples Contain Compounds That Can Help Fight Asthma.", $message_id);
     break;
 
     case "🍏":
@@ -341,7 +349,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
         sendphoto($chat_id, $photo, "🍏 Low in fat: Green apples have low fat content and help in maintaining good blood flow in the body. ...
 🍏 Rich Source of Vitamin A and C: ...
 🍏 Good For Bones: ...
-🍏 Fights Against Ageing.");
+🍏 Fights Against Ageing.", $message_id);
     break;
 
     case "🍐":
@@ -353,7 +361,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍐 May offer anticancer effects. ...
 🍐 Linked to a lower risk of diabetes. ...
 🍐 May boost heart health. ...
-🍐 May help you lose weight.");
+🍐 May help you lose weight.", $message_id);
     break;
 
     case "🍊":
@@ -365,7 +373,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍊 Keeps blood pressure under check. ...
 🍊 Lowers cholesterol. ...
 🍊 Controls blood sugar level. ...
-🍊 Lowers the risk of cancer.");
+🍊 Lowers the risk of cancer.", $message_id);
     break;
     
     case "🍋":
@@ -376,7 +384,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍋 It improves your skin quality. ...
 🍋 It aids digestion. ...
 🍋 It freshens breath. ...
-🍋 It helps prevent kidney stones.");
+🍋 It helps prevent kidney stones.", $message_id);
     break;
 
     case "🍌":
@@ -385,7 +393,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍌 Manganese in bananas is good for your skin. ...
 🍌 Potassium in bananas is good for your heart health and blood pressure. ...
 🍌 Bananas can aid digestion and help beat gastrointestinal issues. ...
-🍌 Bananas give you energy – minus the fats and cholesterol​");
+🍌 Bananas give you energy – minus the fats and cholesterol​", $message_id);
     break;
 
     case "🍉":
@@ -396,7 +404,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍉 May Improve Heart Health. ...
 🍉 May Lower Inflammation and Oxidative Stress. ...
 🍉 May Help Prevent Macular Degeneration. ...
-🍉 May Help Relieve Muscle Soreness.");
+🍉 May Help Relieve Muscle Soreness.", $message_id);
     break;
 
     case "🍇":
@@ -405,14 +413,15 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍇 High Antioxidant Contents May Prevent Chronic Diseases. ...
 🍇 Plant Compounds May Protect Against Certain Types of Cancer. ...
 🍇 Beneficial for Heart Health in Various Impressive Ways. ...
-🍇 May Decrease Blood Sugar Levels and Protect Against Diabetes.");
+🍇 May Decrease Blood Sugar Levels and Protect Against Diabetes.", $message_id);
     break;
 
     case "🍓":
         $photo = "http://s12.picofile.com/file/8403458634/strawberries_1.jpg";
         sendphoto($chat_id, $photo, "The tiny strawberry is packed with vitamin C, fiber, antioxidants, and more. ...
 🍓 The heart-shaped silhouette of the strawberry is the first clue that this fruit is good for you. ... 
-🍓 These potent little packages protect your heart, increase HDL (good) cholesterol, lower your blood pressure, and guard against cancer. ...");
+🍓 These potent little packages protect your heart, increase HDL (good) cholesterol, lower your blood pressure, and guard against cancer. ...
+, $message_id");
     break;
 
     case "🍒":
@@ -424,7 +433,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍒 Anti-Ageing Properties. ...
 🍒 Promotes Healthy Locks. ...
 🍒 Maintains pH Balance. ...
-🍒 Energy Fruit.");
+🍒 Energy Fruit.", $message_id);
     break;
 
     case "🍑":
@@ -435,7 +444,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍑 May Protect Your Skin. ...
 🍑 May Prevent Certain Types of Cancer. ...
 🍑 May Reduce Allergy Symptoms. ...
-🍑 Widely Available and Easy to Add to Your Diet.");
+🍑 Widely Available and Easy to Add to Your Diet.", $message_id);
     break;
 
     case "🍍":
@@ -446,7 +455,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍍 May Help Reduce the Risk of Cancer. ...
 🍍 May Boost Immunity and Suppress Inflammation. ...
 🍍 May Ease Symptoms of Arthritis. ...
-🍍 May Speed Recovery After Surgery or Strenuous Exercise.");
+🍍 May Speed Recovery After Surgery or Strenuous Exercise.", $message_id);
     break;
 
     case "🥝":
@@ -458,14 +467,14 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥝 Manages blood pressure.
 🥝 Reduces blood clotting.
 🥝 Protects against vision loss.
-🥝 Potential risks.");
+🥝 Potential risks.", $message_id);
     break;
 
     case "🍅":
         $photo = "http://s13.picofile.com/file/8403459650/health_benefits_of_tomatoes.jpg";
         sendphoto($chat_id, $photo, "🍅 Tomatoes are the major dietary source of the antioxidant lycopene,
 🍅 which has been linked to many health benefits, including reduced risk of heart disease and cancer.
-🍅 They are also a great source of vitamin C, potassium, folate, and vitamin K.");
+🍅 They are also a great source of vitamin C, potassium, folate, and vitamin K.", $message_id);
     break;
 
     case "🍆":
@@ -476,7 +485,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍆 PREVENTS CANCER. ...
 🍆 IMPROVES BONE HEALTH. ...
 🍆 PREVENTS ANEMIA. ...
-🍆 INCREASES BRAIN FUNCTION.");
+🍆 INCREASES BRAIN FUNCTION.", $message_id);
     break;
 
     case "🥔":
@@ -487,7 +496,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥔 More potassium than a banana.
 🥔 A good source of vitamin B6.
 🥔 Fiber, magnesium and antioxidants.
-🥔 Resistant starch.");
+🥔 Resistant starch.", $message_id);
     break;
 
     case "🥕":
@@ -495,7 +504,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
         sendphoto($chat_id, $photo, "🥕 It is crunchy, tasty, and highly nutritious.
 🥕 Carrots are a particularly good source of beta carotene, fiber, vitamin K1, potassium, and antioxidants.
 🥕 They also have a number of health benefits.
-🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health");
+🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $message_id);
     break;
 }
 
@@ -507,12 +516,12 @@ if ($text == '/say') {
     for example : 
     /say hello
     Result :
-    hello");
+    hello", $message_id);
 
 } elseif (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
     sendmessage($chat_id, "**Echo** : 
-    $new_text");
+    $new_text", $message_id);
 }
 
 
@@ -546,7 +555,7 @@ if ($text == '/char') {
             \ (•_•) / 
               \      / 
                 ---
-                |   |");
+                |   |", $message_id);
 
 } elseif (strpos($text, '/char') === 0) {
     $new_text = substr($text, 6);
@@ -560,7 +569,7 @@ if ($text == '/char') {
                     ---
                     |   |
     
-    ");
+    ", $message_id);
 } 
 
 if ($text == '/dog') {
@@ -575,7 +584,7 @@ if ($text == '/dog') {
     } else {
         $main = json_decode($res);
         $image = $main->message;
-        sendphoto($chat_id, $image, "Use /dog for another random dog image");
+        sendphoto($chat_id, $image, "Use /dog for another random dog image", $message_id);
     }
 }
 
@@ -590,7 +599,7 @@ Result :
   ‎/\
     
     
-    ");
+    ", $message_id);
 
 } elseif (strpos($text, '/emoji') === 0) {
     $e = substr($text, 7);
@@ -598,14 +607,14 @@ Result :
 $e   . - .
 (\_,'       ' .
   ‎/\
-");
+", $message_id);
 }
 
 
 if ($text == '/count' || $text == '/count@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a a Number !
+    sendmessage($chat_id, "Use this Command with a Number !
 for example : 
-/count 6");
+/count 6", $message_id);
 }
 
 elseif (strpos($text, '/count') === 0) {
@@ -613,8 +622,8 @@ elseif (strpos($text, '/count') === 0) {
 
     if ($new_bar <= 50) {
         $reply = 'Counting will starting soon ...';
-        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage?reply_to_message_id="."$message_id}";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
+        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage}";
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id];
         $result = send_reply($url, $post_params);
         $result_array = json_decode($result, true);
         $msg_id  = $result_array["result"]["message_id"];
