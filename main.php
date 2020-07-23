@@ -674,7 +674,7 @@ elseif (strpos($text, '/count') === 0) {
 
 if (strpos($text, "/weather") == 0) {
     $location = substr($message, 9);
-    $url = "http://api.openweathermap.org/data/2.5/weather?q=".$location."&amp;appid=mytoken";
+    $url = "http://api.openweathermap.org/data/2.5/weather?q="."$location"."&appid=45ad31179a047c6e43833eccc2cb7412";
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
