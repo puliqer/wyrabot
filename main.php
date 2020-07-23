@@ -533,7 +533,7 @@ if ($text == '/say' || $text == '/say@WyRaBot') {
 }
 
 
-if (strpos($text, '/gaycheck' === 0)) {
+if ($text == '/gaycheck' || $text == '/gaycheck@WyRaBot') {
     $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
