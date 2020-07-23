@@ -43,6 +43,7 @@ $message = $main->message; // getting the message full data
 $message_id = $message->message_id; // getting the message id
 $from_id = $message->from->id; // getting the user id 
 $chat_id = $message->chat->id; // getting the user id in chat
+$reply_id = $message->reply_id;
 $textid = $message->text->id; // getting the sent text id from user
 $text = $message->text; // getting the sent text
 $date = $message->date; // getting the date of sent message
@@ -130,10 +131,11 @@ $gayrand = rand(0, 100);
 #########################  Method List Here  #########################
 
 // sendMessage method
-function sendmessage($chat_id, $text){
+function sendmessage($chat_id, $text, $reply_id){
     bot('sendMessage', [
         'chat_id' => $chat_id,
         'text' => $text,
+        'reply_to_message_id' => $reply_id,
     ]);
 }
 // sendPhoto method
@@ -606,12 +608,12 @@ for example :
 /count 6");
 }
 
-elseif (strpos($text, '/count ') === 0) {
-    $new_bar = substr($text, 8);
+elseif (strpos($text, '/count') === 0) {
+    $new_bar = substr($text, 7);
 
     if ($new_bar <= 50) {
         $reply = 'Counting will starting soon ...';
-        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+        $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage?reply_to_message_id="."$message_id}";
         $post_params = [ 'chat_id' => $chat_id , 'text' => $reply ];
         $result = send_reply($url, $post_params);
         $result_array = json_decode($result, true);
@@ -625,7 +627,7 @@ elseif (strpos($text, '/count ') === 0) {
         send_reply($url, $post_params);
 
         for ($i = 0; $i <= $new_bar; $i++) {
-            sendmessage($chat_id, $i);
+            sendmessage($chat_id, $i, $message_id);
             if ($i == $new_bar) {
                 sendmessage($chat_id, 'Counting completed successfully ✅');
                 $reply = "Counting completed successfully ✅";
@@ -635,8 +637,12 @@ elseif (strpos($text, '/count ') === 0) {
             }
         }
     } else {
-        sendmessage($chat_id, 'Up to 50 is allowed ⚠️');
+        sendmessage($chat_id, 'Up to 50 is allowed ⚠️', $message_id);
     }
+}
+
+if ($text == 'reply') {
+    sendmessage($chat_id, 'reply wowowow', $message_id);
 }
 // adding soon ...
 // winner checker with monitoring the scores section
