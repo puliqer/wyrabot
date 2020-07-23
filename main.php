@@ -138,6 +138,14 @@ function sendmessage($chat_id, $text, $reply_id){
         'reply_to_message_id' => $reply_id,
     ]);
 }
+
+// sendMessage with no reply method
+function sendmessge_noreply($chat_id, $text){
+    bot('sendMessage', [
+        'chat_id' => $chat_id,
+        'text' => $text,
+    ]);
+}
 // sendPhoto method
 function sendphoto($chat_id, $photo, $caption, $reply_id){
     bot('sendPhoto', [
