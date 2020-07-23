@@ -68,7 +68,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
             $reply = "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
-• /random : Show a random text
+• /fukra : Show a random text
 • /rps : Rock Paper Scissors game
 • /gaycheck : Randomly returns your gayness
 • /say : Echo your text
@@ -224,13 +224,13 @@ function send_basket($chat_id){
 switch ($text) {
 
     case "/start":
-    sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
+    sendmessge_noreply($chat_id, "Welcome dear {$first_name} 🐱, 
     add me to Chat and Have Fun. 
     if you dont know how to use this bot, use /help command !");
     break;
 
     case "/help":
-    sendmessage($chat_id, "• /help : Show the list of Command
+    sendmessge_noreply($chat_id, "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
 • /random : Show a random text
@@ -277,13 +277,13 @@ Lets Start 😈
     break;
 
     case "/about":
-        sendmessage($chat_id, "Hello, this is WyRa.
+        sendmessge_noreply($chat_id, "Hello, this is WyRa.
 a funny multipurpose telegram bot.
                 
 Follow us for updates & contacts on @imWyRa, based on v1.0.1", $message_id);
     break;
 
-    case "/random":
+    case "/fukra":
         sendmessage($chat_id, "$random_array[$randomer]", $message_id);
     break;
 
