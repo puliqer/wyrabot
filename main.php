@@ -195,26 +195,30 @@ function inline($inline_query_id, $json_result){
 }
 
 // sendDice method
-function send_dice($chat_id){
+function send_dice($chat_id, $reply_id){
     bot('sendDice', [
         'chat_id' => $chat_id,
         'emoji' =>  '🎲',
+        'reply_to_message_id' => $reply_id,
     ]);
 }
 
 // sendDice method
-function send_dart($chat_id){
+function send_dart($chat_id, $reply_id){
     bot('sendDice', [
         'chat_id' => $chat_id,
         'emoji' =>  '🎯',
+        'reply_to_message_id' => $reply_id,
     ]);
 }
 
 // sendDice method
-function send_basket($chat_id){
+function send_basket($chat_id, $reply_id){
     bot('sendDice', [
         'chat_id' => $chat_id,
         'emoji' =>  '🏀',
+        'reply_to_message_id' => $reply_id,
+        
     ]);
 }
 
@@ -224,12 +228,14 @@ function send_basket($chat_id){
 switch ($text) {
 
     case "/start":
+    case "/start@WyRaBot" :
     sendmessge_noreply($chat_id, "Welcome dear {$first_name} 🐱, 
-    add me to Chat and Have Fun. 
-    if you dont know how to use this bot, use /help command !");
+add me to Chat and Have Fun. 
+if you dont know how to use this bot, use /help command !");
     break;
 
     case "/help":
+    case "/help@WyRaBot" :
     sendmessge_noreply($chat_id, "• /help : Show the list of Command
 • /about : Show some info about bot
 • /me : Returns your Info
@@ -250,14 +256,16 @@ switch ($text) {
     break;
 
     case "/me":
+    case "/me@WyRaBot" :
     sendmessage($chat_id, "Your Information :
-    Firstname : {$first_name}
-    Lastname : {$last_name}
-    Username : @{$username}
-    User ID : {$user_id}", $message_id);
+Firstname : {$first_name}
+Lastname : {$last_name}
+Username : @{$username}
+User ID : {$user_id}", $message_id);
     break;
 
     case "/rps":
+    case "/rps@WyRaBot" :
         sendmessage($chat_id, "*** Not working !
 *** Adding this game soon ...
         
@@ -273,10 +281,12 @@ Lets Start 😈
         break;
 
     case "/time":
+    case "/time@WyRaBot" :
         sendmessage($chat_id, "You suck, we dont have /time 😅", $message_id);
     break;
 
     case "/about":
+    case "/about@WyRaBot" :
         sendmessge_noreply($chat_id, "Hello, this is WyRa.
 a funny multipurpose telegram bot.
                 
@@ -284,19 +294,23 @@ Follow us for updates & contacts on @imWyRa, based on v1.0.1", $message_id);
     break;
 
     case "/fukra":
+    case "/fukra@WyRaBot" :
         sendmessage($chat_id, "$random_array[$randomer]", $message_id);
     break;
 
     case "/dice":
-        send_dice($chat_id);
+    case "/dice@WyRaBot" :
+        send_dice($chat_id, $message_id);
     break;
 
     case "/dart":
-        send_dart($chat_id);
+    case "/dart@WyRaBot" :
+        send_dart($chat_id, $message_id);
     break;
 
     case "/basket":
-        send_basket($chat_id);
+    case "/basket@WyRaBot" :
+        send_basket($chat_id, $message_id);
     break;
 
     case "❤️":
@@ -521,14 +535,14 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 // /say command with argument
 if ($text == '/say' || $text == '/say@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a text !
-    for example : 
-    /say hello
-    Result :
-    hello", $message_id);
+for example :     
+/say hello
+Result :
+hello", $message_id);
 
 } elseif (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
-    sendmessage($chat_id, "**Echo** : 
+    sendmessage($chat_id, "ًResult : 
     $new_text", $message_id);
 }
 
@@ -554,9 +568,9 @@ if ($text == '/gaycheck' || $text == '/gaycheck@WyRaBot') {
 // /char command with argumant
 if ($text == '/char' || $text == '/char@WyRaBot') {
     sendmessage($chat_id, "Use this Command with a Simple text !
-    for example : 
-    /char hello
-    Result :
+for example : 
+/char hello
+Result :
     |￣￣￣￣￣￣￣￣￣￣￣|
 |               hello                   |
 |＿＿＿＿＿＿＿＿__＿＿| 
@@ -655,6 +669,23 @@ elseif (strpos($text, '/count') === 0) {
         }
     } else {
         sendmessage($chat_id, 'Up to 50 is allowed ⚠️', $message_id);
+    }
+}
+
+if (strpos($text, "/weather") == 0) {
+    $location = substr($message, 9);
+    $url = "http://api.openweathermap.org/data/2.5/weather?q=".$location."&amp;appid=mytoken";
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+
+    if (curl_error($ch)) {
+        var_dump(curl_error($ch));
+    } else {
+        $main = json_decode($res);
+        $weather = $main->weather->main;
+        sendmessage($chat_id, $image, $weather, $message_id);
     }
 }
 
