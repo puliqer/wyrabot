@@ -672,9 +672,15 @@ elseif (strpos($text, '/count') === 0) {
     }
 }
 
-if (strpos($text, "/weather") == 0) {
-    $location = substr($message, 9);
-    $url = "http://api.openweathermap.org/data/2.5/weather?q="."$location"."&appid=45ad31179a047c6e43833eccc2cb7412";
+if ($text == '/weather' || $text == '/weather@WyRaBot') {
+    sendmessage($chat_id, "Use this Command with a city name !
+for example : 
+/weather berlin", $message_id);
+}
+
+elseif (strpos($text, '/weather') === 0) {
+    $location = substr($text, 9);
+    $url = "http://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=45ad31179a047c6e43833eccc2cb7412";
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
@@ -684,8 +690,32 @@ if (strpos($text, "/weather") == 0) {
         var_dump(curl_error($ch));
     } else {
         $main = json_decode($res);
-        $weather = $main->weather->main;
-        sendmessage($chat_id, $image, $weather, $message_id);
+
+        $lon = $main->coord->lon;
+        $lat = $main->coord->lat;
+
+        $stat = $main->weather->main;
+        $desc = $main->weather->description;
+
+        $temp = $main->main->temp;
+        $pressure = $main->main->pressure;
+        $humidity = $main->main->humidity;
+
+        $wind_speed = $main->wind->speed;
+        $wind_deg = $main->wind->deg;
+
+        sendmessage($chat_id, "LON : {$lon},
+LAT : {$lat},
+
+STAT : {$stat},
+DESCRIPTION : {$desc},
+
+TEMPRUTURE : {$temp},
+PRESSURE : {$pressure},
+HUMIDITY : {$humidity},
+
+WIND SPEED : {$wind_speed},
+WIND DEGREE : {$wind_deg},", $message_id);
     }
 }
 
