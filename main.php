@@ -223,6 +223,22 @@ function send_basket($chat_id, $reply_id){
     ]);
 }
 
+// sendMessage with keyboard method
+function send_keyboard($chat_id, $text){
+    bot('sendMessage', [
+        'chat_id' => $chat_id,
+        'text' => $text,
+        'reply_markup' => json_encode([
+            'keyboard' => [
+                [
+                    ['text' => 'Select your Option'],
+                ]
+            ]
+        ])
+    ]);
+}
+
+
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -251,6 +267,7 @@ if you dont know how to use this bot, use /help command !");
 • /dog : Show a random dog image
 • /weather : Returns weather of entered city
 • /emoji - Make a custom emoji
+• /count : Count your entered number
 
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
 
@@ -530,7 +547,6 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥕 They also have a number of health benefits.
 🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $message_id);
     break;
-}
 
 #########################  Conditions  #########################
 
