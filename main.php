@@ -80,6 +80,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 • /emoji : Make a custom emoji
 • /count : Count your entered number
 • /emoji - Make a custom emoji
+• /weather : Returns weather of entered city
             
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
             
@@ -248,6 +249,7 @@ if you dont know how to use this bot, use /help command !");
 • /basket : Return a Basketball emoji
 • /char : Show a Custom text with your written text
 • /dog : Show a random dog image
+• /weather : Returns weather of entered city
 • /emoji - Make a custom emoji
 
 • Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
@@ -694,8 +696,8 @@ elseif (strpos($text, '/weather') === 0) {
         $lon = $main->coord->lon;
         $lat = $main->coord->lat;
 
-        $stat = $main->weather->main;
-        $desc = $main->weather->description;
+        // $stat = $main->weather->main;
+        // $desc = $main->weather->description;
 
         $temp = $main->main->temp;
         $pressure = $main->main->pressure;
@@ -704,18 +706,15 @@ elseif (strpos($text, '/weather') === 0) {
         $wind_speed = $main->wind->speed;
         $wind_deg = $main->wind->deg;
 
-        sendmessage($chat_id, "LON : {$lon},
-LAT : {$lat},
+        sendmessage($chat_id, "Lon : {$lon}
+Lat : {$lat}
 
-STAT : {$stat},
-DESCRIPTION : {$desc},
+Temperature : {$temp}
+Pressure : {$pressure}
+Humidity : {$humidity}
 
-TEMPRUTURE : {$temp},
-PRESSURE : {$pressure},
-HUMIDITY : {$humidity},
-
-WIND SPEED : {$wind_speed},
-WIND DEGREE : {$wind_deg},", $message_id);
+Wind Speed : {$wind_speed}
+Wind Degree : {$wind_deg}", $message_id);
     }
 }
 
