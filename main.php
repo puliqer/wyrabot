@@ -129,6 +129,31 @@ $random_array = [
 $randomer = array_rand($random_array);
 $gayrand = rand(0, 100);
 
+$inline_keyboard = [
+
+    [
+        [ 'text' => "Open Google" , 'url' => "www.google.com" ] ,
+        [ 'text' => "Open Bing"   , 'url' => "www.bing.com" ]
+    ] ,
+
+    [
+        [ 'text' => "I Agree" , 'callback_data' => "agree" ]
+    ] ,
+
+    [
+        [ 'text' => "Send Link To Friends" , 'switch_inline_query' => "پیام آزمایشی ۱" ]
+    ] ,
+
+    [
+        [ 'text' => "Copy Link in Input Area" , 'switch_inline_query_current_chat' => "پیام آزمایشی ۲" ]
+    ] ,
+
+];
+
+$inline_kb_options = [
+    'inline_keyboard' => $inline_keyboard
+ ];
+
 #########################  Method List Here  #########################
 
 // sendMessage method
@@ -239,6 +264,17 @@ function send_keyboard($chat_id, $text){
 }
 
 
+// function send_inline_keyboard($chat_id, $text){
+//     bot('sendMessage', [
+//         'chat_id' => $chat_id,
+//         'text' => $text,
+//         'reply_markup' => json_encode([
+//             'text' => 'Select your Option',
+//             'url' => 'google.com',
+//         ]),
+//     ] 
+//     );
+// }
 #########################  Usable String Here  #########################
 
 // a simple switch for simple command with simple message
@@ -547,7 +583,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥕 They also have a number of health benefits.
 🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $message_id);
     break;
-
+}
 #########################  Conditions  #########################
 
 // /say command with argument
@@ -734,6 +770,13 @@ Wind Degree : {$wind_deg}", $message_id);
     }
 }
 
+if ($text == '/bk') {
+    $json_kb = json_encode($GLOBALS['inline_kb_options']);
+    $reply = "Please Choose one the Options";
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $reply, 'reply_markup' => $json_kb ];
+    send_reply($url, $post_params);
+}
 // adding soon ...
 // winner checker with monitoring the scores section
 
