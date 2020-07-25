@@ -56,6 +56,10 @@ $user_id = $message->from->id;
 $inline_query = $main->inline_query->query;
 $inline_query_id = $main->inline_query->id;
 
+$callback_data = $mian->callback_query->data;
+$callback_query_id = $main->callback_query->id;
+$key_chat_id = $main->callback_query->message->chat->id;
+
 
 #########################  Inline Methods  #########################
 
@@ -80,11 +84,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 • /emoji : Make a custom emoji
 • /count : Count your entered number
 • /emoji - Make a custom emoji
-• /weather : Returns weather of entered city
-            
-• Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
-            
-• Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)";
+• /weather : Returns weather of entered city";
         break;
 
         case 'emoji':
@@ -130,24 +130,9 @@ $randomer = array_rand($random_array);
 $gayrand = rand(0, 100);
 
 $inline_keyboard = [
-
     [
-        [ 'text' => "Open Google" , 'url' => "www.google.com" ] ,
-        [ 'text' => "Open Bing"   , 'url' => "www.bing.com" ]
+        [ 'text' => "Command List" , 'switch_inline_query_current_chat' => "" ]
     ] ,
-
-    [
-        [ 'text' => "I Agree" , 'callback_data' => "agree" ]
-    ] ,
-
-    [
-        [ 'text' => "Send Link To Friends" , 'switch_inline_query' => "پیام آزمایشی ۱" ]
-    ] ,
-
-    [
-        [ 'text' => "Copy Link in Input Area" , 'switch_inline_query_current_chat' => "پیام آزمایشی ۲" ]
-    ] ,
-
 ];
 
 $inline_kb_options = [
@@ -263,7 +248,6 @@ function send_keyboard($chat_id, $text){
     ]);
 }
 
-
 // function send_inline_keyboard($chat_id, $text){
 //     bot('sendMessage', [
 //         'chat_id' => $chat_id,
@@ -282,9 +266,17 @@ switch ($text) {
 
     case "/start":
     case "/start@WyRaBot" :
-    sendmessge_noreply($chat_id, "Welcome dear {$first_name} 🐱, 
+
+        $json_kb = json_encode($GLOBALS['inline_kb_options']);
+
+    $reply = "Welcome dear {$first_name} 🐱, 
 add me to Chat and Have Fun. 
-if you dont know how to use this bot, use /help command !");
+if you dont know how to use this bot, use /help command !";
+
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $reply, 'reply_markup' => $json_kb ];
+    send_reply($url, $post_params);
+
     break;
 
     case "/help":
@@ -770,13 +762,6 @@ Wind Degree : {$wind_deg}", $message_id);
     }
 }
 
-if ($text == '/bk') {
-    $json_kb = json_encode($GLOBALS['inline_kb_options']);
-    $reply = "Please Choose one the Options";
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $reply, 'reply_markup' => $json_kb ];
-    send_reply($url, $post_params);
-}
 // adding soon ...
 // winner checker with monitoring the scores section
 
