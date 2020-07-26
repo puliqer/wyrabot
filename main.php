@@ -34,9 +34,21 @@ function send_reply($url, $post_params) {
     return $result;
 }
 
+function jd($array, $j = 0) {
+	return json_decode($array, $j);
+}
+
+function Neman($method, $data=[]) {
+	$ch = curl_init('https://api.telegram.org/bot'.TOKEN.'/'.$method);
+	curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => 1, CURLOPT_POSTFIELDS => $data]);
+	return jd(curl_exec($ch));
+}
+
 #########################  Bot api Variables Here  #########################
 
 $main = json_decode(file_get_contents('php://input')); // getting data from user
+$upd = jd(file_get_contents('php://input'));
+
 var_dump($update);
 $update_id = $main->update_id; // getting the update id
 $message = $main->message; // getting the message full data
@@ -56,10 +68,29 @@ $user_id = $message->from->id;
 $inline_query = $main->inline_query->query;
 $inline_query_id = $main->inline_query->id;
 
-$callback_data = $mian->callback_query->data;
-$callback_query_id = $main->callback_query->id;
-$key_chat_id = $main->callback_query->message->chat->id;
+// $callback_data = $main->callback_query->data;
+// $callback_query_id = $main->callback_query->id;
+// $key_chat_id = $main->callback_query->message->chat->id;
 
+if($query = $upd->callback_query) {
+	$msg = $query->message;
+	$text = $msg->text;
+	$date = $msg->date;
+	$from = $query->from;
+	$msgid = $msg->message_id;
+	$message_id = $msgid;
+	$from_first_name = $from->first_name;
+	$from_last_name = $from->last_name;
+	$from_username = $from->username;
+	$from = $from->id;
+	$chat = $msg->chat;
+	$type = $chat->type;
+	$chat_type = $type;
+	$chat_title = $chat->title;
+	$chat = $chat->id;
+	$idc = $query->id;
+	$data_query = $query->data;
+}
 
 #########################  Inline Methods  #########################
 
@@ -93,7 +124,7 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
                 [
                     'type' => "article",
                     'id' => "1",
-                    'title' => "🤖 Everything you need to Know about WyRa 🤖",
+                    'title' => "🤖 Everything you need to Know about WyRa",
                     'description' => "Here is List of Command and everything i can do, so lets check it out 👾",
                     'thumb_url'   => "http://s13.picofile.com/file/8403461176/photo_2020_07_20_17_14_07.jpg" ,
                     'input_message_content' => [ 'message_text' => "$reply", 'parse_mode' => 'Markdown',
@@ -132,6 +163,10 @@ $inline_keyboard = [
     [
         [ 'text' => "Commands List" , 'switch_inline_query_current_chat' => "" ]
     ] ,
+
+    [
+        [ 'text' => "I Agree" , 'callback_data' => "agree" ]
+    ] ,
 ];
 
 $inline_kb_options = [
@@ -146,6 +181,7 @@ function sendmessage($chat_id, $text, $reply_id){
         'chat_id' => $chat_id,
         'text' => $text,
         'reply_to_message_id' => $reply_id,
+        'parse_mode' => 'Markdown',
     ]);
 }
 
@@ -248,6 +284,15 @@ function send_keyboard($chat_id, $text){
     ]);
 }
 
+function key_sendmessage($chat_id, $text){
+
+    $json_kb = json_encode($GLOBALS['inline_kb_options']);
+
+    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
+    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $text, 'reply_markup' => $json_kb ];
+    send_reply($url, $post_params);
+}
+
 // function send_inline_keyboard($chat_id, $text){
 //     bot('sendMessage', [
 //         'chat_id' => $chat_id,
@@ -266,24 +311,16 @@ switch ($text) {
 
     case "/start":
     case "/start@WyRaBot" :
-
-        $json_kb = json_encode($GLOBALS['inline_kb_options']);
-
-    $reply = "Welcome dear {$first_name} 🐱, 
+        key_sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
 add me to Chat and Have Fun.
-🔴 Follow @Puliqers for Updates & Contacts ⚫️";
-
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $reply, 'reply_markup' => $json_kb ];
-    send_reply($url, $post_params);
-
+🔴 Follow @Puliqers for Updates & Contacts ⚫️");
     break;
 
     case "/help":
     case "/help@WyRaBot" :
         $bold = "*available commands*";
     sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
-    
+
 ```
 • /about : Returns info about bot
 • /me : Returns your Info
@@ -300,7 +337,7 @@ add me to Chat and Have Fun.
 
     case "/me":
     case "/me@WyRaBot" :
-    sendmessage($chat_id, "Your Information :
+    sendmessage($chat_id, "*Your Information* :
 Firstname : {$first_name}
 Lastname : {$last_name}
 Username : @{$username}
@@ -309,8 +346,8 @@ User ID : {$user_id}", $message_id);
 
     case "/rps":
     case "/rps@WyRaBot" :
-        sendmessage($chat_id, "*** Not working !
-*** Adding this game soon ...
+        sendmessage($chat_id, "*Not working !*
+*Adding this game soon ...*
         
 Well well. Game time 🎮
 as you know this is RPS ( Rock Paper Scissors ). In this game, we have three rounds.
@@ -319,21 +356,21 @@ and whoever gets more points at the end of these three rounds will be the winner
 Reply '!rock', '!paper' and '!scissors' and And wait for luck.
 Lets Start 😈
         
-*** Not working !
-*** Adding this game soon ...", $message_id);
+*Not working !*
+*Adding this game soon ...*", $message_id);
         break;
 
     case "/time":
     case "/time@WyRaBot" :
-        sendmessage($chat_id, "You suck, we dont have /time 😅", $message_id);
+        sendmessage($chat_id, "_You suck_, we dont have /time 😅", $message_id);
     break;
 
     case "/about":
     case "/about@WyRaBot" :
-        sendmessge_noreply($chat_id, "Hello, this is WyRa.
+        sendmessge_noreply($chat_id, "Hello, this is *WyRa*.
 a funny multipurpose telegram bot.
                 
-Follow us for updates & contacts on @imWyRa, based on v1.0.1", $message_id);
+Follow us for updates & contacts on @Puliqers, based on v1.0.1", $message_id);
     break;
 
     case "/fukra":
@@ -755,6 +792,14 @@ Wind Degree : {$wind_deg}", $message_id);
     }
 }
 
+if($data_query == "agree") {
+ 
+    Neman('answercallbackquery',[
+		'callback_query_id' => $GLOBALS['idc'],
+		'text' => "DONE!",
+		'show_alert'=> true,
+	]);
+}    
 // adding soon ...
 // winner checker with monitoring the scores section
 
