@@ -293,6 +293,14 @@ function key_sendmessage($chat_id, $text){
     send_reply($url, $post_params);
 }
 
+function alert_key($text, $show = false){
+	return Neman('answercallbackquery',[
+		'callback_query_id' => $GLOBALS['idc'],
+		'text' => $text,
+		'show_alert' => $show
+	]);
+}
+
 // function send_inline_keyboard($chat_id, $text){
 //     bot('sendMessage', [
 //         'chat_id' => $chat_id,
@@ -793,12 +801,9 @@ Wind Degree : {$wind_deg}", $message_id);
 }
 
 if($data_query == "agree") {
- 
-    Neman('answercallbackquery',[
-		'callback_query_id' => $GLOBALS['idc'],
-		'text' => "DONE!",
-		'show_alert'=> true,
-	]);
+    sendmessage($chat_id, 'Thancks!', $message_id);
+
+
 }    
 // adding soon ...
 // winner checker with monitoring the scores section
