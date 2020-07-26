@@ -76,11 +76,8 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 • /me : Returns your Info
 • /fukra : Returns a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Returns your gayness
+• /gay : Returns your gayness
 • /say : Echo your text
-• /dice : Returns a dice emoji
-• /dart : Returns a dart emoji
-• /basket : Returns a Basketball emoji
 • /char : Returns a Custom with your text
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
@@ -286,21 +283,19 @@ add me to Chat and Have Fun.
     case "/help@WyRaBot" :
         $bold = "*available commands*";
     sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
-
+    
+```
 • /about : Returns info about bot
 • /me : Returns your Info
 • /fukra : Returns a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Returns your gayness
+• /gay : Returns your gayness
 • /say : Echo your text
-• /dice : Returns a dice emoji
-• /dart : Returns a dart emoji
-• /basket : Returns a Basketball emoji
 • /char : Returns a Custom with your text
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
 • /emoji - Returns a custom emoji
-• /count : Count to your entered number", $message_id);
+• /count : Count to your entered number ```", $message_id);
     break;
 
     case "/me":
@@ -346,18 +341,15 @@ Follow us for updates & contacts on @imWyRa, based on v1.0.1", $message_id);
         sendmessage($chat_id, "$random_array[$randomer]", $message_id);
     break;
 
-    case "/dice":
-    case "/dice@WyRaBot" :
+    case "dice":
         send_dice($chat_id, $message_id);
     break;
 
-    case "/dart":
-    case "/dart@WyRaBot" :
+    case "dart":
         send_dart($chat_id, $message_id);
     break;
 
-    case "/basket":
-    case "/basket@WyRaBot" :
+    case "basket":
         send_basket($chat_id, $message_id);
     break;
 
@@ -594,7 +586,7 @@ hello", $message_id);
 }
 
 
-if ($text == '/gaycheck' || $text == '/gaycheck@WyRaBot') {
+if ($text == '/gay' || $text == '/gay@WyRaBot') {
     $reply = "Calculating ...";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
