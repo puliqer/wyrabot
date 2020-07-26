@@ -69,22 +69,23 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
 
     switch($inline_query) {        
         case null :
-            $reply = "• /help : Show the list of Command
-• /about : Show some info about bot
+            $bold = "*available commands*";
+            $reply = "🎯 -| Here is the list of {$bold} or simple text that you can use :
+
+• /about : Returns info about bot
 • /me : Returns your Info
-• /fukra : Show a random text
+• /fukra : Returns a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Randomly returns your gayness
+• /gaycheck : Returns your gayness
 • /say : Echo your text
-• /dice : Return a dice emoji
-• /dart : Return a dart emoji
-• /basket : Return a Basketball emoji
-• /char : Show a Custom text with your written text
-• /dog : Show a random dog image
-• /emoji : Make a custom emoji
-• /count : Count your entered number
-• /emoji - Make a custom emoji
-• /weather : Returns weather of entered city";
+• /dice : Returns a dice emoji
+• /dart : Returns a dart emoji
+• /basket : Returns a Basketball emoji
+• /char : Returns a Custom with your text
+• /dog : Returns a random dog image
+• /weather : Returns weather of entered city
+• /emoji - Returns a custom emoji
+• /count : Count to your entered number";
         break;
 
         case 'emoji':
@@ -98,7 +99,8 @@ function null_inline($inline_query, $inline_query_id, $chat_id) {
                     'title' => "🤖 Everything you need to Know about WyRa 🤖",
                     'description' => "Here is List of Command and everything i can do, so lets check it out 👾",
                     'thumb_url'   => "http://s13.picofile.com/file/8403461176/photo_2020_07_20_17_14_07.jpg" ,
-                    'input_message_content' => [ 'message_text' => "$reply" ],
+                    'input_message_content' => [ 'message_text' => "$reply", 'parse_mode' => 'Markdown',
+                ],
                 ]
             ];              
                 
@@ -131,7 +133,7 @@ $gayrand = rand(0, 100);
 
 $inline_keyboard = [
     [
-        [ 'text' => "Command List" , 'switch_inline_query_current_chat' => "" ]
+        [ 'text' => "Commands List" , 'switch_inline_query_current_chat' => "" ]
     ] ,
 ];
 
@@ -155,6 +157,7 @@ function sendmessge_noreply($chat_id, $text){
     bot('sendMessage', [
         'chat_id' => $chat_id,
         'text' => $text,
+        'parse_mode' => 'Markdown',
     ]);
 }
 // sendPhoto method
@@ -270,8 +273,8 @@ switch ($text) {
         $json_kb = json_encode($GLOBALS['inline_kb_options']);
 
     $reply = "Welcome dear {$first_name} 🐱, 
-add me to Chat and Have Fun. 
-if you dont know how to use this bot, use /help command !";
+add me to Chat and Have Fun.
+🔴 Follow @Puliqers for Updates & Contacts ⚫️";
 
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
     $post_params = [ 'chat_id' =>  $chat_id, 'text' => $reply, 'reply_markup' => $json_kb ];
@@ -281,25 +284,23 @@ if you dont know how to use this bot, use /help command !";
 
     case "/help":
     case "/help@WyRaBot" :
-    sendmessge_noreply($chat_id, "• /help : Show the list of Command
-• /about : Show some info about bot
+        $bold = "*available commands*";
+    sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
+
+• /about : Returns info about bot
 • /me : Returns your Info
-• /fukra : Show a random text
+• /fukra : Returns a random text
 • /rps : Rock Paper Scissors game
-• /gaycheck : Randomly returns your gayness
+• /gaycheck : Returns your gayness
 • /say : Echo your text
-• /dice : Return a dice emoji
-• /dart : Return a dart emoji
-• /basket : Return a Basketball emoji
-• /char : Show a Custom text with your written text
-• /dog : Show a random dog image
+• /dice : Returns a dice emoji
+• /dart : Returns a dart emoji
+• /basket : Returns a Basketball emoji
+• /char : Returns a Custom with your text
+• /dog : Returns a random dog image
 • /weather : Returns weather of entered city
-• /emoji - Make a custom emoji
-• /count : Count your entered number
-
-• Use these heart emojis and get the meaning of each other (❤️🧡💛💚💙💜🖤💔)
-
-• Use these fruit emojis and get the benefits of each other (🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕)", $message_id);
+• /emoji - Returns a custom emoji
+• /count : Count to your entered number", $message_id);
     break;
 
     case "/me":
