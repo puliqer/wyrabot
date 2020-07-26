@@ -72,7 +72,7 @@ $inline_query_id = $main->inline_query->id;
 // $callback_query_id = $main->callback_query->id;
 // $key_chat_id = $main->callback_query->message->chat->id;
 
-if($query = $upd->callback_query) {
+if ($query = $upd->callback_query) {
 	$msg = $query->message;
 	$text = $msg->text;
 	$date = $msg->date;
@@ -160,13 +160,8 @@ $randomer = array_rand($random_array);
 $gayrand = rand(0, 100);
 
 $inline_keyboard = [
-    [
-        [ 'text' => "Commands List" , 'switch_inline_query_current_chat' => "" ]
-    ] ,
-
-    [
-        [ 'text' => "I Agree" , 'callback_data' => "agree" ]
-    ] ,
+    [[ 'text' => "Commands List" , 'switch_inline_query_current_chat' => "" ]],
+    [[ 'text' => "Emojis List" , 'callback_data' => "emoji" ]],
 ];
 
 $inline_kb_options = [
@@ -186,10 +181,11 @@ function sendmessage($chat_id, $text, $reply_id){
 }
 
 // sendMessage with no reply method
-function sendmessge_noreply($chat_id, $text){
+function sendmessge_noreply($chat_id, $text, $json_kb = null){
     bot('sendMessage', [
         'chat_id' => $chat_id,
         'text' => $text,
+        'reply_markup' => $json_kb,
         'parse_mode' => 'Markdown',
     ]);
 }
@@ -285,12 +281,8 @@ function send_keyboard($chat_id, $text){
 }
 
 function key_sendmessage($chat_id, $text){
-
     $json_kb = json_encode($GLOBALS['inline_kb_options']);
-
-    $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' =>  $chat_id, 'text' => $text, 'reply_markup' => $json_kb ];
-    send_reply($url, $post_params);
+    sendmessge_noreply($chat_id, $text, $json_kb);
 }
 
 function alert_key($text, $show = false){
@@ -321,7 +313,7 @@ switch ($text) {
     case "/start@WyRaBot" :
         key_sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
 add me to Chat and Have Fun.
-🔴 Follow @Puliqers for Updates & Contacts ⚫️");
+🔴 Follow @Puliqers for Updates & Contacts ⚫️");   
     break;
 
     case "/help":
@@ -614,6 +606,16 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $message_id);
     break;
 }
+#########################  Query Respone : Callbacks  #########################
+
+if($data_query == "emoji") {
+    // sendmessge_noreply($chat_id, "OK!");
+    alert_key("You can use this emojis and get the different respone for each other :
+
+Hearts : ❤️🧡💛💚💙💜🖤
+Fruits : 🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕", true);
+} 
+
 #########################  Conditions  #########################
 
 // /say command with argument
@@ -800,11 +802,6 @@ Wind Degree : {$wind_deg}", $message_id);
     }
 }
 
-if($data_query == "agree") {
-    sendmessage($chat_id, 'Thancks!', $message_id);
-
-
-}    
 // adding soon ...
 // winner checker with monitoring the scores section
 
