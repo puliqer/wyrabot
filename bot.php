@@ -129,5 +129,11 @@ if ($msg = $update->edited_message) {
 	$caption_entities = $msg->caption_entities;
 	$audio = $msg->audio;
 }
+ 
+$inline_query = $main->inline_query->query;
+$inline_query_id = $main->inline_query->id;
+
+########## Mehtods Here ##########
+
 
 ?>
