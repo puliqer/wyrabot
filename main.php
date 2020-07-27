@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+error_reporting(0);
+
 #########################  Main Config Here  #########################
 
 $token = '1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk'; // bot token here (this is old token)
@@ -319,7 +321,7 @@ add me to Chat and Have Fun.
     case "/help":
     case "/help@WyRaBot" :
         $bold = "*available commands*";
-    sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
+        sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
 
 ```
 • /about : Returns info about bot
@@ -620,7 +622,7 @@ Fruits : 🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕", true
 
 // /say command with argument
 if ($text == '/say' || $text == '/say@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a text !
+    sendmessage($chat_id, "*Use this Command with a text !*
 for example :     
 /say hello
 Result :
@@ -634,9 +636,9 @@ hello", $message_id);
 
 
 if ($text == '/gay' || $text == '/gay@WyRaBot') {
-    $reply = "Calculating ...";
+    $reply = "_Calculating ..._";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
+    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
  
     $result = send_reply($url, $post_params);
     $result_array = json_decode($result, true);
@@ -644,16 +646,16 @@ if ($text == '/gay' || $text == '/gay@WyRaBot') {
  
     sleep(3);
  
-    $reply = "🏳️‍🌈 {$first_name} is {$gayrand}% Gay 🏳️‍🌈";
+    $reply = "🏳️‍🌈 *{$first_name}* is {$gayrand}% Gay 🏳️‍🌈";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
     send_reply($url, $post_params);
 }
 
 
 // /char command with argumant
 if ($text == '/char' || $text == '/char@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a Simple text !
+    sendmessage($chat_id, "*Use this Command with a Simple text !*
 for example : 
 /char hello
 Result :
@@ -697,7 +699,7 @@ if ($text == '/dog' || $text == '/dog@WyRaBot') {
 }
 
 if ($text == '/emoji' || $text == '/emoji@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a emoji !
+    sendmessage($chat_id, "*Use this Command with a emoji !*
 for example : 
 /emoji 😂
 Result :
@@ -720,7 +722,7 @@ $e   . - .
 
 
 if ($text == '/count' || $text == '/count@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a Number !
+    sendmessage($chat_id, "*Use this Command with a Number !*
 for example : 
 /count 6", $message_id);
 }
@@ -729,27 +731,28 @@ elseif (strpos($text, '/count') === 0) {
     $new_bar = substr($text, 7);
 
     if ($new_bar <= 50) {
-        $reply = 'Counting will starting soon ...';
+        $reply = '*Counting will starting soon ...*';
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id ];
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
         $result = send_reply($url, $post_params);
         $result_array = json_decode($result, true);
         $msg_id  = $result_array["result"]["message_id"];
 
         sleep(5);
 
-        $reply = "Counting in progress 📟";
+        $reply = "*Counting in progress 📟*";
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown',
+    ];
         send_reply($url, $post_params);
 
         for ($i = 0; $i <= $new_bar; $i++) {
             sendmessge_noreply($chat_id, $i);
             if ($i == $new_bar) {
-                sendmessge_noreply($chat_id, 'Counting completed successfully ✅');
-                $reply = "Counting completed successfully ✅";
+                sendmessge_noreply($chat_id, '*Counting completed successfully ✅*');
+                $reply = "*Counting completed successfully ✅*";
                 $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-                $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id ];
+                $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
                 send_reply($url, $post_params);
             }
         }
@@ -759,7 +762,7 @@ elseif (strpos($text, '/count') === 0) {
 }
 
 if ($text == '/weather' || $text == '/weather@WyRaBot') {
-    sendmessage($chat_id, "Use this Command with a city name !
+    sendmessage($chat_id, "*Use this Command with a city name !*
 for example : 
 /weather berlin", $message_id);
 }
