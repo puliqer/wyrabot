@@ -220,5 +220,15 @@ function sendvideo($chat, $video, $caption, $reply = '') {
     ]);
 }
 
+########## Inline Keyboards ##########
+
+$start_inline_keyboards = jencode(['inline_keyboard' => [
+
+	[['text' => 'Commands List', 'callback_data' => 'command']],
+	[['text' => 'Available emojis', 'callback_data' => 'emoji']]
+
+]]);
+
+
 
 ?>
