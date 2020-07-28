@@ -1,6 +1,6 @@
 <?php
 
-########## Bot Config Here ##########
+########## Bot Config ##########
 
 error_reporting(0);
 
@@ -137,7 +137,7 @@ define('FROM', $from);
 define('CHAT', $chat);
 define('MSGID', $msgid);
 
-########## Mehtods Here ##########
+########## Mehtods ##########
 
 // sendmessage method
 function sendmessage($chat, $text, $key = '', $reply = '') {
@@ -229,6 +229,16 @@ $start_inline_keyboards = jencode(['inline_keyboard' => [
 
 ]]);
 
+########## Usable String ##########
 
+switch ($text) {
+	
+	case '/start' :
+	case '/start@WyRaBot' :
+		sendmessage($chat, "Welcome dear {$from_first_name} 🐱, 
+add me to Chat and Have Fun.
+🔴 Follow @Puliqers for Updates & Contacts ⚫️", $start_inline_keyboards);
+	break;
+}
 
 ?>
