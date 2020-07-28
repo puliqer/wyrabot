@@ -908,38 +908,5 @@ if ($a[$rps] == 'Scissors' && $text == '!scissors') {
 }
 
 */
-switch ($text) {
-	
-	case '' :
-	case '' :
-
-	break;
-
-	case '' :
-	case '' :
-	
-	break;
-
-	case '' :
-	case '' :
-	
-	break;
-	
-	case '' :
-	case '' :
-		
-	break;
-
-	case '' :
-	case '' :
-
-	break;
-
-	case '' :
-	case '' :
-	
-	break;
-
-}
 
 ?>
