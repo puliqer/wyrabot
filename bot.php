@@ -131,8 +131,8 @@ if ($msg = $update->edited_message) {
 	$audio = $msg->audio;
 }
 // get inline queries 
-$inline_query = $main->inline_query->query;
-$inline_query_id = $main->inline_query->id;
+$inline_query = $update->inline_query->query;
+$inline_query_id = $update->inline_query->id;
 
 define('FROM', $from);
 define('CHAT', $chat);

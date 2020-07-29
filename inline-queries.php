@@ -1,5 +1,48 @@
 <?php
 
+########## Inline Queries ##########
+
+function null_inline($inline_query, $inline_query_id, $chat) {
+
+    switch($inline_query) {        
+        case null :
+			$reply = "🎯 -| Here is the list of *available commands* or simple text that you can use :
+			
+• /about : Returns info about bot
+• /me : Returns your Info
+• /wyra : Returns a random text
+• /rps : Rock Paper Scissors game
+• /gay : Returns your gayness
+• /say : Echo your text
+• /char : Returns a Custom with your text
+• /dog : Returns a random dog image
+• /weather : Returns weather of entered city
+• /emoji : Returns a custom emoji
+• /count : Count to your entered number";
+
+			$result = [
+				[
+					'type' => "article",
+					'id' => "1",
+					'title' => "🤖 Everything you need to Know about WyRa",
+					'description' => "Here is List of Command and everything i can do, so lets check it out 👾",
+					'thumb_url'   => "http://s13.picofile.com/file/8403461176/photo_2020_07_20_17_14_07.jpg" ,
+					'input_message_content' => [ 'message_text' => "$reply", 'parse_mode' => 'Markdown']
+				],
+			];
+
+        break;
+	}
+
+    $json_result = json_encode($result);
+    return bot('answerInlineQuery', [
+        'inline_query_id' => $inline_query_id , 
+        'results' => $json_result ,
+    ]);
+}
+
+null_inline($inline_query, $inline_query_id, $chat);
+
 ########## Inline Keyboards ##########
 
 $start_inline_keyboards = jencode(['inline_keyboard' => [
