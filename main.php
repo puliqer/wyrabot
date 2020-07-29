@@ -56,7 +56,7 @@ $update_id = $main->update_id; // getting the update id
 $message = $main->message; // getting the message full data
 $message_id = $message->message_id; // getting the message id
 $from_id = $message->from->id; // getting the user id 
-$chat_id = $message->chat->id; // getting the user id in chat
+$chat = $message->chat->id; // getting the user id in chat
 $reply_id = $message->reply_id;
 $textid = $message->text->id; // getting the sent text id from user
 $text = $message->text; // getting the sent text
@@ -96,9 +96,9 @@ if ($query = $upd->callback_query) {
 
 #########################  Inline Methods  #########################
 
-null_inline($inline_query, $inline_query_id, $chat_id);
+null_inline($inline_query, $inline_query_id, $chat);
 
-function null_inline($inline_query, $inline_query_id, $chat_id) {
+function null_inline($inline_query, $inline_query_id, $chat) {
 
     switch($inline_query) {        
         case null :
@@ -173,9 +173,9 @@ $inline_kb_options = [
 #########################  Method List Here  #########################
 
 // sendMessage method
-function sendmessage($chat_id, $text, $reply_id){
+function sendmessage($chat, $text, $reply_id){
     bot('sendMessage', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'text' => $text,
         'reply_to_message_id' => $reply_id,
         'parse_mode' => 'Markdown',
@@ -183,51 +183,51 @@ function sendmessage($chat_id, $text, $reply_id){
 }
 
 // sendMessage with no reply method
-function sendmessge_noreply($chat_id, $text, $json_kb = null){
+function sendmessge_noreply($chat, $text, $json_kb = null){
     bot('sendMessage', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'text' => $text,
         'reply_markup' => $json_kb,
         'parse_mode' => 'Markdown',
     ]);
 }
 // sendPhoto method
-function sendphoto($chat_id, $photo, $caption, $reply_id){
+function sendphoto($chat, $photo, $caption, $reply_id){
     bot('sendPhoto', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'photo' => $photo,
         'caption' => $caption,
         'reply_to_message_id' => $reply_id,
     ]);
 }
 // sendAudio method
-function sendaudio($chat_id, $audio, $caption){
+function sendaudio($chat, $audio, $caption){
     bot('sendPhoto', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'audio' => $audio,
         'caption' => $caption,
     ]);
 }
 // sendSticker method
-function sendsticker($chat_id, $sticker){
+function sendsticker($chat, $sticker){
     bot('sendSticker', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'sticker' => $sticker,
     ]);
 }
 // sendVideo method
-function sendvideo($chat_id, $video, $caption){
+function sendvideo($chat, $video, $caption){
     bot('sendVideo', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'video' => $video,
         'caption' => $caption,
     ]);
 }
 
 // editMessage method
-function editmessage($chat_id, $text){
+function editmessage($chat, $text){
     bot('editMessageText', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'text' => $text,
     ]);
 }
@@ -240,27 +240,27 @@ function inline($inline_query_id, $json_result){
 }
 
 // sendDice method
-function send_dice($chat_id, $reply_id){
+function send_dice($chat, $reply_id){
     bot('sendDice', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'emoji' =>  '🎲',
         'reply_to_message_id' => $reply_id,
     ]);
 }
 
 // sendDice method
-function send_dart($chat_id, $reply_id){
+function send_dart($chat, $reply_id){
     bot('sendDice', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'emoji' =>  '🎯',
         'reply_to_message_id' => $reply_id,
     ]);
 }
 
 // sendDice method
-function send_basket($chat_id, $reply_id){
+function send_basket($chat, $reply_id){
     bot('sendDice', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'emoji' =>  '🏀',
         'reply_to_message_id' => $reply_id,
         
@@ -268,9 +268,9 @@ function send_basket($chat_id, $reply_id){
 }
 
 // sendMessage with keyboard method
-function send_keyboard($chat_id, $text){
+function send_keyboard($chat, $text){
     bot('sendMessage', [
-        'chat_id' => $chat_id,
+        'chat_id' => $chat,
         'text' => $text,
         'reply_markup' => json_encode([
             'keyboard' => [
@@ -282,9 +282,9 @@ function send_keyboard($chat_id, $text){
     ]);
 }
 
-function key_sendmessage($chat_id, $text){
+function key_sendmessage($chat, $text){
     $json_kb = json_encode($GLOBALS['inline_kb_options']);
-    sendmessge_noreply($chat_id, $text, $json_kb);
+    sendmessge_noreply($chat, $text, $json_kb);
 }
 
 function alert_key($text, $show = false){
@@ -295,9 +295,9 @@ function alert_key($text, $show = false){
 	]);
 }
 
-// function send_inline_keyboard($chat_id, $text){
+// function send_inline_keyboard($chat, $text){
 //     bot('sendMessage', [
-//         'chat_id' => $chat_id,
+//         'chat_id' => $chat,
 //         'text' => $text,
 //         'reply_markup' => json_encode([
 //             'text' => 'Select your Option',
@@ -313,7 +313,7 @@ switch ($text) {
 
     case "/start":
     case "/start@WyRaBot" :
-        key_sendmessage($chat_id, "Welcome dear {$first_name} 🐱, 
+        key_sendmessage($chat, "Welcome dear {$first_name} 🐱, 
 add me to Chat and Have Fun.
 🔴 Follow @Puliqers for Updates & Contacts ⚫️");   
     break;
@@ -321,7 +321,7 @@ add me to Chat and Have Fun.
     case "/help":
     case "/help@WyRaBot" :
         $bold = "*available commands*";
-        sendmessge_noreply($chat_id, "🎯 -| Here is the list of {$bold} or simple text that you can use :
+        sendmessge_noreply($chat, "🎯 -| Here is the list of {$bold} or simple text that you can use :
 
 ```
 • /about : Returns info about bot
@@ -339,7 +339,7 @@ add me to Chat and Have Fun.
 
     case "/me":
     case "/me@WyRaBot" :
-    sendmessage($chat_id, "*Your Information* :
+    sendmessage($chat, "*Your Information* :
 Firstname : {$first_name}
 Lastname : {$last_name}
 Username : @{$username}
@@ -348,7 +348,7 @@ User ID : {$user_id}", $message_id);
 
     case "/rps":
     case "/rps@WyRaBot" :
-        sendmessage($chat_id, "*Not working !*
+        sendmessage($chat, "*Not working !*
 *Adding this game soon ...*
         
 Well well. Game time 🎮
@@ -364,12 +364,12 @@ Lets Start 😈
 
     case "/time":
     case "/time@WyRaBot" :
-        sendmessage($chat_id, "_You suck_, we dont have /time 😅", $message_id);
+        sendmessage($chat, "_You suck_, we dont have /time 😅", $message_id);
     break;
 
     case "/about":
     case "/about@WyRaBot" :
-        sendmessge_noreply($chat_id, "Hello, this is *WyRa*.
+        sendmessge_noreply($chat, "Hello, this is *WyRa*.
 a funny multipurpose telegram bot.
                 
 Follow us for updates & contacts on @Puliqers, based on v1.0.1", $message_id);
@@ -377,66 +377,66 @@ Follow us for updates & contacts on @Puliqers, based on v1.0.1", $message_id);
 
     case "/fukra":
     case "/fukra@WyRaBot" :
-        sendmessage($chat_id, "$random_array[$randomer]", $message_id);
+        sendmessage($chat, "$random_array[$randomer]", $message_id);
     break;
 
     case "dice":
-        send_dice($chat_id, $message_id);
+        send_dice($chat, $message_id);
     break;
 
     case "dart":
-        send_dart($chat_id, $message_id);
+        send_dart($chat, $message_id);
     break;
 
     case "basket":
-        send_basket($chat_id, $message_id);
+        send_basket($chat, $message_id);
     break;
 
     case "❤️":
-        sendmessage($chat_id, "❤️ : The red heart emoji is used in warm emotional contexts.
+        sendmessage($chat, "❤️ : The red heart emoji is used in warm emotional contexts.
 It can be used to express gratitude, love, happiness, hope, or even flirtatiousness. ❤️", $message_id);
     break;
 
     case "🧡":
-        sendmessage($chat_id, "🧡 : The Orange Heart Emoji to express great care, comfort, and serenity.
+        sendmessage($chat, "🧡 : The Orange Heart Emoji to express great care, comfort, and serenity.
 The color orange is associated with meanings of joy, warmth, heat, sunshine, enthusiasm, creativity, success, encouragement. 
 Also the orange heart emoji means you just wanna stick as friends and have nothing mutual. 🧡"
 , $message_id);
     break;
 
     case "💛":
-        sendmessage($chat_id, "💛 : The yellow heart emoji, can convey love, just like any other heart symbol or emoji, but its yellow color often gets used to show liking and friendship (as opposed to romantic love). Its color also works with expressions of happines and with all things yellow, from sports team colors to dresses. 💛"
+        sendmessage($chat, "💛 : The yellow heart emoji, can convey love, just like any other heart symbol or emoji, but its yellow color often gets used to show liking and friendship (as opposed to romantic love). Its color also works with expressions of happines and with all things yellow, from sports team colors to dresses. 💛"
         , $message_id);
     break;
 
     case "💚":
-        sendmessage($chat_id, "💚 : The Green Heart Emoji is known as Jealous Heart. A green heart can also be associated with envy, jealousy or possessive love. The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. 💚
+        sendmessage($chat, "💚 : The Green Heart Emoji is known as Jealous Heart. A green heart can also be associated with envy, jealousy or possessive love. The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. 💚
         , $message_id");
     break;
 
     case "💙":
-        sendmessage($chat_id, "💙 : Humans have long associated the feeling of love with their heart. The symbol for Valentine's Day is a heart. A blue heart can symbolize a deep and stable love. Trust, harmony, peace and loyalty. 💙"
+        sendmessage($chat, "💙 : Humans have long associated the feeling of love with their heart. The symbol for Valentine's Day is a heart. A blue heart can symbolize a deep and stable love. Trust, harmony, peace and loyalty. 💙"
         , $message_id);
     break;
 
     case "💜":
-        sendmessage($chat_id, "💜 - The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. The Blue Heart Emoji – A blue heart can also symbolize trust, harmony, peace and loyalty. They can symbolize deep attraction. 💜"
+        sendmessage($chat, "💜 - The Purple (Violet) Heart Emoji – A purple (violet) heart can symbolize a sensitive, understanding and compassionate love. This heart emoji is regularly used to portray glamour or wealth. The Blue Heart Emoji – A blue heart can also symbolize trust, harmony, peace and loyalty. They can symbolize deep attraction. 💜"
         , $message_id);
     break;
 
     case "🖤":
-        sendmessage($chat_id, "🖤 : The black heart emoji is the perfect emoji for a rainy day when you are sitting inside, listening to My Chemical Romance or Dashboard Confessional, and feeling angst-y and misunderstood. It means you are feeling emo, have a dark twisted soul, morbid sense of humor, or just love sad stuff. 🖤"
+        sendmessage($chat, "🖤 : The black heart emoji is the perfect emoji for a rainy day when you are sitting inside, listening to My Chemical Romance or Dashboard Confessional, and feeling angst-y and misunderstood. It means you are feeling emo, have a dark twisted soul, morbid sense of humor, or just love sad stuff. 🖤"
         , $message_id);
     break;
 
     case "💔":
-        sendmessage($chat_id, "💔 : One thing's for sure: they use the broken heart emoji. In texts and on social media, the emoji is used to express grief after a breakup, loss, or other setbacks. While often sincere, its tone can also be more playful, over-exaggerating a frustration or fawning over a crush. Related words: beating heart emoji. 💔"
+        sendmessage($chat, "💔 : One thing's for sure: they use the broken heart emoji. In texts and on social media, the emoji is used to express grief after a breakup, loss, or other setbacks. While often sincere, its tone can also be more playful, over-exaggerating a frustration or fawning over a crush. Related words: beating heart emoji. 💔"
         , $message_id);
     break;
 
     case "🍎":
         $photo = "http://s13.picofile.com/file/8403456826/Do_Apples_Affect_Diabetes_and_Blood_Sugar_Levels_732x549_thumbnail.jpg";
-        sendphoto($chat_id, $photo, "🍎 Apples Are Nutritious. ...
+        sendphoto($chat, $photo, "🍎 Apples Are Nutritious. ...
 🍎 Apples May Be Good for Weight Loss. ...
 🍎 Apples May Be Good for Your Heart. ...
 🍎 They're Linked to a Lower Risk of Diabetes. ...
@@ -447,7 +447,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍏":
         $photo = "http://s13.picofile.com/file/8403457418/cover_1530016364.jpg";
-        sendphoto($chat_id, $photo, "🍏 Low in fat: Green apples have low fat content and help in maintaining good blood flow in the body. ...
+        sendphoto($chat, $photo, "🍏 Low in fat: Green apples have low fat content and help in maintaining good blood flow in the body. ...
 🍏 Rich Source of Vitamin A and C: ...
 🍏 Good For Bones: ...
 🍏 Fights Against Ageing.", $message_id);
@@ -455,7 +455,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍐":
         $photo = "http://s12.picofile.com/file/8403457726/two_pears_on_a_table.jpg";
-        sendphoto($chat_id, $photo, "🍐 Highly nutritious. Pears come in many different varieties. ...
+        sendphoto($chat, $photo, "🍐 Highly nutritious. Pears come in many different varieties. ...
 🍐 May promote gut health. ...
 🍐 Contain beneficial plant compounds. ...
 🍐 Have anti-inflammatory properties. ...
@@ -467,7 +467,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍊":
         $photo = "http://s13.picofile.com/file/8403457850/29942_gettyimages_155302141.jpg";
-        sendphoto($chat_id, $photo, "🍊 Benefits of eating oranges.
+        sendphoto($chat, $photo, "🍊 Benefits of eating oranges.
 🍊 High in Vitamin C. Oranges are an excellent source of vitamin C. ...
 🍊 Healthy immune system. ...
 🍊 Prevents skin damage. ...
@@ -479,7 +479,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
     
     case "🍋":
         $photo = "http://s13.picofile.com/file/8403457950/lemons_tree.jpg";
-        sendphoto($chat_id, $photo, "🍋 It promotes hydration. ...
+        sendphoto($chat, $photo, "🍋 It promotes hydration. ...
 🍋 It's a good source of vitamin C. ...
 🍋 It supports weight loss. ...
 🍋 It improves your skin quality. ...
@@ -490,7 +490,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍌":
         $photo = "http://s12.picofile.com/file/8403458142/istockphoto_186012019_170667a.jpg";
-        sendphoto($chat_id, $photo, "🍌 Bananas are respectable sources of vitamin C. ...
+        sendphoto($chat, $photo, "🍌 Bananas are respectable sources of vitamin C. ...
 🍌 Manganese in bananas is good for your skin. ...
 🍌 Potassium in bananas is good for your heart health and blood pressure. ...
 🍌 Bananas can aid digestion and help beat gastrointestinal issues. ...
@@ -499,7 +499,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍉":
         $photo = "http://s13.picofile.com/file/8403458326/close_up_delicious_fruit_1068534.jpg";
-        sendphoto($chat_id, $photo, "🍉 Helps You Hydrate. ...
+        sendphoto($chat, $photo, "🍉 Helps You Hydrate. ...
 🍉 Contains Nutrients and Beneficial Plant Compounds. ...
 🍉 Contains Compounds That May Help Prevent Cancer. ...
 🍉 May Improve Heart Health. ...
@@ -510,7 +510,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍇":
         $photo = "http://s13.picofile.com/file/8403458550/GettyImages_183217648_1.jpg";
-        sendphoto($chat_id, $photo, "🍇 Packed With Nutrients, Especially Vitamins C and K. ...
+        sendphoto($chat, $photo, "🍇 Packed With Nutrients, Especially Vitamins C and K. ...
 🍇 High Antioxidant Contents May Prevent Chronic Diseases. ...
 🍇 Plant Compounds May Protect Against Certain Types of Cancer. ...
 🍇 Beneficial for Heart Health in Various Impressive Ways. ...
@@ -519,7 +519,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍓":
         $photo = "http://s12.picofile.com/file/8403458634/strawberries_1.jpg";
-        sendphoto($chat_id, $photo, "The tiny strawberry is packed with vitamin C, fiber, antioxidants, and more. ...
+        sendphoto($chat, $photo, "The tiny strawberry is packed with vitamin C, fiber, antioxidants, and more. ...
 🍓 The heart-shaped silhouette of the strawberry is the first clue that this fruit is good for you. ... 
 🍓 These potent little packages protect your heart, increase HDL (good) cholesterol, lower your blood pressure, and guard against cancer. ...
 , $message_id");
@@ -527,7 +527,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍒":
         $photo = "http://s12.picofile.com/file/8403458826/Cherries.jpg";
-        sendphoto($chat_id, $photo, "🍒 Relives Insomnia. Cherries contain a hormone called melatonin which facilitates good, peaceful sleep. ...
+        sendphoto($chat, $photo, "🍒 Relives Insomnia. Cherries contain a hormone called melatonin which facilitates good, peaceful sleep. ...
 🍒 Facilitates Weight Loss. ...
 🍒 Lowers Hypertension. ...
 🍒 Prevents Cardiovascular Diseases. ...
@@ -539,7 +539,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍑":
         $photo = "http://s13.picofile.com/file/8403459100/thinkstock_rf_peaches.jpg";
-        sendphoto($chat_id, $photo, "🍑 Packed With Nutrients and Antioxidants. Peaches are rich in many vitamins, minerals, and beneficial plant compounds. ...
+        sendphoto($chat, $photo, "🍑 Packed With Nutrients and Antioxidants. Peaches are rich in many vitamins, minerals, and beneficial plant compounds. ...
 🍑 May Aid Digestion. ...
 🍑 May Improve Heart Health. ...
 🍑 May Protect Your Skin. ...
@@ -550,7 +550,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍍":
         $photo = "http://s12.picofile.com/file/8403459268/download.jpeg";
-        sendphoto($chat_id, $photo, "🍍 Loaded With Nutrients. ...
+        sendphoto($chat, $photo, "🍍 Loaded With Nutrients. ...
 🍍 Contains Disease-Fighting Antioxidants. ...
 🍍 Its Enzymes Can Ease Digestion. ...
 🍍 May Help Reduce the Risk of Cancer. ...
@@ -561,7 +561,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🥝":
         $photo = "http://s12.picofile.com/file/8403459400/kiwi_fruit_health_benefits_7_reasons_why_you_should_add_this_food_to_your_diet_main.jpg";
-        sendphoto($chat_id, $photo, "🥝 Helps treat asthma.
+        sendphoto($chat, $photo, "🥝 Helps treat asthma.
 🥝 Aids digestion.
 🥝 Boosts immune system.
 🥝 Helps prevent sickness.
@@ -573,14 +573,14 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🍅":
         $photo = "http://s13.picofile.com/file/8403459650/health_benefits_of_tomatoes.jpg";
-        sendphoto($chat_id, $photo, "🍅 Tomatoes are the major dietary source of the antioxidant lycopene,
+        sendphoto($chat, $photo, "🍅 Tomatoes are the major dietary source of the antioxidant lycopene,
 🍅 which has been linked to many health benefits, including reduced risk of heart disease and cancer.
 🍅 They are also a great source of vitamin C, potassium, folate, and vitamin K.", $message_id);
     break;
 
     case "🍆":
         $photo = "http://s13.picofile.com/file/8403459718/two_eggplants_on_a_wooden_table.jpg";
-        sendphoto($chat_id, $photo, "🍆 A GREAT SOURCE OF VITAMINS & MINERALS. The vitamin & mineral content of eggplants is quite extensive. ...
+        sendphoto($chat, $photo, "🍆 A GREAT SOURCE OF VITAMINS & MINERALS. The vitamin & mineral content of eggplants is quite extensive. ...
 🍆 HELPS WITH DIGESTION. ...
 🍆 IMPROVES HEART HEALTH. ...
 🍆 PREVENTS CANCER. ...
@@ -591,7 +591,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🥔":
         $photo = "http://s13.picofile.com/file/8403459868/baked_potatoes_in_a_sack_0.jpg";
-        sendphoto($chat_id, $photo, "🥔 Just 110 calories.
+        sendphoto($chat, $photo, "🥔 Just 110 calories.
 🥔 No fat, sodium or cholesterol.
 🥔 Nearly half your daily value of vitamin C.
 🥔 More potassium than a banana.
@@ -602,7 +602,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 
     case "🥕":
         $photo = "http://s12.picofile.com/file/8403460092/download_1_.jpeg";
-        sendphoto($chat_id, $photo, "🥕 It is crunchy, tasty, and highly nutritious.
+        sendphoto($chat, $photo, "🥕 It is crunchy, tasty, and highly nutritious.
 🥕 Carrots are a particularly good source of beta carotene, fiber, vitamin K1, potassium, and antioxidants.
 🥕 They also have a number of health benefits.
 🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $message_id);
@@ -611,7 +611,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 #########################  Query Respone : Callbacks  #########################
 
 if($data_query == "emoji") {
-    // sendmessge_noreply($chat_id, "OK!");
+    // sendmessge_noreply($chat, "OK!");
     alert_key("You can use this emojis and get the different respone for each other :
 
 Hearts : ❤️🧡💛💚💙💜🖤
@@ -622,7 +622,7 @@ Fruits : 🍏🍎🍐🍊🍋🍌🍉🍇🍓🍒🍑🍍🥝🍅🍆🥕", true
 
 // /say command with argument
 if ($text == '/say' || $text == '/say@WyRaBot') {
-    sendmessage($chat_id, "*Use this Command with a text !*
+    sendmessage($chat, "*Use this Command with a text !*
 for example :     
 /say hello
 Result :
@@ -630,7 +630,7 @@ hello", $message_id);
 
 } elseif (strpos($text, '/say') === 0) {
     $new_text = substr($text, 5);
-    sendmessage($chat_id, "ًResult : 
+    sendmessage($chat, "ًResult : 
     $new_text", $message_id);
 }
 
@@ -638,7 +638,7 @@ hello", $message_id);
 if ($text == '/gay' || $text == '/gay@WyRaBot') {
     $reply = "_Calculating ..._";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
+    $post_params = [ 'chat_id' => $chat , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
  
     $result = send_reply($url, $post_params);
     $result_array = json_decode($result, true);
@@ -648,14 +648,14 @@ if ($text == '/gay' || $text == '/gay@WyRaBot') {
  
     $reply = "🏳️‍🌈 *{$first_name}* is {$gayrand}% Gay 🏳️‍🌈";
     $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-    $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
+    $post_params = [ 'chat_id' => $chat , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
     send_reply($url, $post_params);
 }
 
 
 // /char command with argumant
 if ($text == '/char' || $text == '/char@WyRaBot') {
-    sendmessage($chat_id, "*Use this Command with a Simple text !*
+    sendmessage($chat, "*Use this Command with a Simple text !*
 for example : 
 /char hello
 Result :
@@ -669,7 +669,7 @@ Result :
 
 } elseif (strpos($text, '/char') === 0) {
     $new_text = substr($text, 6);
-    sendmessage($chat_id, "
+    sendmessage($chat, "
     
     |￣￣￣￣￣￣￣￣￣￣￣|
 |     $new_text                   |
@@ -694,12 +694,12 @@ if ($text == '/dog' || $text == '/dog@WyRaBot') {
     } else {
         $main = json_decode($res);
         $image = $main->message;
-        sendphoto($chat_id, $image, "Use /dog for another random dog image", $message_id);
+        sendphoto($chat, $image, "Use /dog for another random dog image", $message_id);
     }
 }
 
 if ($text == '/emoji' || $text == '/emoji@WyRaBot') {
-    sendmessage($chat_id, "*Use this Command with a emoji !*
+    sendmessage($chat, "*Use this Command with a emoji !*
 for example : 
 /emoji 😂
 Result :
@@ -713,7 +713,7 @@ Result :
 
 } elseif (strpos($text, '/emoji') === 0) {
     $e = substr($text, 7);
-    sendmessage($chat_id, "    
+    sendmessage($chat, "    
 $e   . - .
 (\_,'       ' .
   ‎/\
@@ -722,7 +722,7 @@ $e   . - .
 
 
 if ($text == '/count' || $text == '/count@WyRaBot') {
-    sendmessage($chat_id, "*Use this Command with a Number !*
+    sendmessage($chat, "*Use this Command with a Number !*
 for example : 
 /count 6", $message_id);
 }
@@ -733,7 +733,7 @@ elseif (strpos($text, '/count') === 0) {
     if ($new_bar <= 50) {
         $reply = '*Counting will starting soon ...*';
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/sendMessage";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
+        $post_params = [ 'chat_id' => $chat , 'text' => $reply, 'reply_to_message_id' => $message_id, 'parse_mode' => 'Markdown' ];
         $result = send_reply($url, $post_params);
         $result_array = json_decode($result, true);
         $msg_id  = $result_array["result"]["message_id"];
@@ -742,27 +742,27 @@ elseif (strpos($text, '/count') === 0) {
 
         $reply = "*Counting in progress 📟*";
         $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-        $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown',
+        $post_params = [ 'chat_id' => $chat , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown',
     ];
         send_reply($url, $post_params);
 
         for ($i = 0; $i <= $new_bar; $i++) {
-            sendmessge_noreply($chat_id, $i);
+            sendmessge_noreply($chat, $i);
             if ($i == $new_bar) {
-                sendmessge_noreply($chat_id, '*Counting completed successfully ✅*');
+                sendmessge_noreply($chat, '*Counting completed successfully ✅*');
                 $reply = "*Counting completed successfully ✅*";
                 $url = "https://api.telegram.org/bot1007063839:AAF4JA2vEbTzg8NSCZpQnSRr9gjytsCcnkk" . "/editMessageText";
-                $post_params = [ 'chat_id' => $chat_id , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
+                $post_params = [ 'chat_id' => $chat , 'text' => $reply , 'message_id' => $msg_id, 'parse_mode' => 'Markdown' ];
                 send_reply($url, $post_params);
             }
         }
     } else {
-        sendmessage($chat_id, 'Up to 50 is allowed ⚠️', $message_id);
+        sendmessage($chat, 'Up to 50 is allowed ⚠️', $message_id);
     }
 }
 
 if ($text == '/weather' || $text == '/weather@WyRaBot') {
-    sendmessage($chat_id, "*Use this Command with a city name !*
+    sendmessage($chat, "*Use this Command with a city name !*
 for example : 
 /weather berlin", $message_id);
 }
@@ -793,7 +793,7 @@ elseif (strpos($text, '/weather') === 0) {
         $wind_speed = $main->wind->speed;
         $wind_deg = $main->wind->deg;
 
-        sendmessage($chat_id, "Lon : {$lon}
+        sendmessage($chat, "Lon : {$lon}
 Lat : {$lat}
 
 Temperature : {$temp}
@@ -810,7 +810,7 @@ Wind Degree : {$wind_deg}", $message_id);
 
 /*
 if ($_SESSION['user'] == 3) {
-    sendmessage($chat_id, "DONE.
+    sendmessage($chat, "DONE.
     🎉 We have a Winner now, Congratulate! {$username}, you win 🎉
     Socreboard :
     My Score : {$_SESSION['bot']}
@@ -822,7 +822,7 @@ if ($_SESSION['user'] == 3) {
 }
 
 if ($_SESSION['bot'] == 3) {
-    sendmessage($chat_id, "Hahaha...
+    sendmessage($chat, "Hahaha...
     😎 You Lose but try again! {$username}, im waiting, come here and kiss my hand 😎
     Socreboard :
     My Score : {$_SESSION['bot']}
@@ -838,7 +838,7 @@ if ($_SESSION['bot'] == 3) {
 // action to !rock with 3 possible response
 
 if ($a[$rps] == 'Rock' && $text == '!rock') {
-    sendmessage($chat_id, "oh yes roooooock , some is :
+    sendmessage($chat, "oh yes roooooock , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}
     ");
@@ -846,14 +846,14 @@ if ($a[$rps] == 'Rock' && $text == '!rock') {
 
 if ($a[$rps] == 'Paper' && $text == '!rock') {
     $_SESSION['bot'] += 1;
-    sendmessage($chat_id, "oh yes Papeeeeeeer , some is :
+    sendmessage($chat, "oh yes Papeeeeeeer , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
 
 if ($a[$rps] == 'Scissors' && $text == '!rock') {
     $_SESSION['user'] += 1;
-    sendmessage($chat_id, "oh yes Scscscscs , some is :
+    sendmessage($chat, "oh yes Scscscscs , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
@@ -863,21 +863,21 @@ if ($a[$rps] == 'Scissors' && $text == '!rock') {
 
 if ($a[$rps] == 'Rock' && $text == '!paper') {
     $_SESSION['user'] += 1;
-    sendmessage($chat_id, "oh yes Rooooock, some is :
+    sendmessage($chat, "oh yes Rooooock, some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
 
 
 if ($a[$rps] == 'Paper' && $text == '!paper') {
-    sendmessage($chat_id, "oh yes PApapaer , some is :
+    sendmessage($chat, "oh yes PApapaer , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
 
 if ($a[$rps] == 'Scissors' && $text == '!paper') {
     $_SESSION['bot'] += 1;
-    sendmessage($chat_id, "oh yes Scscscscs , some is :
+    sendmessage($chat, "oh yes Scscscscs , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
@@ -888,7 +888,7 @@ if ($a[$rps] == 'Scissors' && $text == '!paper') {
 
 if ($a[$rps] == 'Rock' && $text == '!scissors') {
     $_SESSION['bot'] += 1;
-    sendmessage($chat_id, "oh yes Roooooock , some is :
+    sendmessage($chat, "oh yes Roooooock , some is :
     Me : {$_SESSION['bot']} 
     You : {$_SESSION['user']}");
 }
@@ -896,13 +896,13 @@ if ($a[$rps] == 'Rock' && $text == '!scissors') {
 
 if ($a[$rps] == 'Paper' && $text == '!scissors') {
     $_SESSION['user'] += 1;
-    sendmessage($chat_id, "oh yes Ppapaer , some is :
+    sendmessage($chat, "oh yes Ppapaer , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
 
 if ($a[$rps] == 'Scissors' && $text == '!scissors') {
-    sendmessage($chat_id, "oh yes scscscscs , some is :
+    sendmessage($chat, "oh yes scscscscs , some is :
     Me : {$_SESSION['bot']},
     You : {$_SESSION['user']}");
 }
