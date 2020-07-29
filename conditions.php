@@ -28,7 +28,8 @@ add me to Chat and Have Fun.
 • /weather : Returns weather of entered city
 • /emoji : Returns a custom emoji
 • /count : Count to your entered number
-• ascii : •Returns a random ascii art");
+• /ascii : Returns a random ascii art
+• /emoticon : Return a random emoticon");
 	break;
 
 	case "/me" :
@@ -320,6 +321,11 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
     case "/ascii@WyRaBot" :
         reply($array[$random_ascci]);
     break;
+
+    case "/emoticon" :
+    case "/emoticon@WyRaBot" :
+        reply($array_emoface[$random_emo_face]);
+    break;  
 }
 
 
