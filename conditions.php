@@ -27,7 +27,8 @@ add me to Chat and Have Fun.
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
 • /emoji : Returns a custom emoji
-• /count : Count to your entered number");
+• /count : Count to your entered number
+• ascii : •Returns a random ascii art");
 	break;
 
 	case "/me" :
@@ -316,6 +317,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
     break;
 
     case "/ascii" :
+    case "/ascii@WyRaBot" :
         reply($array[$random_ascci]);
     break;
 }

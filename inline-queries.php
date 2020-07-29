@@ -18,7 +18,8 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
 • /emoji : Returns a custom emoji
-• /count : Count to your entered number";
+• /count : Count to your entered number
+• ascii : •Returns a random ascii art";
 
 			$result = [
 				[
@@ -95,7 +96,8 @@ add me to Chat and Have Fun.
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
 • /emoji - Returns a custom emoji
-• /count : Count to your entered number", $commands_inline_keyboards);
+• /count : Count to your entered number
+• ascii : •Returns a random ascii art", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :
