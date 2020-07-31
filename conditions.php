@@ -418,17 +418,17 @@ elseif (strpos($text, '/weather') === 0) {
     curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
     $res = curl_exec($ch);
 
-		$main = json_decode($res);
+	$main = json_decode($res);
 		
-        $lon = $main->coord->lon;
-        $lat = $main->coord->lat;
-        $temp = $main->main->temp;
-        $pressure = $main->main->pressure;
-        $humidity = $main->main->humidity;
-        $wind_speed = $main->wind->speed;
-        $wind_deg = $main->wind->deg;
+    $lon = $main->coord->lon;
+    $lat = $main->coord->lat;
+    $temp = $main->main->temp;
+    $pressure = $main->main->pressure;
+    $humidity = $main->main->humidity;
+    $wind_speed = $main->wind->speed;
+    $wind_deg = $main->wind->deg;
 
-        reply("Lon : {$lon}
+    reply("Lon : {$lon}
 Lat : {$lat}
 
 Temperature : {$temp}
