@@ -140,6 +140,8 @@ define('MSGID', $msgid);
 
 require_once 'methods.php';
 require_once 'inline-queries.php';
+require_once 'ascii.php';
 require_once 'conditions.php';
+require_once 'dictionary.php';
 
 ?>

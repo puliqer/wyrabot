@@ -112,10 +112,10 @@ function send_basket($chat, $reply_id){
 }
 
 // sendVoice method
-function sendvoice($chat, $voice, $caption, $reply = '') {
+function sendvoice($chat, $voice, $caption = '', $reply = '') {
     return bot('sendVoice', [
         'chat_id' => $chat,
-        'audio' => $voice,
+        'voice' => $voice,
 		'caption' => $caption,
 		'reply_to_message_id' => $reply,
 		'parse_mode' => 'markdown'

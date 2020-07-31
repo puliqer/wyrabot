@@ -1,7 +1,5 @@
 <?php
 
-require_once 'ascii.php';
-
 ########## Usable String ##########
 
 switch ($text) {
@@ -95,18 +93,6 @@ Lets Start 😈
 	case "/time":
 	case "/time@WyRaBot" :
 		reply("_You suck_, we dont have /time 😅");
-	break;
-	
-	case "dice":
-		send_dice($chat, $msgid);
-	break;
-	
-	case "dart":
-		send_dart($chat, $msgid);
-	break;
-	
-	case "basket":
-		send_basket($chat, $msgid);
 	break;
 
 	case "❤️":
