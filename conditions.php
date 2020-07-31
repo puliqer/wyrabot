@@ -449,25 +449,29 @@ for example :
 elseif (strpos($text, '/count') === 0) {
     $new_bar = substr($text, 7);
 
-    if ($new_bar <= 50) {
-		$result = reply("*Counting will starting soon ...*");
-		$reply_message_id = $result->result->message_id;
+    if (is_numeric($new_bar)) {
+        if ($new_bar <= 50) {
+            $result = reply("*Counting will starting soon ...*");
+            $reply_message_id = $result->result->message_id;
 
-		sleep(5);
-		
-		editmessage($chat, $reply_message_id, "*Counting in progress 📟*");
+            sleep(5);
+            
+            editmessage($chat, $reply_message_id, "*Counting in progress 📟*");
 
-		for ($i = 0; $i <= $new_bar; $i++) {
-			sendmessage($chat, $i);
-			if ($i == $new_bar) {
-				sendmessage($chat, "*Counting completed successfully ✅*");
-				editmessage($chat, $reply_message_id, "*Counting completed successfully ✅*");
-			}
-		}
-		
+            for ($i = 0; $i <= $new_bar; $i++) {
+                sendmessage($chat, $i);
+                if ($i == $new_bar) {
+                    sendmessage($chat, "*Counting completed successfully ✅*");
+                    editmessage($chat, $reply_message_id, "*Counting completed successfully ✅*");
+                }
+            }
+            
+        } else {
+            reply("Up to 50 is allowed ⚠️");
+        }
     } else {
-        reply("Up to 50 is allowed ⚠️");
-    }
+        reply("Please use this command with a valid number !");
+    }  
 }
 
 ?>
