@@ -152,7 +152,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍎 They're Linked to a Lower Risk of Diabetes. ...
 🍎 They May Have Prebiotic Effects and Promote Good Gut Bacteria. ...
 🍎 Substances in Apples May Help Prevent Cancer. ...
-🍎 Apples Contain Compounds That Can Help Fight Asthma.");
+🍎 Apples Contain Compounds That Can Help Fight Asthma.", $msgid);
     break;
 
     case "🍏":
@@ -160,7 +160,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
         sendphoto($chat, $photo, "🍏 Low in fat: Green apples have low fat content and help in maintaining good blood flow in the body. ...
 🍏 Rich Source of Vitamin A and C: ...
 🍏 Good For Bones: ...
-🍏 Fights Against Ageing.");
+🍏 Fights Against Ageing.", $msgid);
     break;
 
     case "🍐":
@@ -172,7 +172,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍐 May offer anticancer effects. ...
 🍐 Linked to a lower risk of diabetes. ...
 🍐 May boost heart health. ...
-🍐 May help you lose weight.");
+🍐 May help you lose weight.", $msgid);
     break;
 
     case "🍊":
@@ -184,7 +184,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍊 Keeps blood pressure under check. ...
 🍊 Lowers cholesterol. ...
 🍊 Controls blood sugar level. ...
-🍊 Lowers the risk of cancer.");
+🍊 Lowers the risk of cancer.", $msgid);
     break;
     
     case "🍋":
@@ -195,7 +195,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍋 It improves your skin quality. ...
 🍋 It aids digestion. ...
 🍋 It freshens breath. ...
-🍋 It helps prevent kidney stones.");
+🍋 It helps prevent kidney stones.", $msgid);
     break;
 
     case "🍌":
@@ -204,7 +204,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍌 Manganese in bananas is good for your skin. ...
 🍌 Potassium in bananas is good for your heart health and blood pressure. ...
 🍌 Bananas can aid digestion and help beat gastrointestinal issues. ...
-🍌 Bananas give you energy – minus the fats and cholesterol​");
+🍌 Bananas give you energy – minus the fats and cholesterol​", $msgid);
     break;
 
     case "🍉":
@@ -215,7 +215,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍉 May Improve Heart Health. ...
 🍉 May Lower Inflammation and Oxidative Stress. ...
 🍉 May Help Prevent Macular Degeneration. ...
-🍉 May Help Relieve Muscle Soreness.");
+🍉 May Help Relieve Muscle Soreness.", $msgid);
     break;
 
     case "🍇":
@@ -224,14 +224,14 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍇 High Antioxidant Contents May Prevent Chronic Diseases. ...
 🍇 Plant Compounds May Protect Against Certain Types of Cancer. ...
 🍇 Beneficial for Heart Health in Various Impressive Ways. ...
-🍇 May Decrease Blood Sugar Levels and Protect Against Diabetes.");
+🍇 May Decrease Blood Sugar Levels and Protect Against Diabetes.", $msgid);
     break;
 
     case "🍓":
         $photo = "http://s12.picofile.com/file/8403458634/strawberries_1.jpg";
         sendphoto($chat, $photo, "The tiny strawberry is packed with vitamin C, fiber, antioxidants, and more. ...
 🍓 The heart-shaped silhouette of the strawberry is the first clue that this fruit is good for you. ... 
-🍓 These potent little packages protect your heart, increase HDL (good) cholesterol, lower your blood pressure, and guard against cancer. ...");
+🍓 These potent little packages protect your heart, increase HDL (good) cholesterol, lower your blood pressure, and guard against cancer. ...", $msgid);
     break;
 
     case "🍒":
@@ -243,7 +243,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍒 Anti-Ageing Properties. ...
 🍒 Promotes Healthy Locks. ...
 🍒 Maintains pH Balance. ...
-🍒 Energy Fruit.");
+🍒 Energy Fruit.", $msgid);
     break;
 
     case "🍑":
@@ -254,7 +254,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍑 May Protect Your Skin. ...
 🍑 May Prevent Certain Types of Cancer. ...
 🍑 May Reduce Allergy Symptoms. ...
-🍑 Widely Available and Easy to Add to Your Diet.");
+🍑 Widely Available and Easy to Add to Your Diet.", $msgid);
     break;
 
     case "🍍":
@@ -265,7 +265,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍍 May Help Reduce the Risk of Cancer. ...
 🍍 May Boost Immunity and Suppress Inflammation. ...
 🍍 May Ease Symptoms of Arthritis. ...
-🍍 May Speed Recovery After Surgery or Strenuous Exercise.");
+🍍 May Speed Recovery After Surgery or Strenuous Exercise.", $msgid);
     break;
 
     case "🥝":
@@ -277,14 +277,14 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥝 Manages blood pressure.
 🥝 Reduces blood clotting.
 🥝 Protects against vision loss.
-🥝 Potential risks.");
+🥝 Potential risks.", $msgid);
     break;
 
     case "🍅":
         $photo = "http://s13.picofile.com/file/8403459650/health_benefits_of_tomatoes.jpg";
         sendphoto($chat, $photo, "🍅 Tomatoes are the major dietary source of the antioxidant lycopene,
 🍅 which has been linked to many health benefits, including reduced risk of heart disease and cancer.
-🍅 They are also a great source of vitamin C, potassium, folate, and vitamin K.");
+🍅 They are also a great source of vitamin C, potassium, folate, and vitamin K.", $msgid);
     break;
 
     case "🍆":
@@ -295,7 +295,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🍆 PREVENTS CANCER. ...
 🍆 IMPROVES BONE HEALTH. ...
 🍆 PREVENTS ANEMIA. ...
-🍆 INCREASES BRAIN FUNCTION.");
+🍆 INCREASES BRAIN FUNCTION.", $msgid);
     break;
 
     case "🥔":
@@ -306,7 +306,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
 🥔 More potassium than a banana.
 🥔 A good source of vitamin B6.
 🥔 Fiber, magnesium and antioxidants.
-🥔 Resistant starch.");
+🥔 Resistant starch.", $msgid);
     break;
 
     case "🥕":
@@ -314,7 +314,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
         sendphoto($chat, $photo, "🥕 It is crunchy, tasty, and highly nutritious.
 🥕 Carrots are a particularly good source of beta carotene, fiber, vitamin K1, potassium, and antioxidants.
 🥕 They also have a number of health benefits.
-🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health");
+🥕 They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health", $msgid);
     break;
 
     case "/ascii" :
