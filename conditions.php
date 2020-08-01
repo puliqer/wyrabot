@@ -27,7 +27,8 @@ add me to Chat and Have Fun.
 • /emoji : Returns a custom emoji
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
-• /emoticon : Return a random emoticon");
+• /emoticon : Return a random emoticon
+• /imdb : Return full imdb info of a movie");
 	break;
 
 	case "/me" :
@@ -460,7 +461,7 @@ elseif (strpos($text, '/count') === 0) {
     }  
 }
 
-if ($text == '/imdb') {
+if ($text == '/imdb' || $text == '/imdb@WyRaBot') {
     reply("*Use this Command with a movie/series name !*
 for example : 
 /imdb stranger things");
@@ -499,34 +500,39 @@ for example :
     $imdbVotes = $main->imdbVotes;
     $imdbID = $main->imdbID;
     $website = $main->Website;
+    $respone = $main->Response;
+    
+    if ($respone == 'True') {
+        $reply = "• Title : {$title}
+• Type : {$type}
+• Year : {$year}
+• Released : {$released}
+• Genre : {$genre}
+• Runtime : {$runtime}
+• Rated : {$rated}
 
-    $reply = "Title : {$title}
-Type : {$type}
-Year : {$year}
-Released : {$released}
-Genre : {$genre}
-Runtime : {$runtime}
-Rated : {$rated}
+• Director : {$director}
+• Writer : {$writer}
 
-Director : {$director}
-Writer : {$writer}
+• Actors : {$actors}
 
-Actors : {$actors}
+• Plot : {$plot}
 
-Plot : {$plot}
+• Language : {$language}
+• Country : {$country}
 
-Language : {$language}
-Country : {$country}
+• Awards : {$awards}
+• Metascore : {$meta_score}
+• imdb Rating : {$imdbRating}
+• imdb Votes : {$imdbVotes}
+• imdbID : {$imdbID}
 
-Awards : {$awards}
-Metascore : {$meta_score}
-imdb Rating : {$imdbRating}
-imdb Votes : {$imdbVotes}
-imdbID : {$imdbID}
+• Website : {$website}";
 
-Website : {$website}";
-
-    sendphoto($chat, $poster, $reply, $msgid);
+        sendphoto($chat, $poster, $reply, $msgid);
+    } else {
+        reply("Nothing was found ❌");
+    }
 }
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {

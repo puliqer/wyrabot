@@ -20,7 +20,8 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /emoji : Returns a custom emoji
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
-• /emoticon : Return a random emoticon";
+• /emoticon : Return a random emoticon
+• /imdb : Return full imdb info of a movie";
 
 			$result = [
 				[
@@ -99,7 +100,8 @@ add me to Chat and Have Fun.
 • /emoji : Returns a custom emoji
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
-• /emoticon : Return a random emoticon", $commands_inline_keyboards);
+• /emoticon : Return a random emoticon
+• /imdb : Return full imdb info of a movie", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :
