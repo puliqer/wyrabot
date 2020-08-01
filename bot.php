@@ -16,6 +16,8 @@ function jdencode($array, $status = 0) {
 // requset to api and get respone
 $token = '1007063839:AAGBjoGxk_1E2TwuvjwxScX700KVLcSZ8fk';
 $weather_token = '45ad31179a047c6e43833eccc2cb7412';
+$omdb_token = '';
+
 define('API_KEY', $token);
 
 function bot($method, $data=[], $token = API_KEY) {

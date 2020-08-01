@@ -311,7 +311,7 @@ Also the orange heart emoji means you just wanna stick as friends and have nothi
     case "/emoticon" :
     case "/emoticon@WyRaBot" :
         reply($array_emoface[$random_emo_face]);
-    break;  
+    break; 
 }
 
 
@@ -460,4 +460,78 @@ elseif (strpos($text, '/count') === 0) {
     }  
 }
 
+if ($text == '/imdb') {
+    reply("*Use this Command with a movie/series name !*
+for example : 
+/imdb stranger things");
+
+} elseif (strpos($text, '/imdb') === 0) {
+
+    $movie = substr($text, 6);
+    $arr = explode(' ', $movie);
+    $array = join('+', $arr);
+    
+    $url = "http://www.omdbapi.com/?apikey=".$omdb_token."&t=".$array;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+    
+    $main = json_decode($res);
+    
+    $title = $main->Title;
+    $type = $main->Type;
+    $year = $main->Year;
+    $rated = $main->Rated;
+    $released = $main->Released;
+    $runtime = $main->Runtime;
+    $genre = $main->Genre;
+    $director = $main->Director;
+    $writer = $main->Writer;
+    $actors = $main->Actors;
+    $plot = $main->Plot;
+    $language = $main->Language;
+    $country = $main->Country;
+    $awards = $main->Awards;
+    $poster = $main->Poster;
+    $meta_score = $main->Metascore;
+    $imdbRating = $main->imdbRating;
+    $imdbVotes = $main->imdbVotes;
+    $imdbID = $main->imdbID;
+    $website = $main->Website;
+
+    $reply = "Title : {$title}
+Type : {$type}
+Year : {$year}
+Released : {$released}
+Genre : {$genre}
+Runtime : {$runtime}
+Rated : {$rated}
+
+Director : {$director}
+Writer : {$writer}
+
+Actors : {$actors}
+
+Plot : {$plot}
+
+Language : {$language}
+Country : {$country}
+
+Awards : {$awards}
+Metascore : {$meta_score}
+imdb Rating : {$imdbRating}
+imdb Votes : {$imdbVotes}
+imdbID : {$imdbID}
+
+Website : {$website}";
+
+    sendphoto($chat, $poster, $reply, $msgid);
+}
+// if ($text) {
+//     for ($i = 0; $i <= 5; $i++) {
+//         reply("TEST");
+//         sleep(30);
+//     }
+// }
 ?>
