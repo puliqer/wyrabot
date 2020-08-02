@@ -29,7 +29,8 @@ add me to Chat and Have Fun.
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
 • /imdb : Return full imdb info of a movie
-• /loop : Return a emoji repeat loop");
+• /loop : Return a emoji repeat loop
+• /lyrics : Return the entered music lyrics");
 	break;
 
 	case "/me" :
@@ -586,12 +587,10 @@ probably you didn't enter the name of the artist or song correctly or you didn't
     $lyrics_result = explode('-', $new_lyrics);
 
     // replace + with space in the name of artist
-    $array_artist = explode(' ', $lyrics_result[0]);
-    $result_artist = join('+', $array_artist);
+    $result_artist = str_replace(' ', '+', $lyrics_result[0]);
 
     // replace + with space in the name of song
-    $array_song = explode(' ', $lyrics_result[1]);
-    $result_song = join('+', $array_song);
+    $result_song = str_replace(' ', '+', $lyrics_result[1]);
 
     $url = "https://api.lyrics.ovh/v1/"."$result_artist"."/"."$result_song";
     $ch = curl_init();
@@ -607,7 +606,12 @@ probably you didn't enter the name of the artist or song correctly or you didn't
             $lyrics = $main->lyrics;
             $error= $main->error;
         
-            reply($lyrics);
+            reply("*Response : ✅*
+*Artist :* $lyrics_result[0]
+*Song :* $lyrics_result[1]
+
+
+$lyrics");
         }
 }
 // if ($text) {

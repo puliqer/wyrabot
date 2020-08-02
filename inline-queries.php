@@ -22,7 +22,8 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
 • /imdb : Return full imdb info of a movie
-• /loop : Return a emoji repeat loop";
+• /loop : Return a emoji repeat loop
+• /lyrics : Return the entered music lyrics";
 
 			$result = [
 				[
@@ -103,7 +104,8 @@ add me to Chat and Have Fun.
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
 • /imdb : Return full imdb info of a movie
-• /loop : Return a emoji repeat loop", $commands_inline_keyboards);
+• /loop : Return a emoji repeat loop
+• /lyrics : Return the entered music lyrics", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :
