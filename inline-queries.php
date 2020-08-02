@@ -21,7 +21,8 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
-• /imdb : Return full imdb info of a movie";
+• /imdb : Return full imdb info of a movie
+• /loop : Return a emoji repeat loop";
 
 			$result = [
 				[
@@ -50,8 +51,8 @@ null_inline($inline_query, $inline_query_id, $chat);
 
 $start_inline_keyboards = jencode(['inline_keyboard' => [
 
-	[['text' => 'Commands List', 'callback_data' => 'command']],
-	[['text' => 'Available emojis', 'callback_data' => 'emoji']]
+	[['text' => 'Commands List', 'callback_data' => 'command'], ['text' => 'Available emojis', 'callback_data' => 'emoji']],
+	[['text' => 'Add me to your Chat' , 'url' => 'https://telegram.me/WyRaBot?startgroup=new' ]]
 
 ]]);
 
@@ -101,7 +102,8 @@ add me to Chat and Have Fun.
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
-• /imdb : Return full imdb info of a movie", $commands_inline_keyboards);
+• /imdb : Return full imdb info of a movie
+• /loop : Return a emoji repeat loop", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :

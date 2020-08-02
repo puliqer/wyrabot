@@ -28,7 +28,8 @@ add me to Chat and Have Fun.
 • /count : Count to your entered number
 • /ascii : Returns a random ascii art
 • /emoticon : Return a random emoticon
-• /imdb : Return full imdb info of a movie");
+• /imdb : Return full imdb info of a movie
+• /loop : Return a emoji repeat loop");
 	break;
 
 	case "/me" :
