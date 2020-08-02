@@ -554,15 +554,18 @@ for example :
         '🤮',
     ];
 
-    $result = reply("🧽");
-    $reply_message_id = $result->result->message_id;
-
     if (is_numeric($new_loop)) {
+
+        $result = reply("🧽");
+        $reply_message_id = $result->result->message_id;
+
         for ($i = 0; $i <= $new_loop; $i++) {
             editmessage($chat, $reply_message_id, $emoji_array[$i]);
         }
 
         editmessage($chat, $reply_message_id, "*Your Loop finished as well !*");
+    } else {
+        reply("Enter the number of loops as a number ⚠️");
     }
 }
 // if ($text) {
