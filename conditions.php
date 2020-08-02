@@ -561,6 +561,8 @@ for example :
         for ($i = 0; $i <= $new_loop; $i++) {
             editmessage($chat, $reply_message_id, $emoji_array[$i]);
         }
+
+        editmessage($chat, $reply_message_id, "*Your Loop finished as well !*");
     }
 }
 // if ($text) {
