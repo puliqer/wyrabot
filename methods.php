@@ -122,4 +122,12 @@ function sendvoice($chat, $voice, $caption = '', $reply = '') {
     ]);
 }
 
+// deleteMessage method
+function deletemessage($chat, $msgid) {
+	return bot('deleteMessage',[
+		'chat_id' => $chat,
+		'message_id' => $msgid,
+	]);
+}
+
 ?>

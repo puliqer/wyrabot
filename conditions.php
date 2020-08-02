@@ -556,12 +556,10 @@ for example :
 
     $result = reply("🧽");
     $reply_message_id = $result->result->message_id;
-    sleep(1);
 
     if (is_numeric($new_loop)) {
         for ($i = 0; $i <= $new_loop; $i++) {
             editmessage($chat, $reply_message_id, $emoji_array[$i]);
-            sleep(1);
         }
     }
 }
