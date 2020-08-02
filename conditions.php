@@ -542,24 +542,24 @@ for example :
 } elseif (strpos($text, '/loop') === 0) {
     $new_loop = substr($text, 6);
     $emoji_array = [
-        '😂',
-        '😳',
-        '😢',
-        '😔',
-        '😍',
-        '❤️',
-        '😡',
-        '😱',
-        '💔',
-        '🤮',
+        '1' => '😂',
+        '2' => '😳',
+        '3' => '😢',
+        '4' => '😔',
+        '5' => '😍',
+        '6' => '❤️',
+        '7' => '😡',
+        '8' => '😱',
+        '9' => '💔',
+        '10' => '🤮',
     ];
 
     if (is_numeric($new_loop)) {
 
-        $result = reply("🧽");
+        $result = reply($emoji_array['1']);
         $reply_message_id = $result->result->message_id;
 
-        for ($i = 0; $i <= $new_loop; $i++) {
+        for ($i = 2; $i <= $new_loop; $i++) {
             editmessage($chat, $reply_message_id, $emoji_array[$i]);
         }
 
