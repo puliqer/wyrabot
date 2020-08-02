@@ -532,11 +532,13 @@ for example :
 
         sendphoto($chat, $poster, $reply, $msgid);
     } else {
-        reply("Nothing was found ❌");
+        reply("❌ Nothing was found
+
+⁉️ You probably didn't enter the name of the movie or series correctly");
     }
 }
 
-if ($text == '/loop') {
+if ($text == '/loop' || $text == '/loop@WyRaBot') {
     reply("*Use this Command with a number (Loop) !*
 for example : 
 /loop 2");
@@ -564,6 +566,49 @@ Number of loops entered : {$new_loop}");
     } else {
         reply("Enter the number of loops as a number ⚠️");
     }
+}
+
+if ($text == '/lyrics' || $text == '/lyrics@WyRaBot') {
+    reply("*Use this Command with a singer and songname !*
+Singer and Song name as parameter should be like this format :
+/lyrics <artist>-<song>
+
+for example : 
+/lyrics nickelback-rockstar
+
+⁉️ if you don't get any result,
+probably you didn't enter the name of the artist or song correctly or you didn't follow the pattern of entering information");
+
+} elseif (strpos($text, '/lyrics') === 0) {
+    $new_lyrics = substr($text, 8);
+
+    // get artist and song name in array
+    $lyrics_result = explode('-', $new_lyrics);
+
+    // replace + with space in the name of artist
+    $array_artist = explode(' ', $lyrics_result[0]);
+    $result_artist = join('+', $array_artist);
+
+    // replace + with space in the name of song
+    $array_song = explode(' ', $lyrics_result[1]);
+    $result_song = join('+', $array_song);
+
+    $url = "https://api.lyrics.ovh/v1/"."$result_artist"."/"."$result_song";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+
+        if (curl_error($ch)) {
+            reply("❌ Nothing was found");
+        } else {
+            $main = json_decode($res);
+
+            $lyrics = $main->lyrics;
+            $error= $main->error;
+        
+            reply($lyrics);
+        }
 }
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
