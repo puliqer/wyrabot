@@ -544,16 +544,22 @@ for example :
 
     if (is_numeric($new_loop)) {
 
-        require_once 'emoji-list.php';
+        if ($new_loop <= 50) {
+            require_once 'emoji-list.php';
 
-        $result = reply($emoji_array['1']);
-        $reply_message_id = $result->result->message_id;
+            $result = reply($emoji_array['1']);
+            $reply_message_id = $result->result->message_id;
 
-        for ($i = 2; $i <= $new_loop; $i++) {
-            editmessage($chat, $reply_message_id, $emoji_array[$i]);
+            for ($i = 2; $i <= $new_loop; $i++) {
+                editmessage($chat, $reply_message_id, $emoji_array[$i]);
+            }
+
+            editmessage($chat, $reply_message_id, "*Your Loop finished as well !*
+Number of loops entered : {$new_loop}");
+
+        } else {
+            reply("Up to 50 loop is allowed ⚠️");
         }
-
-        editmessage($chat, $reply_message_id, "*Your Loop finished as well !*");
     } else {
         reply("Enter the number of loops as a number ⚠️");
     }
