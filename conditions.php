@@ -534,6 +534,37 @@ for example :
         reply("Nothing was found ❌");
     }
 }
+
+if ($text == '/loop') {
+    reply("*Use this Command with a number (Loop) !*
+for example : 
+/loop 2");
+} elseif (strpos($text, '/loop') === 0) {
+    $new_loop = substr($text, 6);
+    $emoji_array = [
+        '😂',
+        '😳',
+        '😢',
+        '😔',
+        '😍',
+        '❤️',
+        '😡',
+        '😱',
+        '💔',
+        '🤮',
+    ];
+
+    $result = reply("🧽");
+    $reply_message_id = $result->result->message_id;
+    sleep(1);
+
+    if (is_numeric($new_loop)) {
+        for ($i = 0; $i <= $new_loop; $i++) {
+            editmessage($chat, $reply_message_id, $emoji_array[$i]);
+            sleep(1);
+        }
+    }
+}
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
 //         reply("TEST");
