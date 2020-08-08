@@ -30,7 +30,8 @@ add me to Chat and Have Fun.
 • /emoticon : Return a random emoticon
 • /imdb : Return full imdb info of a movie
 • /loop : Return a emoji repeat loop
-• /lyrics : Return the entered music lyrics");
+• /lyrics : Return the entered music lyrics
+• /find : Return data of entered Domain / IP");
 	break;
 
 	case "/me" :
@@ -604,6 +605,76 @@ probably you didn't enter the name of the artist or song correctly or you didn't
     $lyrics = $main->lyrics;
 
     reply($lyrics);
+}
+
+if ($text == '/find' || $text == '/find@WyRaBot') {
+    reply("*Use this Command with a Domain / IP address !*
+for example : 
+/find 1.1.1.1");
+
+} elseif (strpos($text, '/find') === 0) {
+    $new_find = substr($text, 6);
+
+    $url = "https://tools.keycdn.com/geo.json?host=".$new_find;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+    
+    $main = json_decode($res);
+
+    $status = $main->status;
+    $description = $main->description;
+
+    $host = $main->data->geo->host;
+    $ip = $main->data->geo->ip;
+    $rdns = $main->data->geo->rdns;
+    $asn = $main->data->geo->asn;
+    $isp = $main->data->geo->isp;
+    $country_name = $main->data->geo->country_name;
+    $country_code = $main->data->geo->country_code;
+    $region_name = $main->data->geo->region_name;
+    $region_code = $main->data->geo->region_code;
+    $city = $main->data->geo->city;
+    $postal_code = $main->data->geo->postal_code;
+    $continent_name = $main->data->geo->continent_name;
+    $continent_code = $main->data->geo->continent_code;
+    $latitude = $main->data->geo->latitude;
+    $longitude = $main->data->geo->longitude;
+    $metro_code = $main->data->geo->metro_code;
+    $timezone = $main->data->geo->timezone;
+    $datetime = $main->data->geo->datetime;
+
+        if ($status == "success") {
+            reply("✅ $description ✅
+
+• Host : $host
+• IP : $ip
+• RDNS : $rdns
+• ASN : $asn
+• ISP : $isp
+
+• Country : $country_name
+• Country code : $country_code
+• Region : $region_name
+• Region code : $region_code
+• City : $city
+• Postal code : $postal_code 
+• Continent : $continent_name
+• Continent code : $continent_code
+• Metro code : $metro_code
+ 
+• Latitude : $latitude
+• Longitude : $longitude
+ 
+• Timezone : $timezone
+• Datetime : $datetime");
+
+        } elseif ($status == "error") {
+            reply("❌ Nothing was found
+
+⁉️ You probably didn't enter the Domain / Ip address correctly");
+        }
 }
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
