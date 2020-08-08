@@ -586,33 +586,24 @@ probably you didn't enter the name of the artist or song correctly or you didn't
     // get artist and song name in array
     $lyrics_result = explode('-', $new_lyrics);
 
-    // replace + with space in the name of artist
-    $result_artist = str_replace(' ', '+', $lyrics_result[0]);
+    parse_str("artist=$lyrics_result[0]&song=$lyrics_result[1]");
 
+    $result_artist = str_replace(' ', '%20', $artist);
+    
     // replace + with space in the name of song
-    $result_song = str_replace(' ', '+', $lyrics_result[1]);
+    $result_song = str_replace(' ', '%20', $song);
 
-    $url = "https://api.lyrics.ovh/v1/"."$result_artist"."/"."$result_song";
+    $url = "https://api.lyrics.ovh/v1/".$result_artist."/".$result_song;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $res = curl_exec($ch);
 
-        if (curl_error($ch)) {
-            reply("❌ Nothing was found");
-        } else {
-            $main = json_decode($res);
+    $main = json_decode($res);
 
-            $lyrics = $main->lyrics;
-            $error= $main->error;
-        
-            reply("*Response : ✅*
-*Artist :* $lyrics_result[0]
-*Song :* $lyrics_result[1]
+    $lyrics = $main->lyrics;
 
-
-$lyrics");
-        }
+    reply($lyrics);
 }
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
