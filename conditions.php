@@ -31,7 +31,8 @@ add me to Chat and Have Fun.
 • /imdb : Return full imdb info of a movie
 • /loop : Return a emoji repeat loop
 • /lyrics : Return the entered music lyrics
-• /find : Return data of entered Domain / IP");
+• /find : Return data of entered Domain / IP
+• /ping : Ping a website or an IP address");
 	break;
 
 	case "/me" :
@@ -675,6 +676,18 @@ for example :
 
 ⁉️ You probably didn't enter the Domain / Ip address correctly");
         }
+}
+
+if ($text == '/ping' || $text == '/ping@WyRaBot') {
+    reply("*Use this Command with a Domain / IP address !*
+for example : 
+/ping google.com");
+
+} elseif (strpos($text, '/ping') === 0) {
+    $new_ping = substr($text, 6);
+
+    $ping = ping($new_ping);
+    reply($ping);
 }
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
