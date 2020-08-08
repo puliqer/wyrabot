@@ -130,4 +130,15 @@ function deletemessage($chat, $msgid) {
 	]);
 }
 
+function ping($host, $port = 80, $timeout = 10) { 
+	$tB = microtime(true); 
+	$fP = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+	
+	if (!$fP) { return "down"; }
+
+	$tA = microtime(true); 
+	return round((($tA - $tB) * 1000), 0)." ms";
+}
+
+
 ?>
