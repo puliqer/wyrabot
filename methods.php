@@ -134,11 +134,21 @@ function ping($host, $port = 80, $timeout = 10) {
 	$tB = microtime(true); 
 	$fP = fSockOpen($host, $port, $errno, $errstr, $timeout); 
 	
-	if (!$fP) { return "down"; }
+	if (!$fP) { return "Down ... !!!"; }
 
 	$tA = microtime(true); 
 	return round((($tA - $tB) * 1000), 0)." ms";
 }
 
-
+function printPattern($array){
+     $ret = '';
+     for($i = 0; $i < count($array); $i++){
+          $str = '';
+          for($j = 0; $j < $i+1; $j++){
+               $str .= $array[$j];
+          }
+          $ret .= $str.'<br>';
+     }
+     return $ret;
+}
 ?>

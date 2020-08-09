@@ -683,8 +683,8 @@ if ($text == '/ping' || $text == '/ping@WyRaBot') {
 for example : 
 /ping google.com");
 
-} elseif (strpos($text, '/ping') === 0) {
-    $new_ping = substr($text, 6);
+} elseif (strpos($text, '/ping ') === 0) {
+    $new_ping = substr($text, 7);
 
     $ping = ping($new_ping);
     reply($ping);
