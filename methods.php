@@ -147,7 +147,7 @@ function printPattern($array){
           for($j = 0; $j < $i+1; $j++){
                $str .= $array[$j];
           }
-          $ret .= $str.'<br>';
+          $ret .= $str;
      }
      return $ret;
 }

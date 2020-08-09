@@ -25,7 +25,8 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /loop : Return a emoji repeat loop
 • /lyrics : Return the entered music lyrics
 • /find : Return data of entered Domain / IP
-• /ping : Ping a website or an IP address";
+• /ping : Ping a website or an IP address
+• /edit : Edits text from beginning to end";
 
 			$result = [
 				[
@@ -109,7 +110,8 @@ add me to Chat and Have Fun.
 • /loop : Return a emoji repeat loop
 • /lyrics : Return the entered music lyrics
 • /find : Return data of entered Domain / IP
-• /ping : Ping a website or an IP address", $commands_inline_keyboards);
+• /ping : Ping a website or an IP address
+• /edit : Edits text from beginning to end", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :

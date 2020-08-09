@@ -32,7 +32,8 @@ add me to Chat and Have Fun.
 • /loop : Return a emoji repeat loop
 • /lyrics : Return the entered music lyrics
 • /find : Return data of entered Domain / IP
-• /ping : Ping a website or an IP address");
+• /ping : Ping a website or an IP address
+• /edit : Edits text from beginning to end");
 	break;
 
 	case "/me" :
@@ -689,6 +690,28 @@ for example :
     $ping = ping($new_ping);
     reply($ping);
 }
+
+if ($text == '/edit' || $text == '/edit@WyRaBot') {
+    reply("*Use this command with a simple text!*
+for example :
+/edit hello");
+
+} elseif (strpos($text, '/edit') === 0) {
+    $new_edit = substr($text, 6);
+    $letter_array = str_split($new_edit, 1);
+
+    $result = reply("~~~~~~~~~~~~ EDIT STARTED ~~~~~~~~~~~");
+    $reply_message_id = $result->result->message_id;
+
+    for ($i = 0; $i < count($letter_array); $i++){
+        $str = '';
+        for ($j = 0; $j < $i+1; $j++) {
+          $str .= $letter_array[$j];
+        }
+            editmessage($chat, $reply_message_id, $str);
+    }
+}
+
 // if ($text) {
 //     for ($i = 0; $i <= 5; $i++) {
 //         reply("TEST");
