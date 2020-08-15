@@ -25,15 +25,16 @@ add me to Chat and Have Fun.
 • /dog : Returns a random dog image
 • /weather : Returns weather of entered city
 • /emoji : Returns a custom emoji
-• /count : Count to your entered number
+• /count : Counts to your entered number
 • /ascii : Returns a random ascii art
-• /emoticon : Return a random emoticon
-• /imdb : Return full imdb info of a movie
-• /loop : Return a emoji repeat loop
-• /lyrics : Return the entered music lyrics
-• /find : Return data of entered Domain / IP
+• /emoticon : Returns a random emoticon
+• /imdb : Returns full imdb info of a movie
+• /loop : Returns a emoji repeat loop
+• /lyrics : Returns the entered music lyrics
+• /find : Returns data of entered Domain / IP
 • /ping : Ping a website or an IP address
-• /edit : Edits text from beginning to end");
+• /edit : Edits text from beginning to end
+• /fact : Returns a random fact about entered animal");
 	break;
 
 	case "/me" :
@@ -92,8 +93,8 @@ Lets Start 😈
 		$res = curl_exec($ch);
 		
 		$main = json_decode($res);
-		$image = $main->message;
-		sendphoto($chat, $image, "Use /dog for another random dog image", $msgid);
+		$dogImage = $main->message;
+		sendphoto($chat, $dogImage, "Use /dog for another random dog image", $msgid);
 	break;
 
 	case "/time":
@@ -712,10 +713,30 @@ for example :
     }
 }
 
-// if ($text) {
-//     for ($i = 0; $i <= 5; $i++) {
-//         reply("TEST");
-//         sleep(30);
-//     }
-// }
+if ($text == '/fact' || $text == '/fact@WyRaBot') {
+    reply("*Use this commnand with a animal name !*
+
+List of usable animal :
+Cat
+Dog
+Horse
+
+For example :
+/fact dog");
+
+} elseif (strpos($text, '/fact') === 0) {
+    $factString = substr($text, 6);
+
+    $url = "https://cat-fact.herokuapp.com/facts/random?animal_type=".$factString;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $res = curl_exec($ch);
+    
+    $main = json_decode($res);
+
+    $text = $main->text;
+
+    reply($text);
+}
 ?>

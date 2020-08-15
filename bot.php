@@ -14,7 +14,7 @@ function jdencode($array, $status = 0) {
 }
 
 // apis keys here
-$token = '1007063839:AAGBjoGxk_1E2TwuvjwxScX700KVLcSZ8fk';
+$token = '1007063839:AAFQD5Xg_tglB1W6bwA6RnXfz0f1j7Grz5w';
 $weather_token = '45ad31179a047c6e43833eccc2cb7412';
 $omdb_token = '';
 
