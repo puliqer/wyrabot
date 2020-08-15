@@ -34,7 +34,8 @@ add me to Chat and Have Fun.
 • /find : Returns data of entered Domain / IP
 • /ping : Ping a website or an IP address
 • /edit : Edits text from beginning to end
-• /fact : Returns a random fact about entered animal");
+• /fact : Returns a random fact about entered animal
+• /fruit : Returns entered fruit informations");
 	break;
 
 	case "/me" :
@@ -714,7 +715,7 @@ for example :
 }
 
 if ($text == '/fact' || $text == '/fact@WyRaBot') {
-    reply("*Use this commnand with a animal name !*
+    reply("*Use this command with a animal name !*
 
 List of usable animal :
 Cat
@@ -738,5 +739,48 @@ For example :
     $text = $main->text;
 
     reply($text);
+}
+
+if ($text == '/fruit' || $text == '/fruit@WyRaBot') {
+    reply("*Use this command with fruit !*
+
+for example :
+/fruit apple");
+
+} elseif (strpos($text, '/fruit') === 0) {
+    $fruitStirng = substr($text, 7);
+
+    $url = "https://www.fruityvice.com/api/fruit/".$fruitStirng;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $res = curl_exec($ch);
+    
+    $main = json_decode($res);
+
+    $genus = $main->genus;
+    $name = $main->name;
+    $family = $main->family;
+
+    $carbohydrates = $main->nutritions->carbohydrates;
+    $protein = $main->nutritions->protein;
+    $fat = $main->nutritions->fat;
+    $calories = $main->nutritions->calories;
+    $sugar = $main->nutritions->sugar;
+
+    reply("
+✅ General :
+Genus => $genus
+Name => $name
+Family => $family
+
+✅ Nutritions :
+Carbohydrates => $carbohydrates
+Protein => $protein
+Fat => $fat
+Calories => $calories
+Sugar => $sugar");
+
 }
 ?>
