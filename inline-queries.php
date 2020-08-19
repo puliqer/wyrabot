@@ -28,7 +28,7 @@ function null_inline($inline_query, $inline_query_id, $chat) {
 • /ping : Ping a website or an IP address
 • /edit : Edits text from beginning to end
 • /fact : Returns a random fact about entered animal
-• /fruit : Returns entered fruit informations";
+• /fruit : Returns entered fruit information";
 
 			$result = [
 				[
@@ -115,7 +115,7 @@ add me to Chat and Have Fun.
 • /ping : Ping a website or an IP address
 • /edit : Edits text from beginning to end
 • /fact : Returns a random fact about entered animal
-• /fruit : Returns entered fruit informations", $commands_inline_keyboards);
+• /fruit : Returns entered fruit information", $commands_inline_keyboards);
 	break;
 	
 	case "emoji" :
